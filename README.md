@@ -1,6 +1,6 @@
 # Local LLM benchmarks on one RTX 3080 (10 GB)
 
-**23 open models tested, 14 kept.** Which local language models are really usable on a single gaming GPU, how long a context they hold stably, and how to run them all behind one OpenAI-compatible endpoint.
+**23 open models tested, 15 kept.** Which local language models are really usable on a single gaming GPU, how long a context they hold stably, and how to run them all behind one OpenAI-compatible endpoint.
 
 > Version 1.4 · Test dates: 2026-09-29 – 2026-10-06 · Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM
 > Author: **Serhii Khomenko** — [homensai.com](https://homensai.com/)

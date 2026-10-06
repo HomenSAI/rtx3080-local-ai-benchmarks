@@ -8,7 +8,6 @@ import json, os, shlex, statistics, sys, time, urllib.request
 import numpy as np
 import yaml
 import bench_all as B
-import bench_top as T
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CFG = os.path.join(HERE, "..", "config", "llama-swap.yaml")

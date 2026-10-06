@@ -1,7 +1,7 @@
 """Re-run the German passive test for models that returned empty answers (thinking ate the token budget).
 Two variants per model: thinking OFF (enable_thinking=false, 1500 tokens) and thinking ON with a big budget (6000 tokens).
 The better variant is stored in results_german_fix.jsonl (the original run stays untouched)."""
-import json, os, re, sys, time, urllib.request
+import json, os, re, time, urllib.request
 import bench_top as T
 import bench_all as B
 from qa_tasks import GERMAN, GERMAN_INSTR

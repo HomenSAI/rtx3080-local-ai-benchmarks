@@ -7,7 +7,7 @@ th.sortable.desc::after{content:"\25BC";opacity:1}
 td.lead1{background:#c8f7c5!important;font-weight:700}td.lead2{background:#e2f9d8!important}td.lead3{background:#f1fbe9!important}
 .sorthint{font-size:12px;color:#777;margin:2px 0}
 @media(prefers-color-scheme:dark){th.sortable:hover{background:#333}td.lead1{background:#1f5c2a!important}td.lead2{background:#27432b!important}td.lead3{background:#233323!important}}
-</style><nav><a href="report.en.html">English</a><a href="report.ru.html">Русский</a><a href="report.de.html">Deutsch</a></nav><h1>Локальный ИИ-сервер на RTX 3080: протестировано 23 модели, оставлено 14</h1>
+</style><nav><a href="report.en.html">English</a><a href="report.ru.html">Русский</a><a href="report.de.html">Deutsch</a></nav><h1>Локальный ИИ-сервер на RTX 3080: протестировано 23 модели, оставлено 15</h1>
 <blockquote>Версия 1.4 · Даты тестов: 2026-09-29 – 2026-10-06 (железо: RTX 3080 10 ГБ, i7-4770, 32 ГБ ОЗУ). Автор эксперимента: https://homensai.com/</blockquote>
 <h2>1. Идея проекта</h2>
 <p>Цель: понять, какие локальные модели реально пригодны на одной RTX 3080 (10 ГБ видеопамяти) и 32 ГБ ОЗУ, запустить их через один шлюз (llama.cpp + llama-swap в Docker) и для каждой измерить максимальный *стабильный* контекст, качество (русский, логика, программирование, немецкий, школьные математика, физика, химия), ускорение от акселераторов (MTP, DFlash, черновые модели) и надёжность при длительной работе.</p>

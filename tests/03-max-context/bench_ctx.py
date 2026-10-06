@@ -7,7 +7,7 @@ For every model the KV-cache placement is searched from fast to slow:
 Context ladder 8K..native max (powers of two, then one midpoint refinement). A step counts as STABLE when the server starts,
 the host RAM guard is not tripped, all 3 hidden facts are recalled at ~80% fill, and speed does not collapse.
 usage: python bench_ctx.py [--only A,B] [--skip-done] [--cap 262144]"""
-import argparse, json, os, re, sys, time, urllib.request
+import argparse, json, os, re, time, urllib.request
 import bench_top as T
 import bench_all as B
 import mneedle as N

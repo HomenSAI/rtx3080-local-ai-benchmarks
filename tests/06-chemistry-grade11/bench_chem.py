@@ -1,6 +1,6 @@
 """Grade-11 chemistry (10 problems) on every eligible model (context >= 64K). Pass 1: thinking OFF; pass 2: thinking ON for the 5 best hybrid models.
 Resumable. usage: python bench_chem.py  -> results_chem.jsonl"""
-import json, os, re, sys, time
+import json, os, re, time
 import bench_top as T
 import bench_all as B
 import bench_stem as S

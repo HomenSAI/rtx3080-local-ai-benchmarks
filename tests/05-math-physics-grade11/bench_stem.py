@@ -2,7 +2,7 @@
 Pass 1: every model, thinking OFF (short written solution allowed, 2500 tokens).
 Pass 2: the 8 best hybrid models again with thinking ON (8000 tokens); reasoning-only models (R1) always run with 8000 tokens.
 usage: python bench_stem.py [--only A,B]   -> results_stem.jsonl, stem_table.md"""
-import json, math, os, re, sys, time, urllib.request
+import json, os, re, sys, time, urllib.request
 import bench_top as T
 import bench_all as B
 from stem_tasks import TASKS

@@ -2,7 +2,7 @@
 usage: mneedle.py --port 8080 --label A-live --plan "Model:ctx,Model:ctx" [--fill 0.85] [--timeout 1500]
 Each run appends one JSON line to results.jsonl (label, model, ctx, tokens, needles hit, pp/tg speed, VRAM).
 """
-import argparse, glob, json, os, random, subprocess, sys, time, urllib.request
+import argparse, glob, json, os, random, subprocess, time, urllib.request
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results.jsonl")
 import sysconfig

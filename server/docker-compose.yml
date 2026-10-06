@@ -75,6 +75,24 @@ x-llama-environment: &llama-environment
   LLAMA_MIN_P: ""
 
 services:
+  upstream:
+    <<: *upstream
+    profiles: ["upstream"]
+    pull_policy: never
+    init: true
+    restart: "no"
+    entrypoint: ["/app/llama-server"]
+    command: ["--version"]
+
+  bonsai:
+    <<: *bonsai-image
+    profiles: ["bonsai"]
+    pull_policy: never
+    init: true
+    restart: "no"
+    entrypoint: ["/app/llama-server"]
+    command: ["--version"]
+
   whisper:
     <<: [*whisper-image, *runtime]
     profiles: ["whisper"]
