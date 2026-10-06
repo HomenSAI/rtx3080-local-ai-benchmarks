@@ -2,5 +2,5 @@
 
 30 German passive-voice items, all forms.
 
-Tasks/code: qa_tasks.py, qa_bench.py, german_all.py, german_fix.py
+Code and runners: https://github.com/HomenSAI/homensai-local-ai-lab
 Our raw results: results/

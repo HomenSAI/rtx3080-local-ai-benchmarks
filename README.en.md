@@ -56,14 +56,14 @@ Candidates (23 weights, Q4/Q5 quantisation) were chosen from the 2026 open model
 
 ## 5. How the tests work
 
-1. General quality: Russian summary/translation, logic, instructions, vision, code (qtasks.py) — date: 2026-09-30 – 2026-10-01
-2. German passive voice, 30 items, all forms (qa_tasks.py) — date: 2026-10-01
-3. Maximum stable context: 3 needles at 10/50/90% depth, 80% fill, KV f16/q8/q4 (bench_ctx.py, mneedle.py) — date: 2026-10-01 – 2026-10-02
-4. Soak: 95% fill x2, long generation, image check, VRAM/RAM watch via the gateway (soak.py) — date: 2026-10-03 – 2026-10-06
-5. Grade-11 math and physics, 40 generated problems, computed answers (stem_tasks.py) — date: 2026-10-02
-6. Grade-11 chemistry, 10 generated problems (chem_tasks.py) — date: 2026-10-06
-7. Programming (writing code): 20 Python tasks — the model writes a function, hidden unit tests check it in a no-network sandbox (coding_tasks.py) — date: 2026-10-06
-8. Accelerators and embeddings: tokens/s with and without MTP/DFlash/draft, retrieval top-1 (bench_accel.py) — date: 2026-10-02
+1. General quality: Russian summary/translation, logic, instructions, vision, code — date: 2026-09-30 – 2026-10-01
+2. German passive voice, 30 items, all forms — date: 2026-10-01
+3. Maximum stable context: 3 needles at 10/50/90% depth, 80% fill, KV f16/q8/q4 — date: 2026-10-01 – 2026-10-02
+4. Soak: 95% fill x2, long generation, image check, VRAM/RAM watch via the gateway — date: 2026-10-03 – 2026-10-06
+5. Grade-11 math and physics, 40 generated problems, computed answers — date: 2026-10-02
+6. Grade-11 chemistry, 10 generated problems — date: 2026-10-06
+7. Programming (writing code): 20 Python tasks — the model writes a function, hidden unit tests check it in a no-network sandbox — date: 2026-10-06
+8. Accelerators and embeddings: tokens/s with and without MTP/DFlash/draft, retrieval top-1 — date: 2026-10-02
 
 ## 6. How scores are calculated
 
@@ -114,17 +114,13 @@ Full tables: [RESULTS.en.md](RESULTS.en.md)
 | Hybrid models returned empty answers (thinking ate the budget) | enable_thinking=false for plain runs, large budget when thinking is on; Gemma-4 and LFM2.5 still lose all 3 facts at 64K and were removed. |
 | RAM-KV mode (--no-kv-offload) hung and ran on CPU (LFM2.5) | Mode removed from the context test; GPU-utilisation peak is recorded per probe. |
 | 262K contexts passed at 80% fill but spilled at 95% (MTP/DFlash heads need VRAM) | Soak at 95% lowered Qwen3.5-MTP to 192K and Ornith-MTP to 128K; Ornith-DFlash removed. |
-| Test corpus read from the host Python folder, missing in the container (fake 149-token probes) | Corpus frozen in corpus_cache.txt; bogus probes deleted and rerun. |
+| Test corpus read from the host Python folder, missing in the container (fake 149-token probes) | Corpus frozen in a fixed file; bogus probes deleted and rerun. |
 | Draft-model accelerators slowed models down (x0.17-0.75) | Only MTP/DFlash profiles with measured speed-up are kept. |
-| Windows reboot killed background jobs | Pipeline moved into the restartable bench-runner container; every phase resumes from stored results. |
+| Windows reboot killed background jobs | Pipeline moved into the restartable runner container; every phase resumes from stored results. |
 
-## 9. Install guide
+## 9. Server and test code
 
-[INSTALL.en.md](INSTALL.en.md)
-
-## 10. Reproducing the tests
-
-Each folder in tests/ contains the task file, the runner, a README and our raw results (results/*.jsonl). Run the runner against your own llama.cpp server on port 8090 (see bench_top.py start()) and compare your jsonl with ours.
+The server (llama.cpp + llama-swap in Docker, scripts, configuration) and the test runners used to obtain these results are published in a separate repository: [HomenSAI/homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab). This repository contains only the finished report and our raw results (results/*.jsonl in each tests/ folder).
 <!--FOOT-->
 
 ---

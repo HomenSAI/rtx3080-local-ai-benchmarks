@@ -2,7 +2,7 @@
 
 > Версия 1.4 · Даты тестов: 2026-09-29 – 2026-10-06 (железо: RTX 3080 10 ГБ, i7-4770, 32 ГБ ОЗУ). Автор эксперимента: https://homensai.com/
 
-Скопируйте блок модели в `config/llama-swap.yaml` в раздел `models:`. `/models/...` — путь внутри контейнера (том `llm-models-fast`). Флаги: `--ctx-size` — окно контекста, `-ctk/-ctv` — тип кэша KV (q4_0 — самое длинное окно, f16 — самый быстрый), `--spec-type draft-mtp` — ускоритель MTP, `--chat-template-kwargs` — рассуждение по умолчанию (запрос может включить его: `chat_template_kwargs: {enable_thinking: true}`), `--n-gpu-layers all --fit off` — всё на GPU, `--flash-attn on` обязателен для сжатого кэша KV.
+Настройки каждой модели в шлюзе llama-swap; полная конфигурация сервера — в [репозитории сервера](https://github.com/HomenSAI/homensai-local-ai-lab). `/models/...` — путь внутри контейнера (том `llm-models-fast`). Флаги: `--ctx-size` — окно контекста, `-ctk/-ctv` — тип кэша KV (q4_0 — самое длинное окно, f16 — самый быстрый), `--spec-type draft-mtp` — ускоритель MTP, `--chat-template-kwargs` — рассуждение по умолчанию (запрос может включить его: `chat_template_kwargs: {enable_thinking: true}`), `--n-gpu-layers all --fit off` — всё на GPU, `--flash-attn on` обязателен для сжатого кэша KV.
 
 Также нужны верхнеуровневые настройки: `globalTTL: 900`, группа `all-local-llm` с `exclusive: true, swap: true` (одна модель на GPU).
 

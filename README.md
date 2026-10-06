@@ -48,12 +48,12 @@ Full tables (all 15 kept models, recommended context and KV cache per model, acc
 |---|---|
 | [README.en.md](README.en.md) | full report: rules, models, test methods, scoring, problems and fixes |
 | [RESULTS.en.md](RESULTS.en.md) | all result tables |
-| [INSTALL.en.md](INSTALL.en.md), [CONFIG.en.md](CONFIG.en.md) | install guide and gateway configuration |
-| `tests/` | task files, runners and our raw results (`results/*.jsonl`) |
-| `server/` | Docker / llama-swap server setup (`server/.env.example` only, no secrets) |
+| [CONFIG.en.md](CONFIG.en.md) | gateway configuration of each model |
+| `tests/` | short description of each test and our raw results (`results/*.jsonl`) |
+| [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab) | separate repository: the server (Docker / llama-swap), scripts and test code used to get these results |
 | `index.html`, `report.*.html` | web version of the report |
 
-To reproduce: run a runner from `tests/` against your own llama.cpp server on port 8090 and compare your `jsonl` with ours.
+Server and test code: [HomenSAI/homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab).
 
 ## Author
 

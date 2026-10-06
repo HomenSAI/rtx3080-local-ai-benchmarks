@@ -2,5 +2,5 @@
 
 MTP/DFlash/draft speed-up and embedding retrieval.
 
-Tasks/code: bench_accel.py
+Code and runners: https://github.com/HomenSAI/homensai-local-ai-lab
 Our raw results: results/

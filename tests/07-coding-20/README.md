@@ -2,5 +2,5 @@
 
 20 Python tasks with hidden asserts, run in a no-network sandbox.
 
-Tasks/code: coding_tasks.py, code_eval_harness.py, bench_code20.py
+Code and runners: https://github.com/HomenSAI/homensai-local-ai-lab
 Our raw results: results/

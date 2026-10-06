@@ -56,14 +56,14 @@ Kandidaten (23 Gewichtssätze, Q4/Q5) stammen aus den offenen Modellen 2026, die
 
 ## 5. Aufbau der Tests
 
-1. Allgemeine Qualität: Russisch (Zusammenfassung, Übersetzung), Logik, Anweisungen, Bild, Code (qtasks.py) — Datum: 2026-09-30 – 2026-10-01
-2. Deutsches Passiv, 30 Aufgaben, alle Formen (qa_tasks.py) — Datum: 2026-10-01
-3. Maximaler stabiler Kontext: 3 Nadeln in 10/50/90 % Tiefe, 80 % Füllung, KV f16/q8/q4 (bench_ctx.py, mneedle.py) — Datum: 2026-10-01 – 2026-10-02
-4. Dauertest: 95 % Füllung ×2, lange Generierung, Bildprüfung, VRAM/RAM-Überwachung über das Gateway (soak.py) — Datum: 2026-10-03 – 2026-10-06
-5. Mathematik und Physik Klasse 11, 40 generierte Aufgaben mit berechneten Lösungen (stem_tasks.py) — Datum: 2026-10-02
-6. Chemie Klasse 11, 10 generierte Aufgaben (chem_tasks.py) — Datum: 2026-10-06
-7. Programmierung (Code schreiben): 20 Python-Aufgaben — das Modell schreibt eine Funktion, versteckte Unit-Tests prüfen sie in einer Sandbox ohne Netz (coding_tasks.py) — Datum: 2026-10-06
-8. Beschleuniger und Embeddings: Tokens/s mit und ohne MTP/DFlash/Draft, Retrieval Top-1 (bench_accel.py) — Datum: 2026-10-02
+1. Allgemeine Qualität: Russisch (Zusammenfassung, Übersetzung), Logik, Anweisungen, Bild, Code — Datum: 2026-09-30 – 2026-10-01
+2. Deutsches Passiv, 30 Aufgaben, alle Formen — Datum: 2026-10-01
+3. Maximaler stabiler Kontext: 3 Nadeln in 10/50/90 % Tiefe, 80 % Füllung, KV f16/q8/q4 — Datum: 2026-10-01 – 2026-10-02
+4. Dauertest: 95 % Füllung ×2, lange Generierung, Bildprüfung, VRAM/RAM-Überwachung über das Gateway — Datum: 2026-10-03 – 2026-10-06
+5. Mathematik und Physik Klasse 11, 40 generierte Aufgaben mit berechneten Lösungen — Datum: 2026-10-02
+6. Chemie Klasse 11, 10 generierte Aufgaben — Datum: 2026-10-06
+7. Programmierung (Code schreiben): 20 Python-Aufgaben — das Modell schreibt eine Funktion, versteckte Unit-Tests prüfen sie in einer Sandbox ohne Netz — Datum: 2026-10-06
+8. Beschleuniger und Embeddings: Tokens/s mit und ohne MTP/DFlash/Draft, Retrieval Top-1 — Datum: 2026-10-02
 
 ## 6. Bewertungsprinzipien
 
@@ -114,17 +114,13 @@ Full tables: [RESULTS.de.md](RESULTS.de.md)
 | Hybridmodelle lieferten leere Antworten (Denken verbrauchte das Budget) | enable_thinking=false im Normallauf, großes Budget im Denkmodus; Gemma-4 und LFM2.5 verlieren dennoch alle 3 Fakten bei 64K und wurden entfernt. |
 | RAM-KV-Modus (--no-kv-offload) hing und lief auf der CPU (LFM2.5) | Modus aus dem Kontexttest entfernt; GPU-Auslastungsspitze wird pro Probe gespeichert. |
 | 262K-Kontext bestand bei 80 %, lief aber bei 95 % über (MTP/DFlash-Köpfe brauchen VRAM) | Der 95-%-Test senkte Qwen3.5-MTP auf 192K und Ornith-MTP auf 128K; Ornith-DFlash entfernt. |
-| Testtext kam aus dem Python-Ordner des Hosts, im Container fehlte er (Schein-Proben mit 149 Tokens) | Text in corpus_cache.txt eingefroren; Schein-Proben gelöscht und neu gelaufen. |
+| Testtext kam aus dem Python-Ordner des Hosts, im Container fehlte er (Schein-Proben mit 149 Tokens) | Text in einer festen Datei eingefroren; Schein-Proben gelöscht und neu gelaufen. |
 | Draft-Modelle bremsten (×0,17–0,75) | Nur MTP/DFlash-Profile mit gemessenem Gewinn bleiben. |
-| Windows-Neustart beendete Hintergrundjobs | Pipeline in den neu startenden Container bench-runner verlegt; jede Phase setzt bei gespeicherten Ergebnissen fort. |
+| Windows-Neustart beendete Hintergrundjobs | Pipeline in den neu startenden Runner-Container verlegt; jede Phase setzt bei gespeicherten Ergebnissen fort. |
 
-## 9. Installationsanleitung
+## 9. Server und Testcode
 
-[INSTALL.de.md](INSTALL.de.md)
-
-## 10. Tests reproduzieren
-
-Jeder Ordner in tests/ enthält die Aufgabendatei, den Runner, eine README und unsere Rohergebnisse (results/*.jsonl). Den Runner gegen den eigenen llama.cpp-Server (Port 8090, siehe start() in bench_top.py) laufen lassen und das eigene jsonl mit unserem vergleichen.
+Der Server (llama.cpp + llama-swap in Docker, Skripte, Konfiguration) und die Test-Runner, mit denen diese Ergebnisse entstanden sind, liegen in einem separaten Repository: [HomenSAI/homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab). Dieses Repository enthält nur den fertigen Bericht und unsere Rohergebnisse (results/*.jsonl in jedem tests/-Ordner).
 <!--FOOT-->
 
 ---
@@ -159,7 +155,7 @@ Jeder Ordner in tests/ enthält die Aufgabendatei, den Runner, eine README und u
 - **Modellgewichte werden hier nicht verbreitet.** Es gibt nur Links zu den Originalseiten. Jedes Modell hat seine eigene Lizenz und Nutzungsbedingungen (z. B. Llama 3.1 mit der Llama Community License samt Namens- und Hinweispflichten, Gemma mit den Google Gemma Nutzungsbedingungen; Qwen, MiniCPM, Spark, MiMo, Ornith, LFM, Bonsai u. a. haben eigene Bedingungen). Prüfen Sie vor Download und Nutzung die verlinkte Modellseite; wir haben nicht jede Lizenz erneut geprüft.
 - **Modellausgaben.** Die Rohdateien enthalten kurze Antworten der getesteten Modelle. Ihre Nutzung unterliegt den Bedingungen des jeweiligen Modells (manche untersagen die Verwendung der Ausgaben zum Training anderer Modelle).
 - **Namen und Marken** (Qwen, Llama, Gemma, Mistral, NVIDIA, RTX, Docker, Claude, Hugging Face u. a.) gehören ihren Inhabern. Das Projekt ist unabhängig und weder mit ihnen verbunden noch von ihnen gesponsert oder gebilligt.
-- **Software.** llama.cpp, llama-swap, whisper.cpp und stable-diffusion.cpp sind Open-Source-Projekte (nach unserem Wissen MIT-lizenziert; der PrismML-Fork folgt llama.cpp). Ihr Code wird hier nicht kopiert, nur unsere Konfiguration und Dockerfiles, die festgelegte Commits herunterladen. NVIDIA-CUDA-Basis-Images und Docker Desktop werden unter ihren eigenen Lizenzbedingungen genutzt und nicht weiterverbreitet.
+- **Software.** llama.cpp, llama-swap, whisper.cpp und stable-diffusion.cpp sind Open-Source-Projekte (nach unserem Wissen MIT-lizenziert; der PrismML-Fork folgt llama.cpp). Ihr Code wird hier nicht kopiert, nur Links; unsere Konfiguration und Dockerfiles liegen im separaten Server-Repository. NVIDIA-CUDA-Basis-Images und Docker Desktop werden unter ihren eigenen Lizenzbedingungen genutzt und nicht weiterverbreitet.
 - **Testdaten.** Die Aufgaben wurden vom Autor geschrieben oder generiert. Der Füll-Text für den Langkontext wird aus den Quelldateien der Python-Standardbibliothek (PSF-Lizenz) zusammengesetzt; die Datei selbst liegt nicht bei — das Skript baut sie aus Ihrer eigenen Python-Installation (Ergebnisse können je nach Python-Version leicht abweichen).
 - **Datenschutz und Sicherheit.** Keine personenbezogenen Daten, Passwörter, Tokens oder Schlüssel; lokale Benutzernamen, Pfade und LAN-Adressen wurden durch Platzhalter ersetzt. Setzen Sie `<YOUR_LAN_IP>` und Geheimnisse in Ihrer eigenen Installation ein und veröffentlichen Sie sie nie.
 - **Genauigkeit und Gewährleistung.** Die Ergebnisse sind Messungen auf einem Rechner an den genannten Terminen und werden „wie besehen“ ohne Gewähr bereitgestellt. Modellantworten können falsch sein; die Schultests sind ein Benchmark, keine Lehre und keine Fachberatung. Nicht für medizinische, rechtliche, finanzielle oder sicherheitskritische Entscheidungen verwenden.

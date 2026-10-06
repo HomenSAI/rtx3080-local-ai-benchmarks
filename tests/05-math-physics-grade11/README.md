@@ -2,5 +2,5 @@
 
 40 generated grade-11 problems with computed answers.
 
-Tasks/code: stem_tasks.py, bench_stem.py
+Code and runners: https://github.com/HomenSAI/homensai-local-ai-lab
 Our raw results: results/

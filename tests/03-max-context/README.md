@@ -2,5 +2,5 @@
 
 Largest stable context: 3 hidden facts at 80% fill, KV f16/q8/q4 in VRAM.
 
-Tasks/code: mneedle.py, bench_ctx.py, corpus_cache.txt
+Code and runners: https://github.com/HomenSAI/homensai-local-ai-lab
 Our raw results: results/

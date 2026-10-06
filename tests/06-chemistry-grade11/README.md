@@ -2,5 +2,5 @@
 
 10 generated grade-11 chemistry problems.
 
-Tasks/code: chem_tasks.py, bench_chem.py
+Code and runners: https://github.com/HomenSAI/homensai-local-ai-lab
 Our raw results: results/

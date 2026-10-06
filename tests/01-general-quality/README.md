@@ -2,5 +2,5 @@
 
 Russian summarisation/translation, logic, instruction following, vision, 3 code tasks.
 
-Tasks/code: qtasks.py, bench_all.py
+Code and runners: https://github.com/HomenSAI/homensai-local-ai-lab
 Our raw results: results/

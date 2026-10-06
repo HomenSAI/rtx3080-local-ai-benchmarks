@@ -2,7 +2,7 @@
 
 > Version 1.4 · Testdaten: 2026-09-29 – 2026-10-06 (Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Autor des Experiments: https://homensai.com/
 
-Den Block des Modells in `config/llama-swap.yaml` unter `models:` kopieren. `/models/...` ist der Pfad im Container (Volume `llm-models-fast`). Flags: `--ctx-size` = Kontextfenster, `-ctk/-ctv` = KV-Cache-Typ (q4_0 = längstes Fenster, f16 = am schnellsten), `--spec-type draft-mtp` = MTP-Beschleuniger, `--chat-template-kwargs` = Denken standardmäßig (eine Anfrage kann es mit `chat_template_kwargs: {enable_thinking: true}` einschalten), `--n-gpu-layers all --fit off` = alles auf der GPU, `--flash-attn on` ist für den quantisierten KV-Cache nötig.
+Einstellungen jedes Modells im llama-swap-Gateway; die vollständige Serverkonfiguration liegt im [Server-Repository](https://github.com/HomenSAI/homensai-local-ai-lab). `/models/...` ist der Pfad im Container (Volume `llm-models-fast`). Flags: `--ctx-size` = Kontextfenster, `-ctk/-ctv` = KV-Cache-Typ (q4_0 = längstes Fenster, f16 = am schnellsten), `--spec-type draft-mtp` = MTP-Beschleuniger, `--chat-template-kwargs` = Denken standardmäßig (eine Anfrage kann es mit `chat_template_kwargs: {enable_thinking: true}` einschalten), `--n-gpu-layers all --fit off` = alles auf der GPU, `--flash-attn on` ist für den quantisierten KV-Cache nötig.
 
 Zusätzlich auf oberster Ebene: `globalTTL: 900`, Gruppe `all-local-llm` mit `exclusive: true, swap: true` (ein Modell gleichzeitig auf der GPU).
 
