@@ -120,7 +120,7 @@ Full tables: [RESULTS.de.md](RESULTS.de.md)
 
 ## 9. Server und Testcode
 
-Der Server (llama.cpp + llama-swap in Docker, Skripte, Konfiguration) und die Test-Runner, mit denen diese Ergebnisse entstanden sind, liegen in einem separaten Repository: [HomenSAI/homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab). Dieses Repository enthält nur den fertigen Bericht und unsere Rohergebnisse (results/*.jsonl in jedem tests/-Ordner).
+**Alle Tests in diesem Bericht wurden mit diesem Server erzeugt: [HomenSAI/homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab).** Er war der Motor des gesamten Experiments — llama.cpp mit dem llama-swap-Gateway in Docker, die Skripte und die Test-Runner. Derselbe Server lässt sich selbst einrichten: er funktioniert wie hier beschrieben, und mit ihm lassen sich dieselben Tests ausführen und vergleichbare Ergebnisse erhalten. Dieses Repository enthält nur den fertigen Bericht und unsere Rohergebnisse (results/*.jsonl in jedem tests/-Ordner) zum Vergleich.
 <!--FOOT-->
 
 ---

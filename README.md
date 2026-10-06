@@ -50,10 +50,10 @@ Full tables (all 15 kept models, recommended context and KV cache per model, acc
 | [RESULTS.en.md](RESULTS.en.md) | all result tables |
 | [CONFIG.en.md](CONFIG.en.md) | gateway configuration of each model |
 | `tests/` | short description of each test and our raw results (`results/*.jsonl`) |
-| [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab) | separate repository: the server (Docker / llama-swap), scripts and test code used to get these results |
+| [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab) | separate repository: **the server that produced all these tests** (Docker / llama-swap, scripts, test runners) — deploy it to repeat them |
 | `index.html`, `report.*.html` | web version of the report |
 
-Server and test code: [HomenSAI/homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab).
+**All tests were obtained with this server: [HomenSAI/homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab)** — the engine of the experiment (llama.cpp + llama-swap in Docker, scripts, test runners). You can deploy it yourself and run the same tests to get comparable results; compare them with our raw results in `tests/*/results/`.
 
 ## Author
 
