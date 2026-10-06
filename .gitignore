@@ -1,0 +1,9 @@
+*.gguf
+*.bin
+*.safetensors
+.env
+.env.*
+!.env.example
+secrets/
+__pycache__/
+*.log
