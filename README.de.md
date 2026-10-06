@@ -1,6 +1,6 @@
 # Lokaler KI-Server auf RTX 3080: 23 Modelle getestet, 15 behalten
 
-> Version 1.4 · Testdaten: 2026-09-29 – 2026-10-06 (Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Autor des Experiments: https://homensai.com/
+> Version 1.5 · Testdaten: 2026-09-29 – 2026-10-06 (Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Autor des Experiments: https://homensai.com/
 
 [English](README.en.md) | [Русский](README.ru.md) | [Deutsch](README.de.md)
 
@@ -137,7 +137,7 @@ Full tables: [RESULTS.de.md](RESULTS.de.md)
 
 **Erstellt mit.** Claude Code (Desktop-App) als Arbeitsagent — Modelle Claude Opus 5.5, Sonnet 5.5 und Haiku 4.5 je nach Phase; llama.cpp (Upstream und PrismML-Fork für ternäres Bonsai), llama-swap, Docker Desktop mit WSL2 unter Windows 10, Python 3, CadQuery-Sandbox-Image (nur für ein später entferntes Experiment).
 
-**Lizenz.** Frei teilbar und nutzbar **mit verpflichtender Nennung des Autors des Experiments: https://homensai.com/**. Ergebnisse, Tabellen und Dokumente: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (kopieren, weitergeben, bearbeiten, auch kommerziell — der Autor ist mit Link auf https://homensai.com/ zu nennen, Änderungen sind zu kennzeichnen). Programmcode und Testaufgaben: MIT-Lizenz, die Autorenzeile muss in jeder Kopie erhalten bleiben (siehe `LICENSE`, `LICENSE-DOCS.md`, `NOTICE`). Modellgewichte sind nicht Teil dieses Repositories und behalten ihre eigenen Lizenzen (siehe die oben verlinkten Modellseiten). Dies ist keine Rechtsberatung.
+**Lizenz.** Frei teilbar und nutzbar **mit verpflichtender Nennung des Autors des Experiments: https://homensai.com/**. Ergebnisse, Tabellen und Dokumente: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (kopieren, weitergeben, bearbeiten, auch kommerziell — der Autor ist mit Link auf https://homensai.com/ zu nennen, Änderungen sind zu kennzeichnen). Testaufgaben: MIT-Lizenz, die Autorenzeile muss in jeder Kopie erhalten bleiben (siehe `LICENSE`, `LICENSE-DOCS.md`, `NOTICE`). Modellgewichte sind nicht Teil dieses Repositories und behalten ihre eigenen Lizenzen (siehe die oben verlinkten Modellseiten). Dies ist keine Rechtsberatung.
 
 ### Quellen und Fremdkomponenten
 
@@ -156,7 +156,7 @@ Full tables: [RESULTS.de.md](RESULTS.de.md)
 - **Modellausgaben.** Die Rohdateien enthalten kurze Antworten der getesteten Modelle. Ihre Nutzung unterliegt den Bedingungen des jeweiligen Modells (manche untersagen die Verwendung der Ausgaben zum Training anderer Modelle).
 - **Namen und Marken** (Qwen, Llama, Gemma, Mistral, NVIDIA, RTX, Docker, Claude, Hugging Face u. a.) gehören ihren Inhabern. Das Projekt ist unabhängig und weder mit ihnen verbunden noch von ihnen gesponsert oder gebilligt.
 - **Software.** llama.cpp, llama-swap, whisper.cpp und stable-diffusion.cpp sind Open-Source-Projekte (nach unserem Wissen MIT-lizenziert; der PrismML-Fork folgt llama.cpp). Ihr Code wird hier nicht kopiert, nur Links; unsere Konfiguration und Dockerfiles liegen im separaten Server-Repository. NVIDIA-CUDA-Basis-Images und Docker Desktop werden unter ihren eigenen Lizenzbedingungen genutzt und nicht weiterverbreitet.
-- **Testdaten.** Die Aufgaben wurden vom Autor geschrieben oder generiert. Der Füll-Text für den Langkontext wird aus den Quelldateien der Python-Standardbibliothek (PSF-Lizenz) zusammengesetzt; die Datei selbst liegt nicht bei — das Skript baut sie aus Ihrer eigenen Python-Installation (Ergebnisse können je nach Python-Version leicht abweichen).
+- **Testdaten.** Die Aufgaben wurden vom Autor geschrieben oder generiert. Der Füll-Text für den Langkontext wird aus den Quelldateien der Python-Standardbibliothek (PSF-Lizenz) zusammengesetzt; die Datei selbst liegt nicht bei — das Server-Projekt baut sie aus Ihrer eigenen Python-Installation (Ergebnisse können je nach Python-Version leicht abweichen).
 - **Datenschutz und Sicherheit.** Keine personenbezogenen Daten, Passwörter, Tokens oder Schlüssel; lokale Benutzernamen, Pfade und LAN-Adressen wurden durch Platzhalter ersetzt. Setzen Sie `<YOUR_LAN_IP>` und Geheimnisse in Ihrer eigenen Installation ein und veröffentlichen Sie sie nie.
 - **Genauigkeit und Gewährleistung.** Die Ergebnisse sind Messungen auf einem Rechner an den genannten Terminen und werden „wie besehen“ ohne Gewähr bereitgestellt. Modellantworten können falsch sein; die Schultests sind ein Benchmark, keine Lehre und keine Fachberatung. Nicht für medizinische, rechtliche, finanzielle oder sicherheitskritische Entscheidungen verwenden.
 - **KI-Unterstützung.** Das Experiment und diese Dokumente wurden unter Anleitung des Autors mit Hilfe eines KI-Agenten (Claude Code) erstellt.

@@ -1,6 +1,6 @@
 # Ergebnisse und Vergleiche
 
-> Version 1.4 · Testdaten: 2026-09-29 – 2026-10-06 (Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Autor des Experiments: https://homensai.com/
+> Version 1.5 · Testdaten: 2026-09-29 – 2026-10-06 (Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Autor des Experiments: https://homensai.com/
 
 ## Spitzenreiter
 

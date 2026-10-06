@@ -2,7 +2,7 @@
 
 **23 open models tested, 15 kept.** Which local language models are really usable on a single gaming GPU, how long a context they hold stably, and how to run them all behind one OpenAI-compatible endpoint.
 
-> Version 1.4 · Test dates: 2026-09-29 – 2026-10-06 · Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM
+> Version 1.5 · Test dates: 2026-09-29 – 2026-10-06 · Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM
 > Author: **Serhii Khomenko** — [homensai.com](https://homensai.com/)
 
 [English](README.en.md) | [Русский](README.ru.md) | [Deutsch](README.de.md) · **Web version:** [index.html / reports](index.html) (EN/RU/DE, sortable tables)
@@ -64,7 +64,7 @@ Full tables (all 15 kept models, recommended context and KV cache per model, acc
 Free to share and reuse **with mandatory attribution to the author: https://homensai.com/**.
 
 - Results, tables and documents: [CC BY 4.0](LICENSE-DOCS.md).
-- Program code and test tasks: [MIT](LICENSE) with the attribution line kept in every copy (see also [NOTICE](NOTICE)).
+- Test tasks: [MIT](LICENSE) with the attribution line kept in every copy (see also [NOTICE](NOTICE)).
 - Model weights are **not** distributed here; every model keeps its own license (links in [README.en.md](README.en.md)).
 
 Results are measurements on one machine on the dates shown, provided "as is" without warranty.

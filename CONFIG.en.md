@@ -1,6 +1,6 @@
 # Model configuration (llama-swap profiles)
 
-> Version 1.4 · Test dates: 2026-09-29 – 2026-10-06 (hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Author of the experiment: https://homensai.com/
+> Version 1.5 · Test dates: 2026-09-29 – 2026-10-06 (hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Author of the experiment: https://homensai.com/
 
 Settings of each model in the llama-swap gateway; the full server configuration is in the [server repository](https://github.com/HomenSAI/homensai-local-ai-lab). `/models/...` is the path inside the container (volume `llm-models-fast`). Flags: `--ctx-size` = context window, `-ctk/-ctv` = KV cache type (q4_0 = longest window, f16 = fastest), `--spec-type draft-mtp` = MTP accelerator, `--chat-template-kwargs` = thinking default (a request may override it with `chat_template_kwargs: {enable_thinking: true}`), `--n-gpu-layers all --fit off` = everything on the GPU, `--flash-attn on` is required for the quantised KV cache.
 

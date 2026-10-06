@@ -2,6 +2,11 @@
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
 
+## 1.5 — 2026-10-06
+- EN: The repository is now a pure report: all executable code (server, Docker files, scripts, test runners) and the install guide were removed. Everything was obtained with the separate server project https://github.com/HomenSAI/homensai-local-ai-lab, which can be deployed to repeat the tests; the documents link to it. Headline fixed to 15 kept models.
+- RU: Репозиторий стал чистым отчётом: удалён весь исполняемый код (сервер, Docker-файлы, скрипты, раннеры тестов) и инструкция по установке. Все тесты получены с помощью отдельного проекта сервера https://github.com/HomenSAI/homensai-local-ai-lab, который можно развернуть и повторить тесты; документы ссылаются на него. Заголовок исправлен: оставлено 15 моделей.
+- DE: Das Repository ist jetzt ein reiner Bericht: Der gesamte ausführbare Code (Server, Docker-Dateien, Skripte, Test-Runner) und die Installationsanleitung wurden entfernt. Alle Tests entstanden mit dem separaten Server-Projekt https://github.com/HomenSAI/homensai-local-ai-lab, das sich einrichten lässt, um die Tests zu wiederholen; die Dokumente verlinken darauf. Überschrift korrigiert: 15 behaltene Modelle.
+
 ## 1.4 — 2026-10-06
 - EN: Documentation reworded for third-party readers: removed owner-specific delete commands and local folder names.
 - RU: Документы переписаны для сторонних читателей: убраны команды удаления и локальные папки владельца.
