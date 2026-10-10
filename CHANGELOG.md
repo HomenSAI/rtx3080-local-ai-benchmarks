@@ -3,6 +3,11 @@
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
 
+## 1.8 — 2026-10-10
+- EN: Licence changed to CC BY-NC 4.0: non-commercial use only, attribution to the author with a link to https://homensai.com/ is mandatory. LICENSE, the licence paragraphs in README and reports, and the links are updated.
+- RU: Лицензия изменена на CC BY-NC 4.0: только некоммерческое использование, обязательно указание автора со ссылкой на https://homensai.com/. Обновлены LICENSE, абзацы о лицензии в README и отчётах и ссылки.
+- DE: Lizenz geändert auf CC BY-NC 4.0: nur nichtkommerzielle Nutzung, Nennung des Autors mit Link auf https://homensai.com/ ist verpflichtend. Aktualisiert: LICENSE, die Lizenzabschnitte in README und Berichten sowie die Links.
+
 ## 1.7 — 2026-10-10
 - EN: One licence for the whole repository: CC BY 4.0 (free use for any purpose, including commercial, with mandatory attribution and a link to https://homensai.com/). The MIT licence text, NOTICE and LICENSE-DOCS.md are removed. Model configuration (llama-swap commands) and the CONFIG files are removed from the report; they belong to the server project. Unused files removed (.gitignore, unused style files).
 - RU: Единая лицензия для всего репозитория: CC BY 4.0 (свободное использование в любых целях, в том числе коммерческих, при обязательном указании автора и ссылке на https://homensai.com/). Текст MIT, NOTICE и LICENSE-DOCS.md удалены. Настройки моделей (команды llama-swap) и файлы CONFIG удалены из отчёта: они относятся к проекту сервера. Удалены неиспользуемые файлы (.gitignore и лишние файлы стиля).
