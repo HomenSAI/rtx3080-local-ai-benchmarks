@@ -3,6 +3,8 @@
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
 
+Language rule / Правило языков / Sprachregel: from the next entry on, every entry and every GitHub release description is written in English first, with the same text in Russian directly below it.
+
 ## 1.6 — 2026-10-10
 - EN: The repository is now a pure report: only test results (`tests/*/results/*.jsonl`), tables and HTML pages. All executable code was removed: test runners and task files (moved to the server project [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab), `benchmarks/`), the install guide and the model configuration (`CONFIG.*`). Left: the page scripts (table sorting, theme, author page) and the author's time-tracking tool (`scripts/time_tracking.py`).
 - EN: Whole site restyled to HomenS.AI Style 1.3.0 (copied into `style/`, pinned by `<meta name="homensai-style">`): header with logo, language switch, light and dark themes, footer from the brand data, phone layout; inline styles and scripts moved to `assets/`. Author pages in EN/RU/DE. Headline corrected to 15 kept models.
