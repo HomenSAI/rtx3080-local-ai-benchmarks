@@ -57,14 +57,14 @@ To reproduce: run a runner from `tests/` against your own llama.cpp server on po
 
 ## Author
 
-**Serhii Khomenko** — [homensai.com](https://homensai.com/) (GitHub: [HomenSAI](https://github.com/HomenSAI)). Idea, hardware, test design and decisions are the author's. The experiment and documents were prepared with the help of an AI agent (Claude Code) under the author's direction.
+**Serhii Khomenko** — private individual · [homensai.com](https://homensai.com/) · ORCID [0009-0009-5371-9717](https://orcid.org/0009-0009-5371-9717) · GitHub [HomenSAI](https://github.com/HomenSAI). Idea, hardware, test design and decisions are the author's. The experiment and documents were prepared with the help of an AI agent (Claude Code) under the author's direction.
 
 ## License
 
-Free to share and reuse **with mandatory attribution to the author: https://homensai.com/**.
+Free to share and reuse for **noncommercial purposes only**, with mandatory attribution to the author: https://homensai.com/. Commercial use requires a written agreement with the author.
 
-- Results, tables and documents: [CC BY 4.0](LICENSE-DOCS.md).
-- Program code and test tasks: [MIT](LICENSE) with the attribution line kept in every copy (see also [NOTICE](NOTICE)).
+- Results, tables and documents: [CC BY-NC 4.0](LICENSE-DOCS.md).
+- Program code and test tasks: [PolyForm Noncommercial 1.0.0](LICENSE) with the attribution line kept in every copy (see also [NOTICE](NOTICE)).
 - Model weights are **not** distributed here; every model keeps its own license (links in [README.en.md](README.en.md)).
 
 Results are measurements on one machine on the dates shown, provided "as is" without warranty.

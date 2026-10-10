@@ -2,6 +2,11 @@
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
 
+## Unreleased
+- EN: Licences changed to noncommercial use with mandatory attribution (code: PolyForm Noncommercial 1.0.0; results and documents: CC BY-NC 4.0); author block with ORCID added to README; index page restyled with the homensai-website design tokens (colours, dark theme, radius).
+- RU: Лицензии переведены на некоммерческое использование с обязательным указанием автора (код: PolyForm Noncommercial 1.0.0; результаты и документы: CC BY-NC 4.0); в README добавлен блок об авторе с ORCID; страница index оформлена по дизайн-токенам homensai-website (цвета, тёмная тема, скругления).
+- DE: Lizenzen auf nichtkommerzielle Nutzung mit Pflicht zur Urheberangabe umgestellt (Code: PolyForm Noncommercial 1.0.0; Ergebnisse und Dokumente: CC BY-NC 4.0); Autorenblock mit ORCID in README ergänzt; index-Seite nach den Design-Tokens von homensai-website gestaltet (Farben, dunkles Thema, Radius).
+
 ## 1.4 — 2026-10-06
 - EN: Documentation reworded for third-party readers: removed owner-specific delete commands and local folder names.
 - RU: Документы переписаны для сторонних читателей: убраны команды удаления и локальные папки владельца.
