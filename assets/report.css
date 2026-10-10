@@ -51,3 +51,18 @@ pre {
 
 /* Плитки ключевых цифр не должны ломать ширину страницы на телефоне. */
 .tiles4 .tile b { overflow-wrap: anywhere; }
+
+/* Плотные таблицы: страница отчёта шире колонки текста ядра, текст остаётся читаемой ширины,
+   имя модели в первом столбце не переносится, заголовки компактнее. */
+main { max-width: 1280px; }
+main > p, main > ul, main > ol, main > blockquote, main > h1, main > h2, main > h3 { max-width: 960px; }
+table.history { font-size: .86rem; line-height: 1.35; }
+table.history th { letter-spacing: .03em; padding: .35rem .45rem; }
+table.history td { padding: .35rem .45rem; vertical-align: top; }
+table.history td:first-child { white-space: nowrap; font-weight: 600; }
+table.history td:not(:first-child):not(:last-child) { white-space: nowrap; }
+table.history td:last-child { min-width: 12rem; }
+/* В двухколоночных таблицах (проблема → решение) первый столбец — текст, ему можно переноситься. */
+table.history tr > td:first-child:nth-last-child(2) { white-space: normal; width: 40%; font-weight: 400; }
+/* Длинные заголовки переносятся по словам, а не растягивают таблицу. */
+table.history th { white-space: normal; vertical-align: bottom; }

@@ -3,6 +3,11 @@
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
 
+## 1.7 — 2026-10-10
+- EN: Denser report tables: the page uses up to 1280 px while text keeps its reading width, model names stay on one line, headers are compact and wrap by words, two-column tables (problem → fix) wrap normally. No table spills past the page on desktop; on phones wide tables scroll inside their own box.
+- RU: Таблицы отчёта стали плотнее: страница использует до 1280 px, а текст сохраняет удобную ширину; имена моделей не переносятся, заголовки компактнее и переносятся по словам, двухколоночные таблицы (проблема → решение) переносятся как обычный текст. На компьютере ни одна таблица не вылезает за страницу; на телефоне широкие таблицы прокручиваются внутри своего блока.
+- DE: Dichtere Berichtstabellen: die Seite nutzt bis zu 1280 px, der Text behält seine Lesebreite; Modellnamen bleiben einzeilig, Überschriften sind kompakter und brechen nach Wörtern um, zweispaltige Tabellen (Problem → Lösung) brechen normal um. Auf dem Desktop ragt keine Tabelle über die Seite hinaus; auf dem Telefon scrollen breite Tabellen in ihrem eigenen Bereich.
+
 ## 1.6 — 2026-10-10
 - EN: The repository is now a pure report: only test results (`tests/*/results/*.jsonl`), tables and HTML pages. All executable code was removed: test runners and task files (moved to the server project [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab), `benchmarks/`), the install guide and the model configuration (`CONFIG.*`). Left: the page scripts (table sorting, theme, author page) and the author's time-tracking tool (`scripts/time_tracking.py`).
 - EN: Whole site restyled to HomenS.AI Style 1.3.0 (copied into `style/`, pinned by `<meta name="homensai-style">`): header with logo, language switch, light and dark themes, footer from the brand data, phone layout; inline styles and scripts moved to `assets/`. Author pages in EN/RU/DE. Headline corrected to 15 kept models.
