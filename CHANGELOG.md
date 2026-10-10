@@ -3,6 +3,11 @@
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
 
+## 1.12 — 2026-10-10
+- EN: "About" and "Contact" merged into one "Contact" page: the core contact block with the robot, then the author, this project and legal information; old about.*.html addresses redirect there. Own style and script files are linked with a version mark (?v=…) so browsers load the new files after an update instead of an old cached copy.
+- RU: «Об авторе» и «Контакт» объединены в одну страницу «Контакт»: блок контактов ядра с роботом, ниже автор, этот проект и правовая информация; старые адреса about.*.html перенаправляют туда. Свои файлы стилей и скриптов подключаются с меткой версии (?v=…), чтобы после обновления браузер загружал новые файлы, а не старую копию из кеша.
+- DE: „Über den Autor“ und „Kontakt“ zu einer Seite „Kontakt“ zusammengeführt: Kontaktblock des Kerns mit Roboter, darunter Autor, dieses Projekt und Rechtliches; alte about.*.html-Adressen leiten dorthin weiter. Eigene Stil- und Skriptdateien werden mit Versionsmarke (?v=…) eingebunden, damit Browser nach einem Update die neuen Dateien statt einer alten Kopie aus dem Cache laden.
+
 ## 1.11 — 2026-10-10
 - EN: Menus fixed: every page now exists in EN, RU and DE (new home pages index.ru/index.de and summary pages summary.en/ru/de), all menu links stay in the page language, the language switch opens the same page in the other language. FINAL_REPORT.html now redirects to summary.ru.html.
 - EN: Site brought to HomenS.AI Style 1.6.1 (was 1.3.0): full style package, page template from the core, contact page in three languages with the core contact block and robot, "Contact" capsule in the menu, "HomenS.AI" wordmark under the robot, automatic "To top" button. Local patches to the style copy (no plain e-mail address, no location) are listed in style/LOCAL_PATCHES.md.
