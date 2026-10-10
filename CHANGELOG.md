@@ -3,6 +3,14 @@
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
 
+## 1.11 — 2026-10-10
+- EN: Menus fixed: every page now exists in EN, RU and DE (new home pages index.ru/index.de and summary pages summary.en/ru/de), all menu links stay in the page language, the language switch opens the same page in the other language. FINAL_REPORT.html now redirects to summary.ru.html.
+- EN: Site brought to HomenS.AI Style 1.6.1 (was 1.3.0): full style package, page template from the core, contact page in three languages with the core contact block and robot, "Contact" capsule in the menu, "HomenS.AI" wordmark under the robot, automatic "To top" button. Local patches to the style copy (no plain e-mail address, no location) are listed in style/LOCAL_PATCHES.md.
+- RU: Исправлены меню: каждая страница есть на EN, RU и DE (новые главные index.ru/index.de и итоговые отчёты summary.en/ru/de), все ссылки меню остаются на языке страницы, переключатель языка открывает ту же страницу на другом языке. FINAL_REPORT.html теперь перенаправляет на summary.ru.html.
+- RU: Сайт приведён к стилю HomenS.AI 1.6.1 (был 1.3.0): полный пакет стилей, шаблон страницы из ядра, страница «Контакт» на трёх языках с блоком контакта и роботом из ядра, пункт «Контакт» капсулой в меню, надпись «HomenS.AI» под роботом, автоматическая кнопка «Наверх». Локальные правки копии стиля (нет открытого адреса почты, нет места) перечислены в style/LOCAL_PATCHES.md.
+- DE: Menüs korrigiert: jede Seite gibt es auf EN, RU und DE (neue Startseiten index.ru/index.de und Zusammenfassungen summary.en/ru/de), alle Menülinks bleiben in der Sprache der Seite, der Sprachumschalter öffnet dieselbe Seite in der anderen Sprache. FINAL_REPORT.html leitet jetzt auf summary.ru.html weiter.
+- DE: Website auf HomenS.AI-Stil 1.6.1 gebracht (vorher 1.3.0): volles Stilpaket, Seitenvorlage aus dem Kern, Kontaktseite in drei Sprachen mit Kontaktblock und Roboter aus dem Kern, „Kontakt“ als Kapsel im Menü, Schriftzug „HomenS.AI“ unter dem Roboter, automatische „Nach oben“-Taste. Lokale Änderungen an der Stilkopie (keine Klartext-E-Mail, kein Ort) stehen in style/LOCAL_PATCHES.md.
+
 ## 1.10 — 2026-10-10
 - EN: Attribution corrected: the server setup, all test runs, the analysis and the recommendations were done by OpenAI Codex (ChatGPT) under the author's direction, not by Claude Code as stated in 1.9 and earlier. The agent-usage figures (plan, session tokens) that referred to Claude were removed.
 - RU: Исправлено авторство: настройку сервера, все прогоны тестов, анализ и рекомендации выполнил OpenAI Codex (ChatGPT) под руководством автора, а не Claude Code, как было указано в 1.9 и раньше. Цифры об использовании агента (тариф, токены сессии), относившиеся к Claude, удалены.

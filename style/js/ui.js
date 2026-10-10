@@ -60,24 +60,33 @@
     return btn;
   }
 
-  // Кнопка «Наверх»: появляется после прокрутки на 300 px.
+  // Кнопка «Наверх»: справа внизу, появляется после прокрутки на 300 px. Включается сама на каждой странице с js/ui.js
+  // (подпись — по <html lang>: ru «Наверх», en «Back to top», de «Nach oben»); отключить — <body data-no-to-top>.
+  var TO_TOP = { ru: "Наверх", en: "Back to top", de: "Nach oben" };
   function initToTop(label) {
     if (document.getElementById("to-top")) return;
+    label = label || TO_TOP[(document.documentElement.lang || "ru").slice(0, 2)] || TO_TOP.en;
     var b = document.createElement("button");
     b.id = "to-top";
     b.type = "button";
     b.className = "to-top";
     b.hidden = true;
-    b.setAttribute("aria-label", label || "Back to top");
-    b.title = label || "Back to top";
+    b.setAttribute("aria-label", label);
+    b.title = label;
     b.appendChild(icon("up"));
     b.addEventListener("click", function () {
       var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       window.scrollTo({ top: 0, behavior: calm ? "auto" : "smooth" });
     });
     document.body.appendChild(b);
-    window.addEventListener("scroll", function () { b.hidden = window.scrollY < 300; }, { passive: true });
+    var sync = function () { b.hidden = window.scrollY < 300; };
+    window.addEventListener("scroll", sync, { passive: true });
+    sync();   // страница открыта уже прокрученной (перезагрузка, ссылка на раздел) — кнопка видна сразу
   }
+
+  function autoToTop() { if (document.body && !document.body.hasAttribute("data-no-to-top")) initToTop(); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", autoToTop);
+  else autoToTop();
 
   window.HomenS = window.HomenS || {};
   window.HomenS.ui = { icon: icon, currentTheme: currentTheme, toggleTheme: toggleTheme, themeButton: themeButton, initToTop: initToTop };

@@ -72,11 +72,15 @@ function tvRobot(host) {
     lid(E.lidR, b1 > 0 && b1 < 1 ? blink : wink);
     E.all.setAttribute('transform', 'rotate(' + (Math.sin(Math.PI * seg(t, 4850, 5800)) * 4).toFixed(2) + ' 100 107)');
   }
-  var raf = 0, t0 = null, onWink = null, lastT = 0, running = false;
+  var raf = 0, t0 = null, onWink = null, lastT = 0, running = false, formed = false;
+  // Знак сообщает странице: «собрался в голову» (через 3,9 с) и «начал заново». Под ним по этим событиям появляется надпись (js/logo-word.js).
+  function announce(name) { host.dispatchEvent(new CustomEvent(name, { bubbles: true })); }
+  function setFormed(v) { if (formed !== v) { formed = v; announce(v ? "homensai-logo-formed" : "homensai-logo-reset"); } }
   function tick(now) {
     if (!host.isConnected) { raf = 0; running = false; return; }  // страница закрыта: цикл не крутится вхолостую
     if (t0 == null) t0 = now;
     var t = now - t0;
+    if (t >= 3900) setFormed(true);
     if (t > 5600 && onWink) { onWink(); onWink = null; }
     if (t > 7000) t = 4300 + (t - 7000) % 2700; // stays a robot: wink + blink, again and again
     lastT = now - t0;
@@ -89,8 +93,8 @@ function tvRobot(host) {
   });
   draw(0);
   return {
-    play: function (cb) { onWink = cb || null; cancelAnimationFrame(raf); running = true; if (reduce) { draw(4400); if (onWink) onWink(); return; } t0 = null; raf = requestAnimationFrame(tick); },
-    reset: function () { cancelAnimationFrame(raf); raf = 0; running = false; draw(0); }
+    play: function (cb) { onWink = cb || null; cancelAnimationFrame(raf); running = true; setFormed(false); if (reduce) { draw(4400); setFormed(true); if (onWink) onWink(); return; } t0 = null; raf = requestAnimationFrame(tick); },
+    reset: function () { cancelAnimationFrame(raf); raf = 0; running = false; draw(0); setFormed(false); }
   };
 }
 

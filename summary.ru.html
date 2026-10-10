@@ -1,0 +1,53 @@
+<!doctype html>
+<!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="homensai-style" content="1.6.1">
+  <title>Итоговый отчёт — RTX 3080 local AI</title>
+  <link rel="icon" href="style/brand/logo-mark.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#edf1f4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1720" media="(prefers-color-scheme: dark)">
+  <link rel="alternate" hreflang="en" href="summary.en.html">
+  <link rel="alternate" hreflang="ru" href="summary.ru.html">
+  <link rel="alternate" hreflang="de" href="summary.de.html">
+  <link rel="preload" href="style/fonts/ibm-plex/IBMPlexSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="style/fonts/ibm-plex/IBMPlexSans-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="style/js/theme-init.js"></script>
+  <link rel="stylesheet" href="style/dist/homensai-full.css">
+  <link rel="stylesheet" href="assets/report.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="topbar">
+    <a class="brand" href="index.ru.html" aria-label="HomenS.AI Benchmarks"><svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M50.0 13.0 L48.1 13.1 L46.1 13.2 L44.2 13.5 L42.3 13.8 L42.2 21.0 L40.7 21.5 L39.2 22.0 L37.8 22.6 L36.4 23.3 L31.5 18.0 L29.8 19.0 L28.3 20.1 L26.7 21.2 L25.2 22.5 L28.8 28.8 L27.7 29.9 L26.7 31.1 L25.7 32.4 L24.8 33.7 L18.0 31.5 L17.0 33.2 L16.2 35.0 L15.5 36.7 L14.8 38.6 L21.0 42.2 L20.7 43.8 L20.4 45.3 L20.2 46.9 L20.0 48.4 L13.0 50.0 L13.1 51.9 L13.2 53.9 L13.5 55.8 L13.8 57.7 L21.0 57.8 L21.5 59.3 L22.0 60.8 L22.6 62.2 L23.3 63.6 L18.0 68.5 L19.0 70.2 L20.1 71.7 L21.2 73.3 L22.5 74.8 L28.8 71.2 L29.9 72.3 L31.1 73.3 L32.4 74.3 L33.7 75.2 L31.5 82.0 L33.2 83.0 L35.0 83.8 L36.7 84.5 L38.6 85.2 L42.2 79.0 L43.8 79.3 L45.3 79.6 L46.9 79.8 L48.4 80.0 L50.0 87.0 Z" fill="#c9a24a"/><path d="M50 20 A30 30 0 0 1 50 80" fill="none" stroke="#2bb3c4" stroke-width="5"/><g fill="none" stroke="#2bb3c4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M50 36 H64 L70 30"/><path d="M50 50 H72"/><path d="M50 64 H62 L68 70"/></g><g fill="#2bb3c4"><circle cx="71" cy="29" r="4"/><circle cx="74" cy="50" r="4"/><circle cx="69" cy="71" r="4"/></g><circle cx="50" cy="50" r="9" fill="currentColor"/><circle cx="50" cy="50" r="3.5" fill="#c9a24a"/></svg><span class="brand-word">HomenS<span class="ai">.AI</span> <span class="sub">Benchmarks</span></span></a>
+    <nav id="nav" aria-label="Основная навигация">
+      <ul class="nav-main"><li><a class="nav-link" href="index.ru.html">Главная</a></li><li><a class="nav-link" href="report.ru.html">Отчёт</a></li><li><a class="nav-link" href="summary.ru.html" aria-current="page">Итоговый отчёт</a></li><li><a class="nav-link" href="recommendations.ru.html">Рекомендации</a></li><li><a class="nav-link" href="https://github.com/HomenSAI/homensai-local-ai-lab" rel="noopener">Сервер</a></li><li><a class="nav-link" href="about.ru.html">Об авторе</a></li><li><a class="nav-link nav-contact" href="contact.ru.html">Контакт</a></li></ul>
+      <ul class="nav-tools" id="tools"><li><details class="nav-group"><summary>Русский</summary><div class="nav-menu right"><a href="summary.en.html" hreflang="en" lang="en">English</a><a href="summary.ru.html" hreflang="ru" lang="ru" aria-current="page">Русский</a><a href="summary.de.html" hreflang="de" lang="de">Deutsch</a></div></details></li></ul>
+    </nav>
+  </header>
+<main id="main" tabindex="-1">
+<h1>Итоговый отчёт: локальный ИИ на RTX 3080 (10 ГБ, 32 ГБ ОЗУ)</h1>
+<p class="note">Версия 1.11 · Даты тестов: 2026-09-29 – 2026-10-06</p>
+<h2>Главные выводы</h2>
+<ul><li><b>Самая умная:</b> тернарная Bonsai-2-27B — лучшая по общему качеству (85 %) и немецкому (23/30), 40/40 по математике и физике, 18/20 по коду; 46,6 ток/с.</li><li><b>Лучшая универсальная:</b> Qwen3.5-9B — 40/40 математика и физика, 18/20 код, контекст 262K, 91 ток/с; вариант с MTP быстрее в 1,44 раза.</li><li><b>Картинки:</b> Qwen3-VL-8B — общее качество 81 %, 86,7 ток/с.</li><li><b>Самая быстрая:</b> MiniCPM5-2B — до 171,6 ток/с для простых задач и черновиков.</li><li><b>Длинные документы:</b> Qwen3.5-9B, Ornith-1.5-9B, MiMo-9B и Spark-X2.5-4B держат 262K токенов на GPU.</li><li><b>Ускорители:</b> MTP помогает (×1,34–1,44); черновые модели замедляют генерацию (×0,17–0,75).</li><li><b>Снято:</b> 8 из 23 моделей — нет стабильного контекста 64K на GPU.</li></ul>
+<h2>Лидеры по тестам</h2>
+<div class="table-scroll"><table class="history"><tr><th>Тест</th><th>Тройка лидеров</th></tr><tr><td>Качество %</td><td>Bonsai-2-27B (85), Qwen3-VL-8B (81), Spark-X2.5-4B-Q8 (75)</td></tr><tr><td>Немецкий /30</td><td>Bonsai-2-27B (23), Qwen3.5-9B-MTP (22), Qwen3.5-9B (22)</td></tr><tr><td>Мат+физ /40</td><td>Qwen3.5-9B (40), Bonsai-2-27B (40), Ornith-1.5-9B (40)</td></tr><tr><td>Программирование /20</td><td>Qwen3.5-9B (18), Bonsai-2-27B (18), Qwen3.5-9B-MTP (17)</td></tr><tr><td>ток/с</td><td>MiniCPM5-2B-Q4 (171.6), MiniCPM5-2B-Q8 (138.7), Qwen2.5-VL-7B (101.3)</td></tr><tr><td>Макс. контекст</td><td>Ornith-1.5-9B (262144), Qwen3.5-9B-MTP (262144), Qwen3.5-9B (262144)</td></tr></table></div>
+<h2>Оставленные модели (контекст не ниже 64K на GPU)</h2>
+<div class="table-scroll"><table class="history"><tr><th>Модель</th><th>Качество %</th><th>Немецкий /30</th><th>Мат+физ /40</th><th>Химия /10</th><th>Программирование /20</th><th>ток/с</th><th>Макс. контекст</th></tr><tr><td>Bonsai-2-27B</td><td>85</td><td>23</td><td>40</td><td>10</td><td>18</td><td>46.6</td><td>131072</td></tr><tr><td>Qwen3-VL-8B</td><td>81</td><td>21</td><td>38</td><td>10</td><td>17</td><td>86.7</td><td>65536</td></tr><tr><td>Spark-X2.5-4B-Q8</td><td>75</td><td>9</td><td>39</td><td>10</td><td>14</td><td>79.3</td><td>262144</td></tr><tr><td>Spark-X2.5-4B-Q4</td><td>75</td><td>7</td><td>35</td><td>10</td><td>12</td><td>88.3</td><td>262144</td></tr><tr><td>Gemma-3-12B</td><td>75</td><td>21</td><td>37</td><td>10</td><td>14</td><td>61.8</td><td>98304</td></tr><tr><td>Qwen2.5-Coder-7B</td><td>75</td><td>16</td><td>35</td><td>9</td><td>14</td><td>100.8</td><td>65536</td></tr><tr><td>Llama-3.1-8B</td><td>75</td><td>13</td><td>30</td><td>7</td><td>15</td><td>95.9</td><td>65536</td></tr><tr><td>Qwen2.5-VL-7B</td><td>74</td><td>13</td><td>31</td><td>9</td><td>10</td><td>101.3</td><td>65536</td></tr><tr><td>Qwen3.5-9B-MTP</td><td>67</td><td>22</td><td>39</td><td>10</td><td>17</td><td>82.4</td><td>262144</td></tr><tr><td>MiMo-9B</td><td>60</td><td>20</td><td>38</td><td>10</td><td>12</td><td>82.3</td><td>262144</td></tr><tr><td>MiMo-9B-MTP</td><td>60</td><td>20</td><td>38</td><td>10</td><td>12</td><td>81.9</td><td>262144</td></tr><tr><td>Ornith-1.5-9B</td><td>60</td><td>22</td><td>40</td><td>10</td><td>14</td><td>83.8</td><td>262144</td></tr><tr><td>Qwen3.5-9B</td><td>55</td><td>22</td><td>40</td><td>10</td><td>18</td><td>91.3</td><td>262144</td></tr><tr><td>MiniCPM5-2B-Q4</td><td>50</td><td>5</td><td>33</td><td>6</td><td>12</td><td>171.6</td><td>131072</td></tr><tr><td>MiniCPM5-2B-Q8</td><td>45</td><td>3</td><td>33</td><td>4</td><td>16</td><td>138.7</td><td>131072</td></tr></table></div>
+<h2>Дубли</h2>
+<ul><li><b>Spark-X2.5-4B Q8 / Q4</b> — оставить Q8 (контекст 262K, 3/3 фактов); Q4 — дубль</li><li><b>MiniCPM5-2B Q8 / Q4</b> — оставить Q8; Q4 — дубль</li><li><b>Qwen3.5-9B-MTP и Qwen3.5-9B-Q5_K_S</b> — одна семья: MTP быстрее (×1,44), Q5 даёт контекст 262K — оба оставлены</li><li><b>MiMo-9B и MiMo-9B-MTP</b> — MTP замедляет (×0,71) — оставлен один профиль без ускорителя</li><li><b>Ornith-MTP и Ornith-DFlash</b> — ускорение одинаковое (×1,34); DFlash на 131K уходит в перелив — оставлен только MTP</li></ul>
+<h2>Снятые модели (нет стабильного контекста 64K на GPU)</h2>
+<div class="table-scroll"><table class="history"><tr><th>Model</th><th>best_ctx</th></tr><tr><td>Qwen3-8B</td><td>-</td></tr><tr><td>R1-Distill-Llama-8B</td><td>-</td></tr><tr><td>Mistral-Nemo-12B</td><td>-</td></tr><tr><td>Gemma-4-12B</td><td>-</td></tr><tr><td>Gemma-4-12B-QAT</td><td>-</td></tr><tr><td>Gemma-4-E4B</td><td>-</td></tr><tr><td>LFM2.5-2.6B</td><td>-</td></tr><tr><td>LFM2.5-8B-A1B</td><td>-</td></tr></table></div>
+<p>Qwen2.5-VL-7B снят со шлюза отдельно: теряет факты на 64K и дублирует Qwen3-VL и Qwen3.5-Vision.</p>
+<p class="note">Подробности, все таблицы и гонка моделей: <a href="report.ru.html">отчёт</a>. Настройки каждой модели: <a href="recommendations.ru.html">рекомендации</a>.</p>
+  </main>
+  <footer class="site-footer" id="footer"></footer>
+  <noscript>Для меню, переключения темы и интерактивных блоков нужен JavaScript.</noscript>
+  <script src="style/js/brand.js"></script>
+  <script src="style/js/ui.js"></script>
+  <script src="style/js/brand-ui.js"></script>
+  <script src="assets/report.js"></script>
+</body>
+</html>
