@@ -1,30 +1,16 @@
 // HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/
-// Общая инициализация страниц отчёта: переключатель темы, кнопка «Наверх», подвал и сортировка таблиц.
+// Сортировка таблиц отчёта (тему, подвал и «Наверх» ставит style/js/site-init.js ядра).
 // Без inline-кода: работает при строгой CSP. Заголовки сортируются мышью, Enter и пробелом.
 (function () {
   "use strict";
 
   var lang = document.documentElement.lang || "ru";
   var TEXT = {
-    ru: { toLight: "Светлая тема", toDark: "Тёмная тема", top: "Наверх",
-          hint: "Нажмите на заголовок столбца, чтобы отсортировать; три лучших значения выделены" },
-    en: { toLight: "Light theme", toDark: "Dark theme", top: "Top",
-          hint: "Click a column header to sort; the top three values are highlighted" },
-    de: { toLight: "Helles Design", toDark: "Dunkles Design", top: "Nach oben",
-          hint: "Auf eine Spaltenüberschrift klicken zum Sortieren; die drei besten Werte sind hervorgehoben" }
+    ru: { hint: "Нажмите на заголовок столбца, чтобы отсортировать; три лучших значения выделены" },
+    en: { hint: "Click a column header to sort; the top three values are highlighted" },
+    de: { hint: "Auf eine Spaltenüberschrift klicken zum Sortieren; die drei besten Werte sind hervorgehoben" }
   };
   var T = TEXT[lang] || TEXT.ru;
-
-  var tools = document.getElementById("tools");
-  if (tools) {
-    var li = document.createElement("li");
-    li.appendChild(HomenS.ui.themeButton({ toLight: T.toLight, toDark: T.toDark }));
-    tools.appendChild(li);
-  }
-  HomenS.ui.initToTop(T.top);
-
-  var footer = document.getElementById("footer");
-  if (footer) HomenS.brandUi.renderFooter(footer, lang);
 
   function num(text) {
     var m = String(text).trim().replace(",", ".").match(/^[-+]?\d+(\.\d+)?/);

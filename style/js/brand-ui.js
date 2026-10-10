@@ -10,8 +10,8 @@
     return B.links.filter(function (l) { return l.id === id; })[0];
   }
 
-  // Локальная правка проекта (см. style/LOCAL_PATCHES.md): в файлах нет адреса «user@domain»;
-  // mailto собирается из contact.email_parts только при наведении, фокусе, касании или клике.
+  // Почта от сборщиков адресов: в файлах нет «user@domain»; mailto собирается из contact.email_parts
+  // только при наведении, фокусе, касании или клике, а видимый текст — «info [at] homensai [dot] com» (S-012).
   function protectMail(a) {
     var arm = function () { a.href = "mailto:" + emailOf(); };
     a.href = "#mail";

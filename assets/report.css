@@ -143,3 +143,7 @@ details.more pre { background: var(--bg, transparent); }
 .contact-extra { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.5rem 0; }
 .contact-extra .card { margin: 0; }
 @media (max-width: 900px) { .contact-extra { grid-template-columns: minmax(0, 1fr); } }
+
+/* Итоговый отчёт: графики «Время и ресурсы» в карточках. */
+.res-charts figure { margin: 0; }
+.res-charts figcaption { margin-bottom: .5rem; }

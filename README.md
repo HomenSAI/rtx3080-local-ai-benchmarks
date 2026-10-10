@@ -3,7 +3,7 @@
 
 **23 open models tested, 15 kept.** Which local language models are really usable on a single gaming GPU, how long a context they hold stably, and how to run them all behind one OpenAI-compatible endpoint.
 
-> Version 1.12 · Test dates: 2026-09-29 – 2026-10-06 · Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM
+> Version 1.13 · Test dates: 2026-09-29 – 2026-10-06 · Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM
 > Author: **Serhii Khomenko** — [homensai.com](https://homensai.com/)
 
 [English](README.en.md) | [Русский](README.ru.md) | [Deutsch](README.de.md) · **Web version:** [index.html / reports](index.html) (EN/RU/DE, sortable tables)
@@ -52,6 +52,7 @@ Full tables (all 15 kept models, recommended context and KV cache per model, acc
 | `tests/` | short description of each test and our raw results (`results/*.jsonl`) |
 | [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab) | separate repository: **the server that produced all these tests** (Docker / llama-swap, scripts, test runners) — deploy it to repeat them |
 | `index*.html`, `report.*.html`, `summary.*.html`, `recommendations.*.html`, `contact.*.html` | website in EN/RU/DE: home, report with the model race, summary, recommended settings, contact and author |
+| `site.json`, `content/` | source of the website: page content per language; the pages are built with the HomenS.AI Style site builder (`python3 tools/site.py build .` from the style core) |
 | `about.*.html`, `assets/`, `style/` | author pages, page scripts (table sorting) and the HomenS.AI style package |
 | [TIME_TRACKING.md](TIME_TRACKING.md) | the author's time log tool for this project |
 

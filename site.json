@@ -1,0 +1,90 @@
+{
+  "name": "Benchmarks",
+  "title": {
+    "en": "RTX 3080 local AI benchmarks",
+    "ru": "Бенчмарки локального ИИ на RTX 3080",
+    "de": "Benchmarks lokaler KI auf RTX 3080"
+  },
+  "languages": [
+    "en",
+    "ru",
+    "de"
+  ],
+  "version": "1.13",
+  "out": ".",
+  "pages": [
+    {
+      "id": "home",
+      "nav": {
+        "en": "Home",
+        "ru": "Главная",
+        "de": "Start"
+      }
+    },
+    {
+      "id": "report",
+      "nav": {
+        "en": "Report",
+        "ru": "Отчёт",
+        "de": "Bericht"
+      },
+      "title": {
+        "en": "Report",
+        "ru": "Отчёт",
+        "de": "Bericht"
+      }
+    },
+    {
+      "id": "summary",
+      "nav": {
+        "en": "Summary",
+        "ru": "Итоговый отчёт",
+        "de": "Zusammenfassung"
+      },
+      "title": {
+        "en": "Summary",
+        "ru": "Итоговый отчёт",
+        "de": "Zusammenfassung"
+      }
+    },
+    {
+      "id": "recommendations",
+      "nav": {
+        "en": "Recommendations",
+        "ru": "Рекомендации",
+        "de": "Empfehlungen"
+      },
+      "title": {
+        "en": "Recommended settings",
+        "ru": "Рекомендуемые настройки",
+        "de": "Empfohlene Einstellungen"
+      }
+    },
+    {
+      "id": "server",
+      "nav": {
+        "en": "Server",
+        "ru": "Сервер",
+        "de": "Server"
+      },
+      "href": "https://github.com/HomenSAI/homensai-local-ai-lab"
+    }
+  ],
+  "css": [
+    "assets/report.css"
+  ],
+  "js": {
+    "*": [
+      "assets/report.js"
+    ],
+    "report": [
+      "assets/race.js"
+    ],
+    "recommendations": [
+      "assets/reco.js"
+    ],
+    "summary": [
+      "assets/resources.js"
+    ]
+  }
+}

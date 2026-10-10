@@ -3,6 +3,20 @@
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
 
+## 1.13 — 2026-10-10
+- EN: The site is now built with the site builder of HomenS.AI Style 1.7.0 (site.json + content/), so every page has the same frame as the style core: logo, menu, Contact capsule, language buttons EN | DE | RU (instead of a dropdown), theme switch, footer, "To top". The style copy no longer needs local patches: e-mail protection and no location are now in the core.
+- EN: Summary: new block "Time and resources" — 8 test days, about 12 kWh (about 1.5 kWh a day, author's estimate), about 16 h of GPU time, about 200 GB of downloads, with charts of energy per day and GPU time per test.
+- EN: Recommendations: each copy block is now a ready fragment of config/llama-swap.yaml, with steps above it — which file to open and with what, what to replace, the command that applies it and how to check it.
+- EN: Texts: paths and codes replaced with clear links ("open on GitHub"); technical table headers (best_ctx, verdict, dim, x) replaced with plain names.
+- RU: Сайт собирается сборщиком стиля HomenS.AI 1.7.0 (site.json + content/), поэтому у всех страниц каркас ядра: логотип, меню, «Контакт» капсулой, кнопки языка EN | DE | RU (вместо выпадающего списка), тема, подвал, «Наверх». Копии стиля больше не нужны локальные правки: защита почты и отсутствие места теперь в ядре.
+- RU: Итоговый отчёт: новый блок «Время и ресурсы» — 8 дней испытаний, около 12 кВт·ч (около 1,5 кВт·ч в день, оценка автора), около 16 ч работы GPU, около 200 ГБ загрузок, с графиками энергии по дням и времени GPU по тестам.
+- RU: Рекомендации: каждый блок копирования — готовый фрагмент config/llama-swap.yaml, над ним шаги: какой файл открыть и чем, что заменить, какой командой применить и как проверить.
+- RU: Тексты: пути и коды заменены понятными ссылками («открыть на GitHub»); технические заголовки таблиц (best_ctx, verdict, dim, x) заменены понятными названиями.
+- DE: Die Website wird mit dem Site-Builder von HomenS.AI Style 1.7.0 gebaut (site.json + content/), daher hat jede Seite den Rahmen des Stilkerns: Logo, Menü, „Kontakt“ als Kapsel, Sprachtasten EN | DE | RU (statt Auswahlliste), Designwechsel, Fußzeile, „Nach oben“. Die Stilkopie braucht keine lokalen Änderungen mehr: E-Mail-Schutz und kein Ort sind jetzt im Kern.
+- DE: Zusammenfassung: neuer Block „Zeit und Ressourcen“ — 8 Testtage, etwa 12 kWh (etwa 1,5 kWh pro Tag, Schätzung des Autors), etwa 16 Std. GPU-Zeit, etwa 200 GB Downloads, mit Diagrammen zur Energie pro Tag und GPU-Zeit je Test.
+- DE: Empfehlungen: jeder Kopierblock ist ein fertiger Ausschnitt von config/llama-swap.yaml, darüber die Schritte — welche Datei womit öffnen, was ersetzen, mit welchem Befehl anwenden und wie prüfen.
+- DE: Texte: Pfade und Codes durch klare Links ersetzt („auf GitHub öffnen“); technische Tabellenköpfe (best_ctx, verdict, dim, x) durch verständliche Namen ersetzt.
+
 ## 1.12 — 2026-10-10
 - EN: "About" and "Contact" merged into one "Contact" page: the core contact block with the robot, then the author, this project and legal information; old about.*.html addresses redirect there. Own style and script files are linked with a version mark (?v=…) so browsers load the new files after an update instead of an old cached copy.
 - RU: «Об авторе» и «Контакт» объединены в одну страницу «Контакт»: блок контактов ядра с роботом, ниже автор, этот проект и правовая информация; старые адреса about.*.html перенаправляют туда. Свои файлы стилей и скриптов подключаются с меткой версии (?v=…), чтобы после обновления браузер загружал новые файлы, а не старую копию из кеша.

@@ -1,4 +1,4 @@
-/* HomenS.AI Style 1.6.1 — https://github.com/HomenSAI/homensai-style */
+/* HomenS.AI Style 1.7.0 — https://github.com/HomenSAI/homensai-style */
 /* ===== fonts.css ===== */
 /* HomenS.AI Style · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ */
 /* Шрифты IBM Plex (SIL OFL 1.1, без изменений): кириллица, латиница, немецкие знаки. Файлы — ../fonts/ibm-plex/, лицензия — OFL.txt рядом. */
@@ -327,6 +327,16 @@ body::before {
 
 .grid2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; align-items: start; }
 @media (max-width: 900px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
+
+/* Переключатель языка EN | DE | RU — кнопки-капсула, как на homensai.com (S-012). Ссылки на ту же страницу на другом языке. */
+.langs { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; flex: 0 0 auto; }
+.langs a { display: flex; align-items: center; justify-content: center; min-width: 2.5rem; min-height: 2.25rem; padding: 0 .65rem;
+           font-size: .75rem; font-weight: 500; letter-spacing: .04em; color: var(--muted); text-decoration: none; }
+.langs a + a { border-left: 1px solid var(--line); }
+.langs a:hover { color: var(--text); }
+.langs a.on { background: var(--text); color: var(--surface); }
+.langs a:focus-visible { outline-offset: -3px; }
+@media (max-width: 600px) { .langs a { min-width: 2.4rem; min-height: 2.75rem; padding: 0 .5rem; } }
 
 /* ===== components.css ===== */
 /* HomenS.AI Style · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ */
@@ -1138,3 +1148,9 @@ html[lang="ru"] .c-node text:not(.n) { font-size: 13px; }
 @media (prefers-reduced-motion: reduce) { .ccard, .ccard:hover { transition: none; transform: none; } }
 @media (max-width: 900px) { .ccards { grid-template-columns: 1fr 1fr; } .contact-hero { grid-template-columns: 1fr; gap: 1rem; } }
 @media (max-width: 480px) { .ccards { grid-template-columns: 1fr; } }
+
+/* Страница «Контакт» сайта (SITE_RULES.md): под блоком — автор и свои секции проекта карточками в ряд. */
+.contact-extra { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.contact-extra:empty { display: none; }
+.contact-extra .card { margin: 0; }
+@media (max-width: 900px) { .contact-extra { grid-template-columns: minmax(0, 1fr); } }
