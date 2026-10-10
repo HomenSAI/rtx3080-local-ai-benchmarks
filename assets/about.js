@@ -17,12 +17,11 @@
   var links = document.getElementById("author-links");
   if (links) H.brandUi.renderAuthorLinks(links, lang);
 
-  // Адрес выводится как «info [at] homensai [dot] com»; ссылка mailto строится из полного адреса.
+  // Адрес виден как «info [at] homensai [dot] com»; mailto собирается из частей только при наведении или клике.
   var mail = document.getElementById("author-mail");
   if (mail && H.brand.author) {
     var a = document.createElement("a");
-    a.href = "mailto:" + H.brand.author.email;
     a.textContent = H.brand.author.email_display;
-    mail.replaceChildren(a);
+    mail.replaceChildren(H.brandUi.protectMail(a));
   }
 })();

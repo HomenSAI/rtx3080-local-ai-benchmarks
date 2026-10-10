@@ -3,6 +3,17 @@
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
 
+## 1.8 — 2026-10-10
+- EN: Interactive "model race" on the report and summary pages: a horizontal bar chart replays the tests in their real order (with dates and measured GPU time); after each test a bar is the model's average so far, models overtake each other until the final ranking. Pure JavaScript, data read from the results table, core colours, respects reduced motion.
+- EN: Texts shortened: duplicated result tables and long sections removed, tests and scoring merged into one table, prompts, sources and disclaimers moved into collapsible blocks; prompts now wrap instead of scrolling sideways. The misleading "weakest models" list was removed from the summary.
+- EN: E-mail protected from harvesters: no plain address in any file; the mailto link is assembled only on hover, focus or click. Location removed from the author pages.
+- RU: Интерактивная «гонка моделей» в отчёте и итоговом отчёте: горизонтальная гистограмма проигрывает тесты в реальном порядке (с датами и измеренным временем GPU); после каждого теста столбец — средний результат модели, модели обгоняют друг друга до итогового рейтинга. Чистый JavaScript, данные из таблицы результатов, цвета ядра, учитывается «уменьшить движение».
+- RU: Тексты сокращены: убраны повторённые таблицы и длинные разделы, тесты и оценка сведены в одну таблицу, промпты, источники и оговорки свёрнуты в раскрывающиеся блоки; промпты переносятся по словам, а не прокручиваются вбок. Из итогового отчёта убран вводивший в заблуждение список «самых слабых».
+- RU: Почта защищена от сборщиков: открытого адреса нет ни в одном файле, ссылка mailto собирается только при наведении, фокусе или клике. Со страниц автора убрано место.
+- DE: Interaktives „Modellrennen“ im Bericht und in der Zusammenfassung: ein horizontales Balkendiagramm spielt die Tests in ihrer echten Reihenfolge ab (mit Daten und gemessener GPU-Zeit); nach jedem Test zeigt ein Balken den bisherigen Durchschnitt, Modelle überholen sich bis zum Endstand. Reines JavaScript, Daten aus der Ergebnistabelle, Farben des Kerns, berücksichtigt reduzierte Bewegung.
+- DE: Texte gekürzt: doppelte Ergebnistabellen und lange Abschnitte entfernt, Tests und Bewertung in einer Tabelle, Prompts, Quellen und Hinweise in aufklappbaren Blöcken; Prompts brechen um statt seitlich zu scrollen. Die irreführende Liste „schwächste Modelle“ wurde aus der Zusammenfassung entfernt.
+- DE: E-Mail vor Adresssammlern geschützt: keine Klartextadresse in den Dateien; der mailto-Link entsteht erst bei Hover, Fokus oder Klick. Ort von den Autorenseiten entfernt.
+
 ## 1.7 — 2026-10-10
 - EN: Denser report tables: the page uses up to 1280 px while text keeps its reading width, model names stay on one line, headers are compact and wrap by words, two-column tables (problem → fix) wrap normally. No table spills past the page on desktop; on phones wide tables scroll inside their own box.
 - RU: Таблицы отчёта стали плотнее: страница использует до 1280 px, а текст сохраняет удобную ширину; имена моделей не переносятся, заголовки компактнее и переносятся по словам, двухколоночные таблицы (проблема → решение) переносятся как обычный текст. На компьютере ни одна таблица не вылезает за страницу; на телефоне широкие таблицы прокручиваются внутри своего блока.

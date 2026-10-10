@@ -57,7 +57,8 @@ window.HomenS.brand = {
   },
   "author": {
     "name": "Serhii Khomenko",
-    "email": "info@homensai.com",
+    "email_user": "info",
+    "email_domain": "homensai.com",
     "copyright": "© 2026 Serhii Khomenko",
     "header_line": "HomenS.AI Core · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/",
     "status": {
@@ -65,7 +66,6 @@ window.HomenS.brand = {
       "en": "private individual",
       "de": "Privatperson"
     },
-    "location": "Stuttgart region, Germany",
     "email_display": "info [at] homensai [dot] com",
     "reply_time": "within two working days (Monday to Friday)"
   },
@@ -246,13 +246,13 @@ window.HomenS.brand = {
     {
       "id": "email",
       "kind": "mail",
-      "url": "mailto:info@homensai.com",
+      "url": "#mail",
       "label": {
-        "ru": "E-mail: info@homensai.com",
-        "en": "E-mail: info@homensai.com",
-        "de": "E-Mail: info@homensai.com"
+        "ru": "E-mail: info [at] homensai [dot] com",
+        "en": "E-mail: info [at] homensai [dot] com",
+        "de": "E-Mail: info [at] homensai [dot] com"
       },
-      "short": "info@homensai.com",
+      "short": "info [at] homensai [dot] com",
       "footer": true
     }
   ],

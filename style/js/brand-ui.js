@@ -10,12 +10,28 @@
     return B.links.filter(function (l) { return l.id === id; })[0];
   }
 
+  // Защита адреса от сборщиков: в файлах нет строки «user@domain»; mailto собирается из частей
+  // только при наведении, фокусе или клике, а на странице виден текст «info [at] homensai [dot] com».
+  function mailHref() {
+    return "mailto:" + B.author.email_user + String.fromCharCode(64) + B.author.email_domain;
+  }
+
+  function protectMail(a) {
+    var arm = function () { a.href = mailHref(); };
+    a.href = "#mail";
+    a.addEventListener("mouseenter", arm);
+    a.addEventListener("focus", arm);
+    a.addEventListener("touchstart", arm, { passive: true });
+    a.addEventListener("click", arm);
+    return a;
+  }
+
   function anchor(link, text, lang) {
     var a = document.createElement("a");
-    a.href = (lang === "de" && link.url_de) || link.url;
-    a.rel = link.kind === "mail" ? "" : "me noopener";
-    if (!a.rel) a.removeAttribute("rel");
     a.textContent = text;
+    if (link.kind === "mail") return protectMail(a);
+    a.href = (lang === "de" && link.url_de) || link.url;
+    a.rel = "me noopener";
     return a;
   }
 
@@ -53,5 +69,5 @@
     return host;
   }
 
-  window.HomenS.brandUi = { renderFooter: renderFooter, renderAuthorLinks: renderAuthorLinks, link: byId };
+  window.HomenS.brandUi = { renderFooter: renderFooter, renderAuthorLinks: renderAuthorLinks, link: byId, protectMail: protectMail };
 })();

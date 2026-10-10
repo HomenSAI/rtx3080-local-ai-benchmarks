@@ -66,3 +66,37 @@ table.history td:last-child { min-width: 12rem; }
 table.history tr > td:first-child:nth-last-child(2) { white-space: normal; width: 40%; font-weight: 400; }
 /* Длинные заголовки переносятся по словам, а не растягивают таблицу. */
 table.history th { white-space: normal; vertical-align: bottom; }
+
+/* Промпты и другие длинные строки: перенос по словам вместо прокрутки на три экрана. */
+pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .85rem; line-height: 1.5;
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: .8rem 1rem; }
+
+/* Раскрывающиеся блоки (промпты, источники, права). */
+details.more { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: .2rem 1rem; margin: .75rem 0; max-width: 960px; }
+details.more > summary { cursor: pointer; font-weight: 600; padding: .5rem 0; }
+details.more[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: .5rem; }
+details.more pre { background: var(--bg, transparent); }
+
+/* Гонка моделей: строки абсолютно позиционированы и плавно меняются местами. */
+.race { margin: 1rem 0 1.5rem; }
+.race h2 { margin-top: .2rem; }
+.race-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; }
+.race-status { font: .8rem var(--font-mono); letter-spacing: .06em; color: var(--muted); }
+.race-chips { margin: .5rem 0 .75rem; }
+.race-chips .chip { font-size: .85rem; padding: .25rem .7rem; }
+.race-bars { --row-h: 1.9rem; position: relative; list-style: none; margin: 0; padding: 0;
+             height: calc(var(--race-rows, 15) * var(--row-h)); }
+.race-row { position: absolute; left: 0; right: 0; top: 0; height: var(--row-h);
+            display: grid; grid-template-columns: 1.6rem minmax(9rem, 12rem) 1fr 3rem; align-items: center; gap: .5rem;
+            transition: transform .8s cubic-bezier(.3,.7,.2,1); font-size: .9rem; }
+.race-rank { font: .8rem var(--font-mono); color: var(--muted); text-align: right; }
+.race-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 600; }
+.race-track { height: 1.1rem; border-radius: 6px; background: color-mix(in srgb, var(--line) 55%, transparent); overflow: hidden; }
+.race-fill { display: block; height: 100%; width: 0; border-radius: 6px;
+             background: color-mix(in srgb, var(--accent) 45%, var(--surface)); transition: width .8s cubic-bezier(.3,.7,.2,1), background-color .4s; }
+.race-row.top3 .race-fill { background: var(--accent); }
+.race-row.top1 .race-fill { background: var(--gold); }
+.race-row.top1 .race-name { color: var(--gold); }
+.race-val { font: .85rem var(--font-mono); font-variant-numeric: tabular-nums; text-align: right; }
+@media (max-width: 600px) { .race-row { grid-template-columns: 1.3rem 7.5rem 1fr 2.6rem; font-size: .82rem; } }
+@media (prefers-reduced-motion: reduce) { .race-row, .race-fill { transition: none; } }
