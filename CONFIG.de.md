@@ -1,6 +1,7 @@
+<!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # Konfiguration jedes Modells (llama-swap-Profile)
 
-> Version 1.5 · Testdaten: 2026-09-29 – 2026-10-06 (Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Autor des Experiments: https://homensai.com/
+> Version 1.6 · Testdaten: 2026-09-29 – 2026-10-06 (Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Autor des Experiments: https://homensai.com/
 
 Einstellungen jedes Modells im llama-swap-Gateway; die vollständige Serverkonfiguration liegt im [Server-Repository](https://github.com/HomenSAI/homensai-local-ai-lab). `/models/...` ist der Pfad im Container (Volume `llm-models-fast`). Flags: `--ctx-size` = Kontextfenster, `-ctk/-ctv` = KV-Cache-Typ (q4_0 = längstes Fenster, f16 = am schnellsten), `--spec-type draft-mtp` = MTP-Beschleuniger, `--chat-template-kwargs` = Denken standardmäßig (eine Anfrage kann es mit `chat_template_kwargs: {enable_thinking: true}` einschalten), `--n-gpu-layers all --fit off` = alles auf der GPU, `--flash-attn on` ist für den quantisierten KV-Cache nötig.
 

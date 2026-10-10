@@ -1,3 +1,4 @@
+<!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # 08-accelerators-embeddings
 
 MTP/DFlash/draft speed-up and embedding retrieval.

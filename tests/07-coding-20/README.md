@@ -1,3 +1,4 @@
+<!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # 07-coding-20
 
 20 Python tasks with hidden asserts, run in a no-network sandbox.

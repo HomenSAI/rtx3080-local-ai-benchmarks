@@ -1,3 +1,4 @@
+<!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # 03-max-context
 
 Largest stable context: 3 hidden facts at 80% fill, KV f16/q8/q4 in VRAM.

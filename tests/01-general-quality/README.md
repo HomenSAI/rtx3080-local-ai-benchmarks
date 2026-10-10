@@ -1,3 +1,4 @@
+<!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # 01-general-quality
 
 Russian summarisation/translation, logic, instruction following, vision, 3 code tasks.

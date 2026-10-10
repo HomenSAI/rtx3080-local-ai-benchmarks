@@ -1,3 +1,4 @@
+<!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # 04-soak-reliability
 
 95% context fill through the gateway, long generation, VRAM/RAM watch, hang detection.

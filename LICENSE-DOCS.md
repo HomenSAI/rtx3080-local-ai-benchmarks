@@ -1,3 +1,4 @@
+<!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # License of results, tables and documents: CC BY 4.0
 
 Copyright (c) 2026 the author of the experiment, https://homensai.com/

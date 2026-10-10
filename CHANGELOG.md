@@ -1,6 +1,12 @@
+<!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # Changelog / История изменений / Änderungsprotokoll
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
+
+## 1.6 — 2026-10-10
+- EN: The report is restyled to the HomenS.AI style 1.3.0 (copied into `style/`, pinned in every page by `<meta name="homensai-style">`): common header with logo, language switch, footer from the brand data, light and dark themes, phone-width layout. Inline styles and scripts moved to `assets/`. Headline of the English and German reports corrected to 15 kept models; a stray markdown fragment in the summary removed. Landing page `index.html` added.
+- RU: Отчёт переведён на стиль HomenS.AI 1.3.0 (скопирован в `style/`, закреплён в каждой странице метой `<meta name="homensai-style">`): общая шапка с логотипом, переключатель языков, подвал из данных бренда, светлая и тёмная темы, вёрстка для телефона. Встроенные стили и скрипты вынесены в `assets/`. Исправлен заголовок немецкого и английского отчётов (15 моделей), убран остаток markdown в итоговом отчёте. Добавлена стартовая страница `index.html`.
+- DE: Der Bericht ist auf den HomenS.AI-Stil 1.3.0 umgestellt (nach `style/` kopiert, auf jeder Seite über `<meta name="homensai-style">` festgelegt): gemeinsame Kopfzeile mit Logo, Sprachumschalter, Fußzeile aus den Markendaten, helles und dunkles Design, Layout für Telefone. Eingebettete Stile und Skripte nach `assets/` verlegt. Überschrift des englischen und deutschen Berichts auf 15 Modelle korrigiert; Markdown-Rest im Kurzbericht entfernt. Startseite `index.html` hinzugefügt.
 
 ## 1.5 — 2026-10-06
 - EN: The repository is now a pure report: all executable code (server, Docker files, scripts, test runners) and the install guide were removed. Everything was obtained with the separate server project https://github.com/HomenSAI/homensai-local-ai-lab, which can be deployed to repeat the tests; the documents link to it. Headline fixed to 15 kept models.
