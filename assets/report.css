@@ -100,3 +100,35 @@ details.more pre { background: var(--bg, transparent); }
 .race-val { font: .85rem var(--font-mono); font-variant-numeric: tabular-nums; text-align: right; }
 @media (max-width: 600px) { .race-row { grid-template-columns: 1.3rem 7.5rem 1fr 2.6rem; font-size: .82rem; } }
 @media (prefers-reduced-motion: reduce) { .race-row, .race-fill { transition: none; } }
+/* Гонка: «Старт» — главная кнопка слева; пройденные тесты подсвечены; во время гонки ширина обновляется покадрово. */
+.race-chips .race-start { font-weight: 700; color: var(--accent); border-color: var(--accent); min-width: 7.5rem; }
+.race-chips .race-start.on { background: var(--accent); color: var(--accent-text); }
+.race-chips .chip.done { color: var(--text); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.race-bars.racing .race-fill { transition: background-color .4s; }
+.race-row { transition: transform .6s cubic-bezier(.3,.7,.2,1); }
+
+/* Рекомендации: список моделей слева, панель настроек справа (на телефоне — друг под другом). */
+.reco-prov { margin: 1rem 0 1.25rem; }
+.reco-prov h2 { margin-top: .2rem; }
+.reco-pick { display: grid; grid-template-columns: minmax(14rem, 19rem) minmax(0, 1fr); gap: 1rem; margin: .75rem 0 1.5rem; align-items: start; }
+.reco-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .35rem; position: sticky; top: 5rem; }
+.reco-item { width: 100%; text-align: left; font: inherit; color: var(--text); background: var(--surface);
+             border: 1px solid var(--line); border-radius: var(--radius); padding: .5rem 2rem .5rem .75rem; cursor: pointer; position: relative; }
+.reco-item b { display: block; font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.reco-item small { display: block; color: var(--muted); font-size: .8rem; line-height: 1.3; }
+.reco-item::after { content: "→"; position: absolute; right: .75rem; top: 50%; transform: translateY(-50%); color: var(--muted); opacity: 0; transition: opacity .2s, transform .2s; }
+.reco-item:hover { border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
+.reco-item:hover::after { opacity: .6; }
+.reco-item[aria-selected="true"] { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+.reco-item[aria-selected="true"]::after { opacity: 1; color: var(--accent); transform: translate(3px, -50%); }
+.reco-item:focus-visible { outline: 3px solid var(--focus, var(--accent)); outline-offset: 2px; }
+.reco-panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; }
+.reco-panel h3 { margin: 0 0 .25rem; }
+.reco-panel .table-scroll, .reco-mini { margin: .5rem 0 .75rem; }
+.reco-mini td:first-child { font-weight: 700; }
+.reco-mini small { color: var(--muted); }
+.reco-cmd { margin-top: .75rem; }
+.reco-cmd-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; font-size: .85rem; color: var(--muted); margin-bottom: .3rem; }
+.reco-cmd pre { margin: 0; font-size: .8rem; max-height: 22rem; overflow: auto; white-space: pre; overflow-wrap: normal; }
+.reco-copy.done { color: var(--ok); border-color: var(--ok); }
+@media (max-width: 760px) { .reco-pick { grid-template-columns: minmax(0, 1fr); } .reco-list { position: static; } }

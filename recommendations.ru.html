@@ -1,0 +1,391 @@
+<!doctype html>
+<!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="homensai-style" content="1.3.0">
+  <title>Рекомендуемые настройки · RTX 3080 local AI (ru)</title>
+  <link rel="icon" href="style/brand/logo-mark.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#edf1f4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1720" media="(prefers-color-scheme: dark)">
+  <link rel="preload" href="style/fonts/ibm-plex/IBMPlexSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="style/fonts/ibm-plex/IBMPlexSans-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="style/js/theme-init.js"></script>
+  <link rel="stylesheet" href="style/dist/homensai.css">
+  <link rel="stylesheet" href="assets/report.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="HomenS.AI Benchmarks"><svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M50.0 13.0 L48.1 13.1 L46.1 13.2 L44.2 13.5 L42.3 13.8 L42.2 21.0 L40.7 21.5 L39.2 22.0 L37.8 22.6 L36.4 23.3 L31.5 18.0 L29.8 19.0 L28.3 20.1 L26.7 21.2 L25.2 22.5 L28.8 28.8 L27.7 29.9 L26.7 31.1 L25.7 32.4 L24.8 33.7 L18.0 31.5 L17.0 33.2 L16.2 35.0 L15.5 36.7 L14.8 38.6 L21.0 42.2 L20.7 43.8 L20.4 45.3 L20.2 46.9 L20.0 48.4 L13.0 50.0 L13.1 51.9 L13.2 53.9 L13.5 55.8 L13.8 57.7 L21.0 57.8 L21.5 59.3 L22.0 60.8 L22.6 62.2 L23.3 63.6 L18.0 68.5 L19.0 70.2 L20.1 71.7 L21.2 73.3 L22.5 74.8 L28.8 71.2 L29.9 72.3 L31.1 73.3 L32.4 74.3 L33.7 75.2 L31.5 82.0 L33.2 83.0 L35.0 83.8 L36.7 84.5 L38.6 85.2 L42.2 79.0 L43.8 79.3 L45.3 79.6 L46.9 79.8 L48.4 80.0 L50.0 87.0 Z" fill="#c9a24a"/><path d="M50 20 A30 30 0 0 1 50 80" fill="none" stroke="#2bb3c4" stroke-width="5"/><g fill="none" stroke="#2bb3c4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M50 36 H64 L70 30"/><path d="M50 50 H72"/><path d="M50 64 H62 L68 70"/></g><g fill="#2bb3c4"><circle cx="71" cy="29" r="4"/><circle cx="74" cy="50" r="4"/><circle cx="69" cy="71" r="4"/></g><circle cx="50" cy="50" r="9" fill="currentColor"/><circle cx="50" cy="50" r="3.5" fill="#c9a24a"/></svg><span class="brand-word">HomenS<span class="ai">.AI</span> <span class="sub">Benchmarks</span></span></a>
+    <nav id="nav" aria-label="Main navigation">
+      <ul class="nav-main"><li><a class="nav-link" href="index.html">Главная</a></li><li><a class="nav-link" href="report.ru.html">Отчёт</a></li><li><a class="nav-link" href="FINAL_REPORT.html">Итоговый отчёт</a></li><li><a class="nav-link" href="recommendations.ru.html" aria-current="page">Рекомендации</a></li><li><a class="nav-link" href="https://github.com/HomenSAI/homensai-local-ai-lab" rel="noopener">Сервер</a></li><li><a class="nav-link" href="about.ru.html">Об авторе</a></li></ul>
+      <ul class="nav-tools" id="tools"><li><details class="nav-group"><summary>Русский</summary><div class="nav-menu right"><a href="recommendations.en.html">English</a><a href="recommendations.ru.html" aria-current="page">Русский</a><a href="recommendations.de.html">Deutsch</a></div></details></li></ul>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+<h1>Рекомендуемые настройки</h1>
+<p>Какую модель брать под какую задачу и как её настроить на одной RTX 3080 (10 ГБ) с 32 ГБ ОЗУ. Все цифры ниже взяты из тестов отчёта.</p>
+<section class="card reco-prov"><p class="eyebrow">Claude Code</p><h2>Как получены эти рекомендации</h2><p>Всю систему автономно настроил и прогнал ИИ-агент <b>Claude Code</b>: установил и сконфигурировал сервер, провёл все тесты, нашёл и исправил проблемы, проанализировал измерения и вывел эти настройки. Автор задал цели и правила и проверил выводы.</p></section>
+<h2>Какую модель для какой задачи</h2>
+<div class="table-scroll"><table class="history"><tr><th>Задача</th><th>Модель (профиль шлюза)</th><th>Почему</th></tr><tr><td>Сложные вопросы, немецкий, математика, код — лучшее качество</td><td>Ternary-Bonsai-2-27B-PTQ1_0</td><td>лучшая в целом: 85 %, немецкий 23/30, мат+физ 40/40, код 18/20; 46,6 ток/с</td></tr><tr><td>Повседневный чат, код, математика — быстро</td><td>Qwen3.5-9B-MTP-Q4_K_XL</td><td>мат+физ 39/40, код 17/20; MTP ускоряет в 1,44 раза (77 → 111 ток/с)</td></tr><tr><td>Длинные документы (до 262K токенов)</td><td>Qwen3.5-9B-Q5_K_S</td><td>262K стабильно на GPU, мат+физ 40/40, код 18/20, 91 ток/с</td></tr><tr><td>Картинки + текст</td><td>Qwen3-VL-8B-Instruct-Q4_K_M</td><td>общее качество 81 %, 86,7 ток/с, контекст 64K</td></tr><tr><td>Помощник программиста</td><td>Qwen2.5-Coder-7B</td><td>100,8 ток/с; для сложных задач — Qwen3.5-9B (18/20)</td></tr><tr><td>Быстрые черновики и простые задачи</td><td>MiniCPM5-2B-Q8_0</td><td>138,7 ток/с, контекст 131K, маленькая (2,7 ГБ)</td></tr><tr><td>Длинный контекст на маленькой модели</td><td>Spark-X2.5-4B-Q8_0</td><td>контекст 262K, мат+физ 39/40, 79 ток/с</td></tr><tr><td>Английский чат, вызов инструментов</td><td>Llama-3.1-8B</td><td>95,9 ток/с, контекст 64K</td></tr><tr><td>Поиск по документам (RAG)</td><td>Qwen3-Embedding-4B / 0.6B</td><td>обе нашли 6 из 6 верных фрагментов; 0.6B легче</td></tr></table></div>
+<h2>Настройки моделей: оптимальный и максимальный режим</h2>
+<p class="note"><b>Оптимальный</b> — рабочий профиль шлюза: прошёл проверку при заполнении 95 % и сохраняет высокую скорость. <b>Максимальный</b> — наибольший контекст, на котором модель нашла 3 из 3 скрытых фактов при заполнении 80 %; скорость измерена при этом заполнении. Максимальный режим — только когда действительно нужен самый длинный ввод. Нажмите на модель: справа появятся её оптимальный и максимальный режим и готовая команда llama-server, которую можно скопировать. Пути — как в контейнере сервера (<code>/models</code> = ваша папка с моделями).</p>
+<div class="reco-pick"><ul class="reco-list" role="tablist" aria-label="Выберите модель"><li><button type="button" class="reco-item" role="tab" id="reco-0-tab" aria-controls="reco-0" aria-selected="true"><b>Qwen3.5-9B-MTP-Q4_K_XL</b><small>универсальный чат, код, математика (быстрая, MTP)</small></button></li><li><button type="button" class="reco-item" role="tab" id="reco-1-tab" aria-controls="reco-1" aria-selected="false"><b>Qwen3.5-9B-Q5_K_S</b><small>длинные документы до 262K</small></button></li><li><button type="button" class="reco-item" role="tab" id="reco-2-tab" aria-controls="reco-2" aria-selected="false"><b>Ornith-1.5-9B-MTP</b><small>точные науки и код (быстрая, MTP)</small></button></li><li><button type="button" class="reco-item" role="tab" id="reco-3-tab" aria-controls="reco-3" aria-selected="false"><b>MiMo-V2.6-Distill-Qwen-9B</b><small>ответы в стиле рассуждения, 262K</small></button></li><li><button type="button" class="reco-item" role="tab" id="reco-4-tab" aria-controls="reco-4" aria-selected="false"><b>Ternary-Bonsai-2-27B-PTQ1_0</b><small>самая умная: сложные вопросы, немецкий, точные науки, код</small></button></li><li><button type="button" class="reco-item" role="tab" id="reco-5-tab" aria-controls="reco-5" aria-selected="false"><b>Qwen3-VL-8B-Instruct-Q4_K_M</b><small>картинки + текст, хорошее общее качество</small></button></li><li><button type="button" class="reco-item" role="tab" id="reco-6-tab" aria-controls="reco-6" aria-selected="false"><b>Spark-X2.5-4B-Q8_0</b><small>длинный контекст на малой модели</small></button></li><li><button type="button" class="reco-item" role="tab" id="reco-7-tab" aria-controls="reco-7" aria-selected="false"><b>MiniCPM5-2B-Q8_0</b><small>самые быстрые простые задачи, черновики</small></button></li><li><button type="button" class="reco-item" role="tab" id="reco-8-tab" aria-controls="reco-8" aria-selected="false"><b>Qwen2.5-Coder-7B</b><small>помощник программиста, быстрый</small></button></li><li><button type="button" class="reco-item" role="tab" id="reco-9-tab" aria-controls="reco-9" aria-selected="false"><b>Llama-3.1-8B</b><small>английский чат, вызов инструментов</small></button></li><li><button type="button" class="reco-item" role="tab" id="reco-10-tab" aria-controls="reco-10" aria-selected="false"><b>Gemma-3-12B</b><small>многоязычный чат</small></button></li></ul><div class="reco-view"><div class="reco-panel" role="tabpanel" id="reco-0" aria-labelledby="reco-0-tab"><h3>Qwen3.5-9B-MTP-Q4_K_XL</h3><p class="note">рассуждение выкл; на 262K голова MTP переливается при 95 % — работать на 192K</p><div class="table-scroll"><table class="history reco-mini"><tr><th>Режим</th><th>Контекст</th><th>KV-кэш</th><th>Ускоритель</th><th>ток/с</th></tr><tr><td>Оптимальный</td><td>196608</td><td>q4_0</td><td>MTP</td><td>82,4 <small>на 8K</small></td></tr><tr><td>Максимальный</td><td>262144</td><td>q4_0</td><td>MTP</td><td>36,5 <small>при макс. заполнении</small></td></tr></table></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда оптимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/Qwen3/Qwen3.5-9B-UD-Q4_K_XL.gguf \
+  --alias Qwen3.5-9B-MTP-Q4_K_XL \
+  --n-gpu-layers all \
+  --flash-attn on \
+  --parallel 1 \
+  --batch-size 512 \
+  --ubatch-size 128 \
+  --jinja \
+  --metrics \
+  --spec-type draft-mtp \
+  --spec-draft-n-max 2 \
+  --ctx-size 196608 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0 \
+  --chat-template-kwargs '{"enable_thinking":false}'</pre></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда максимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/Qwen3/Qwen3.5-9B-UD-Q4_K_XL.gguf \
+  --alias Qwen3.5-9B-MTP-Q4_K_XL \
+  --n-gpu-layers all \
+  --flash-attn on \
+  --parallel 1 \
+  --batch-size 512 \
+  --ubatch-size 128 \
+  --jinja \
+  --metrics \
+  --spec-type draft-mtp \
+  --spec-draft-n-max 2 \
+  --ctx-size 262144 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0 \
+  --chat-template-kwargs '{"enable_thinking":false}'</pre></div></div><div class="reco-panel" role="tabpanel" id="reco-1" aria-labelledby="reco-1-tab" hidden><h3>Qwen3.5-9B-Q5_K_S</h3><p class="note">для длинных документов; для скорости: 131K с KV f16 (57 ток/с при полном заполнении)</p><div class="table-scroll"><table class="history reco-mini"><tr><th>Режим</th><th>Контекст</th><th>KV-кэш</th><th>Ускоритель</th><th>ток/с</th></tr><tr><td>Оптимальный</td><td>262144</td><td>q4_0</td><td>—</td><td>91,3 <small>на 8K</small></td></tr><tr><td>Максимальный</td><td>262144</td><td>q4_0</td><td>—</td><td>37,9 <small>при макс. заполнении</small></td></tr></table></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда оптимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/Qwen3/Qwen3.5-9B-Q5_K_S-4.60bpw.gguf \
+  --alias Qwen3.5-9B-Q5_K_S \
+  --n-gpu-layers all \
+  --flash-attn on \
+  --parallel 1 \
+  --batch-size 2048 \
+  --ubatch-size 512 \
+  --jinja \
+  --metrics \
+  --ctx-size 262144 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0 \
+  --chat-template-kwargs '{"enable_thinking":false}'</pre></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда максимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/Qwen3/Qwen3.5-9B-Q5_K_S-4.60bpw.gguf \
+  --alias Qwen3.5-9B-Q5_K_S \
+  --n-gpu-layers all \
+  --flash-attn on \
+  --parallel 1 \
+  --batch-size 2048 \
+  --ubatch-size 512 \
+  --jinja \
+  --metrics \
+  --ctx-size 262144 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0 \
+  --chat-template-kwargs '{"enable_thinking":false}'</pre></div></div><div class="reco-panel" role="tabpanel" id="reco-2" aria-labelledby="reco-2-tab" hidden><h3>Ornith-1.5-9B-MTP</h3><p class="note">голове MTP нужна видеопамять: 128K надёжно при 95 %; DFlash снят (перелив)</p><div class="table-scroll"><table class="history reco-mini"><tr><th>Режим</th><th>Контекст</th><th>KV-кэш</th><th>Ускоритель</th><th>ток/с</th></tr><tr><td>Оптимальный</td><td>131072</td><td>q4_0</td><td>MTP</td><td>83,8 <small>на 8K</small></td></tr><tr><td>Максимальный</td><td>262144</td><td>q4_0</td><td>—</td><td>38,2 <small>при макс. заполнении</small></td></tr></table></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда оптимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/top/Ornith-1.5-9B/Ornith-1.5-9B-Q4_K_M.gguf \
+  --alias Ornith-1.5-9B-MTP \
+  --flash-attn on \
+  --parallel 1 \
+  --n-gpu-layers all \
+  --fit off \
+  --spec-type draft-mtp \
+  --spec-draft-model /models/top/Ornith-1.5-9B/mtp-head/mtp-Ornith-1.5-9B-head-Q8_0.gguf \
+  --spec-draft-n-max 3 \
+  --jinja \
+  --metrics \
+  --ctx-size 131072 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0 \
+  --chat-template-kwargs '{"enable_thinking":false}'</pre></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда максимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/top/Ornith-1.5-9B/Ornith-1.5-9B-Q4_K_M.gguf \
+  --alias Ornith-1.5-9B-MTP \
+  --flash-attn on \
+  --parallel 1 \
+  --n-gpu-layers all \
+  --fit off \
+  --jinja \
+  --metrics \
+  --ctx-size 262144 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0 \
+  --chat-template-kwargs '{"enable_thinking":false}'</pre></div></div><div class="reco-panel" role="tabpanel" id="reco-3" aria-labelledby="reco-3-tab" hidden><h3>MiMo-V2.6-Distill-Qwen-9B</h3><p class="note">без MTP: он замедляет эту модель (×0,71); рассуждение выкл</p><div class="table-scroll"><table class="history reco-mini"><tr><th>Режим</th><th>Контекст</th><th>KV-кэш</th><th>Ускоритель</th><th>ток/с</th></tr><tr><td>Оптимальный</td><td>262144</td><td>q4_0</td><td>—</td><td>82,3 <small>на 8K</small></td></tr><tr><td>Максимальный</td><td>262144</td><td>q4_0</td><td>—</td><td>37,1 <small>при макс. заполнении</small></td></tr></table></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда оптимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/top/MiMo-V2.6-Distill-Qwen-9B/MiMo-V2.6-Distill-Qwen-9B-Q4_K_M.gguf \
+  --alias MiMo-V2.6-Distill-Qwen-9B \
+  --flash-attn on \
+  --parallel 1 \
+  --n-gpu-layers all \
+  --fit off \
+  --jinja \
+  --metrics \
+  --ctx-size 262144 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0 \
+  --chat-template-kwargs '{"enable_thinking":false}'</pre></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда максимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/top/MiMo-V2.6-Distill-Qwen-9B/MiMo-V2.6-Distill-Qwen-9B-Q4_K_M.gguf \
+  --alias MiMo-V2.6-Distill-Qwen-9B \
+  --flash-attn on \
+  --parallel 1 \
+  --n-gpu-layers all \
+  --fit off \
+  --jinja \
+  --metrics \
+  --ctx-size 262144 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0 \
+  --chat-template-kwargs '{"enable_thinking":false}'</pre></div></div><div class="reco-panel" role="tabpanel" id="reco-4" aria-labelledby="reco-4-tab" hidden><h3>Ternary-Bonsai-2-27B-PTQ1_0</h3><p class="note">рассуждение выкл — с ним модель зацикливается; llama-server — сборка форка PrismML llama.cpp (нужна для тернарной модели)</p><div class="table-scroll"><table class="history reco-mini"><tr><th>Режим</th><th>Контекст</th><th>KV-кэш</th><th>Ускоритель</th><th>ток/с</th></tr><tr><td>Оптимальный</td><td>131072</td><td>q4_0</td><td>—</td><td>46,6 <small>на 8K</small></td></tr><tr><td>Максимальный</td><td>131072</td><td>q4_0</td><td>—</td><td>22,7 <small>при макс. заполнении</small></td></tr></table></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда оптимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/Ternary-Bonsai-2-27B-PTQ1_0.gguf \
+  --alias Ternary-Bonsai-2-27B-PTQ1_0 \
+  --n-gpu-layers all \
+  --flash-attn on \
+  --parallel 1 \
+  --batch-size 2048 \
+  --ubatch-size 512 \
+  --jinja \
+  --metrics \
+  --ctx-size 131072 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0 \
+  --chat-template-kwargs '{"enable_thinking":false}'</pre></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда максимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/Ternary-Bonsai-2-27B-PTQ1_0.gguf \
+  --alias Ternary-Bonsai-2-27B-PTQ1_0 \
+  --n-gpu-layers all \
+  --flash-attn on \
+  --parallel 1 \
+  --batch-size 2048 \
+  --ubatch-size 512 \
+  --jinja \
+  --metrics \
+  --ctx-size 131072 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0 \
+  --chat-template-kwargs '{"enable_thinking":false}'</pre></div></div><div class="reco-panel" role="tabpanel" id="reco-5" aria-labelledby="reco-5-tab" hidden><h3>Qwen3-VL-8B-Instruct-Q4_K_M</h3><p class="note">для картинок нужен mmproj F16</p><div class="table-scroll"><table class="history reco-mini"><tr><th>Режим</th><th>Контекст</th><th>KV-кэш</th><th>Ускоритель</th><th>ток/с</th></tr><tr><td>Оптимальный</td><td>65536</td><td>q4_0</td><td>—</td><td>86,7 <small>на 8K</small></td></tr><tr><td>Максимальный</td><td>65536</td><td>q4_0</td><td>—</td><td>35,9 <small>при макс. заполнении</small></td></tr></table></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда оптимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/Qwen-Image-2.1/text_encoder/Qwen3VL-8B-Instruct-Q4_K_M.gguf \
+  --mmproj /models/Qwen-Image-2.1/text_encoder/mmproj-Qwen3VL-8B-Instruct-F16.gguf \
+  --alias Qwen3-VL-8B-Instruct-Q4_K_M \
+  --n-gpu-layers all \
+  --flash-attn on \
+  --parallel 1 \
+  --batch-size 2048 \
+  --ubatch-size 512 \
+  --jinja \
+  --metrics \
+  --ctx-size 65536 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0</pre></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда максимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/Qwen-Image-2.1/text_encoder/Qwen3VL-8B-Instruct-Q4_K_M.gguf \
+  --mmproj /models/Qwen-Image-2.1/text_encoder/mmproj-Qwen3VL-8B-Instruct-F16.gguf \
+  --alias Qwen3-VL-8B-Instruct-Q4_K_M \
+  --n-gpu-layers all \
+  --flash-attn on \
+  --parallel 1 \
+  --batch-size 2048 \
+  --ubatch-size 512 \
+  --jinja \
+  --metrics \
+  --ctx-size 65536 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0</pre></div></div><div class="reco-panel" role="tabpanel" id="reco-6" aria-labelledby="reco-6-tab" hidden><h3>Spark-X2.5-4B-Q8_0</h3><p class="note">быстрее: 98K с KV f16 (55,6 ток/с при полном заполнении); Q8 лучше Q4</p><div class="table-scroll"><table class="history reco-mini"><tr><th>Режим</th><th>Контекст</th><th>KV-кэш</th><th>Ускоритель</th><th>ток/с</th></tr><tr><td>Оптимальный</td><td>262144</td><td>q4_0</td><td>—</td><td>79,3 <small>на 8K</small></td></tr><tr><td>Максимальный</td><td>262144</td><td>q4_0</td><td>—</td><td>31,9 <small>при макс. заполнении</small></td></tr></table></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда оптимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/Spark/Spark-X2.5-4B-Q8_0.gguf \
+  --alias Spark-X2.5-4B-Q8_0 \
+  --n-gpu-layers all \
+  --flash-attn on \
+  --parallel 1 \
+  --batch-size 512 \
+  --ubatch-size 128 \
+  --jinja \
+  --metrics \
+  --ctx-size 262144 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0 \
+  --chat-template-kwargs '{"enable_thinking":false}'</pre></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда максимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/Spark/Spark-X2.5-4B-Q8_0.gguf \
+  --alias Spark-X2.5-4B-Q8_0 \
+  --n-gpu-layers all \
+  --flash-attn on \
+  --parallel 1 \
+  --batch-size 512 \
+  --ubatch-size 128 \
+  --jinja \
+  --metrics \
+  --ctx-size 262144 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0 \
+  --chat-template-kwargs '{"enable_thinking":false}'</pre></div></div><div class="reco-panel" role="tabpanel" id="reco-7" aria-labelledby="reco-7-tab" hidden><h3>MiniCPM5-2B-Q8_0</h3><p class="note">KV f16 — и максимум, и самый быстрый</p><div class="table-scroll"><table class="history reco-mini"><tr><th>Режим</th><th>Контекст</th><th>KV-кэш</th><th>Ускоритель</th><th>ток/с</th></tr><tr><td>Оптимальный</td><td>131072</td><td>f16</td><td>—</td><td>138,7 <small>на 8K</small></td></tr><tr><td>Максимальный</td><td>131072</td><td>f16</td><td>—</td><td>65,5 <small>при макс. заполнении</small></td></tr></table></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда оптимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/MiniCPM5/MiniCPM5-2B-Q8_0.gguf \
+  --alias MiniCPM5-2B-Q8_0 \
+  --n-gpu-layers all \
+  --flash-attn on \
+  --parallel 1 \
+  --batch-size 512 \
+  --ubatch-size 128 \
+  --jinja \
+  --metrics \
+  --ctx-size 131072 \
+  --cache-ram 4096 \
+  -ctk f16 \
+  -ctv f16 \
+  --chat-template-kwargs '{"enable_thinking":false}'</pre></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда максимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/MiniCPM5/MiniCPM5-2B-Q8_0.gguf \
+  --alias MiniCPM5-2B-Q8_0 \
+  --n-gpu-layers all \
+  --flash-attn on \
+  --parallel 1 \
+  --batch-size 512 \
+  --ubatch-size 128 \
+  --jinja \
+  --metrics \
+  --ctx-size 131072 \
+  --cache-ram 4096 \
+  -ctk f16 \
+  -ctv f16 \
+  --chat-template-kwargs '{"enable_thinking":false}'</pre></div></div><div class="reco-panel" role="tabpanel" id="reco-8" aria-labelledby="reco-8-tab" hidden><h3>Qwen2.5-Coder-7B</h3><p class="note">KV f16 самый быстрый на 64K</p><div class="table-scroll"><table class="history reco-mini"><tr><th>Режим</th><th>Контекст</th><th>KV-кэш</th><th>Ускоритель</th><th>ток/с</th></tr><tr><td>Оптимальный</td><td>65536</td><td>f16</td><td>—</td><td>100,8 <small>на 8K</small></td></tr><tr><td>Максимальный</td><td>65536</td><td>f16</td><td>—</td><td>72,0 <small>при макс. заполнении</small></td></tr></table></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда оптимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/cand/Qwen2.5-Coder-7B-Instruct/qwen2.5-coder-7b-instruct-q4_k_m.gguf \
+  --alias Qwen2.5-Coder-7B \
+  --flash-attn on \
+  --parallel 1 \
+  --n-gpu-layers all \
+  --fit off \
+  --jinja \
+  --metrics \
+  --ctx-size 65536 \
+  --cache-ram 4096 \
+  -ctk f16 \
+  -ctv f16</pre></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда максимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/cand/Qwen2.5-Coder-7B-Instruct/qwen2.5-coder-7b-instruct-q4_k_m.gguf \
+  --alias Qwen2.5-Coder-7B \
+  --flash-attn on \
+  --parallel 1 \
+  --n-gpu-layers all \
+  --fit off \
+  --jinja \
+  --metrics \
+  --ctx-size 65536 \
+  --cache-ram 4096 \
+  -ctk f16 \
+  -ctv f16</pre></div></div><div class="reco-panel" role="tabpanel" id="reco-9" aria-labelledby="reco-9-tab" hidden><h3>Llama-3.1-8B</h3><p class="note">KV q8</p><div class="table-scroll"><table class="history reco-mini"><tr><th>Режим</th><th>Контекст</th><th>KV-кэш</th><th>Ускоритель</th><th>ток/с</th></tr><tr><td>Оптимальный</td><td>65536</td><td>q8_0</td><td>—</td><td>95,9 <small>на 8K</small></td></tr><tr><td>Максимальный</td><td>65536</td><td>q8_0</td><td>—</td><td>39,6 <small>при макс. заполнении</small></td></tr></table></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда оптимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/cand/Llama-3.1-8B-Instruct/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf \
+  --alias Llama-3.1-8B \
+  --flash-attn on \
+  --parallel 1 \
+  --n-gpu-layers all \
+  --fit off \
+  --jinja \
+  --metrics \
+  --ctx-size 65536 \
+  --cache-ram 4096 \
+  -ctk q8_0 \
+  -ctv q8_0</pre></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда максимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/cand/Llama-3.1-8B-Instruct/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf \
+  --alias Llama-3.1-8B \
+  --flash-attn on \
+  --parallel 1 \
+  --n-gpu-layers all \
+  --fit off \
+  --jinja \
+  --metrics \
+  --ctx-size 65536 \
+  --cache-ram 4096 \
+  -ctk q8_0 \
+  -ctv q8_0</pre></div></div><div class="reco-panel" role="tabpanel" id="reco-10" aria-labelledby="reco-10-tab" hidden><h3>Gemma-3-12B</h3><p class="note">98K прошёл тест контекста, но завис на прогоне надёжности — работать на 64K</p><div class="table-scroll"><table class="history reco-mini"><tr><th>Режим</th><th>Контекст</th><th>KV-кэш</th><th>Ускоритель</th><th>ток/с</th></tr><tr><td>Оптимальный</td><td>65536</td><td>q4_0</td><td>—</td><td>61,8 <small>на 8K</small></td></tr><tr><td>Максимальный</td><td>98304</td><td>q4_0</td><td>—</td><td>43,3 <small>при макс. заполнении</small></td></tr></table></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда оптимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/cand/Gemma-3-12B-it/gemma-3-12b-it-Q4_K_M.gguf \
+  --alias Gemma-3-12B \
+  --flash-attn on \
+  --parallel 1 \
+  --n-gpu-layers all \
+  --fit off \
+  --jinja \
+  --metrics \
+  --ctx-size 65536 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0</pre></div><div class="reco-cmd"><div class="reco-cmd-head"><span>Команда максимального режима</span><button type="button" class="btn sm secondary reco-copy" data-copied="Скопировано">Копировать</button></div><pre>llama-server \
+  --host 127.0.0.1 \
+  --port 8080 \
+  --model /models/cand/Gemma-3-12B-it/gemma-3-12b-it-Q4_K_M.gguf \
+  --alias Gemma-3-12B \
+  --flash-attn on \
+  --parallel 1 \
+  --n-gpu-layers all \
+  --fit off \
+  --jinja \
+  --metrics \
+  --ctx-size 98304 \
+  --cache-ram 4096 \
+  -ctk q4_0 \
+  -ctv q4_0</pre></div></div></div></div>
+<h2>Настройки системы (локальная машина)</h2>
+<ul><li><b>Только GPU.</b> Веса и KV-кэш держать в 10 ГБ видеопамяти, лимит VRAM 9990 МиБ. Режимы с KV-кэшем в ОЗУ работают на 1–3 ток/с.</li><li><b>Одна модель за раз</b> через шлюз llama-swap; простаивающие модели выгружаются через 15 минут.</li><li><b>KV-кэш:</b> q4_0 для длинного контекста (128K–262K), f16 когда хватает 64–128K и важна скорость, q8_0 — между ними.</li><li><b>Рассуждение по умолчанию выключено.</b> Иначе гибридные модели тратят бюджет токенов на размышления и отдают пустые ответы; Bonsai зацикливается.</li><li><b>Ускорители:</b> использовать MTP (×1,34–1,44). Черновые модели замедляют генерацию (×0,17–0,75) — не использовать.</li><li><b>Оставлять запас:</b> работать на контексте, прошедшем проверку при заполнении 95 %, а не на максимуме при 80 %.</li><li><b>Windows + WSL:</b> <code>.wslconfig</code> memory=18GB, swap=4GB, autoMemoryReclaim=dropCache; оставлять 9–10 ГБ ОЗУ для Windows; модели хранить в томе Docker на ext4 (загрузка с диска Windows занимает 6–14 минут).</li></ul>
+<p class="note">Все измерения: <a href="report.ru.html">отчёт</a>. Сервер, чтобы повторить тесты: <a href="https://github.com/HomenSAI/homensai-local-ai-lab">homensai-local-ai-lab</a>.</p>
+</main>
+  <footer class="site-footer" id="footer"></footer>
+  <noscript>Для работы нужен JavaScript.</noscript>
+  <script src="style/js/brand.js"></script>
+  <script src="style/js/ui.js"></script>
+  <script src="style/js/brand-ui.js"></script>
+  <script src="assets/report.js"></script>
+  <script src="assets/reco.js"></script>
+</body>
+</html>

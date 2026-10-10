@@ -1,7 +1,7 @@
 <!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # Local AI server on RTX 3080: 23 models tested, 15 kept
 
-> Version 1.8 · Test dates: 2026-09-29 – 2026-10-06 (hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Author of the experiment: https://homensai.com/
+> Version 1.9 · Test dates: 2026-09-29 – 2026-10-06 (hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Author of the experiment: https://homensai.com/
 
 [English](README.en.md) | [Русский](README.ru.md) | [Deutsch](README.de.md)
 
@@ -138,7 +138,7 @@ Full tables: [RESULTS.en.md](RESULTS.en.md)
 
 **Made with.** Claude Code (desktop app) as the working agent — models Claude Opus 5.5, Sonnet 5.5 and Haiku 4.5 depending on the stage; llama.cpp (upstream and the PrismML fork for ternary Bonsai), llama-swap, Docker Desktop with WSL2 on Windows 10, Python 3, CadQuery sandbox image (used only for an experiment that was later removed).
 
-**License.** All materials of this repository (results, tables, reports, documentation, test descriptions) are licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/): free to copy, share, adapt and use for non-commercial purposes only, with mandatory attribution — credit the author of the experiment with a link to https://homensai.com/ and mark changes. See [LICENSE](LICENSE). Model weights are not part of this repository and keep their own licenses (see the model pages linked above). This is not legal advice.
+**License.** All materials of this repository (results, tables, reports, documentation, test descriptions) are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): free to copy, share, adapt and use for any purpose, including commercial use, with mandatory attribution — credit the author of the experiment with a link to https://homensai.com/ and mark changes. See [LICENSE](LICENSE). Model weights are not part of this repository and keep their own licenses (see the model pages linked above). This is not legal advice.
 
 ### Sources and third-party components
 
@@ -161,7 +161,7 @@ Full tables: [RESULTS.en.md](RESULTS.en.md)
 - **Privacy and security.** No personal data, passwords, tokens or keys are included; local usernames, paths and LAN addresses were replaced by placeholders. Replace `<YOUR_LAN_IP>` and secrets in your own setup and never publish them.
 - **Accuracy and warranty.** Results are measurements on one machine on the dates shown, provided "as is" without warranty. Model answers may be wrong; school-subject tests are a benchmark, not teaching or professional advice. Do not rely on them for medical, legal, financial or safety-critical decisions.
 - **AI assistance.** The experiment and these documents were prepared with the help of an AI agent (Claude Code) under the author's direction.
-- **Reuse and takedown.** Non-commercial reuse is allowed under CC BY-NC 4.0 (see LICENSE) with attribution to the author of the experiment: https://homensai.com/. Rights holders who find a problem can contact the author through that site and the material will be corrected or removed.
+- **Reuse and takedown.** Any reuse, including commercial, is allowed under CC BY 4.0 (see LICENSE) with attribution to the author of the experiment: https://homensai.com/. Rights holders who find a problem can contact the author through that site and the material will be corrected or removed.
 
 **Prompts used.** The exact prompts sent to the models (the full task lists are in the server repository):
 

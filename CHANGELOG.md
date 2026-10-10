@@ -3,6 +3,17 @@
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
 
+## 1.9 — 2026-10-10
+- EN: New page "Recommended settings" (EN/RU/DE): which model for which task; an interactive picker — click a model to see its optimal and maximum mode (context, KV cache, accelerator, speed) and copy a ready llama-server command taken from the real gateway configuration; system settings for the local machine. The recommendations were derived autonomously by Claude Code, which set up the server, ran all tests and analysed the results.
+- EN: Licence changed to CC BY 4.0 for the whole repository (texts, results and code): any use, including commercial, with mandatory attribution to the author (https://homensai.com/). `style/` keeps its own licence.
+- EN: Model race: starts with the Start button on the left (pause and replay on the same button), each test lasts about 5 seconds and bars grow smoothly by collecting points; the race is shown only on the report page, the summary keeps text and tables.
+- RU: Новая страница «Рекомендуемые настройки» (EN/RU/DE): какую модель брать под задачу; интерактивный выбор — нажмите на модель и увидите её оптимальный и максимальный режим (контекст, KV-кэш, ускоритель, скорость) и готовую команду llama-server из реальной конфигурации шлюза для копирования; системные настройки локальной машины. Рекомендации выведены автономно Claude Code, который настроил сервер, провёл все тесты и проанализировал результаты.
+- RU: Лицензия всего репозитория (тексты, результаты и код) заменена на CC BY 4.0: любое использование, включая коммерческое, с обязательным указанием автора (https://homensai.com/). У `style/` своя лицензия.
+- RU: Гонка моделей запускается кнопкой «Старт» слева (на ней же пауза и повтор), каждый тест длится около 5 секунд, столбцы плавно набирают очки; гонка показывается только в отчёте, в итоговом отчёте — текст и таблицы.
+- DE: Neue Seite „Empfohlene Einstellungen“ (EN/RU/DE): welches Modell für welche Aufgabe; interaktive Auswahl — ein Klick auf ein Modell zeigt optimalen und maximalen Modus (Kontext, KV-Cache, Beschleuniger, Tempo) und einen fertigen llama-server-Befehl aus der echten Gateway-Konfiguration zum Kopieren; Systemeinstellungen für den lokalen Rechner. Die Empfehlungen hat Claude Code eigenständig abgeleitet: Server eingerichtet, alle Tests ausgeführt, Ergebnisse ausgewertet.
+- DE: Lizenz des gesamten Repositorys (Texte, Ergebnisse und Code) auf CC BY 4.0 umgestellt: jede Nutzung, auch kommerziell, mit verpflichtender Nennung des Autors (https://homensai.com/). `style/` behält seine eigene Lizenz.
+- DE: Modellrennen startet mit der Start-Taste links (Pause und Wiederholung auf derselben Taste), jeder Test dauert etwa 5 Sekunden, die Balken sammeln gleichmäßig Punkte; das Rennen erscheint nur im Bericht, die Zusammenfassung behält Text und Tabellen.
+
 ## 1.8 — 2026-10-10
 - EN: Interactive "model race" on the report and summary pages: a horizontal bar chart replays the tests in their real order (with dates and measured GPU time); after each test a bar is the model's average so far, models overtake each other until the final ranking. Pure JavaScript, data read from the results table, core colours, respects reduced motion.
 - EN: Texts shortened: duplicated result tables and long sections removed, tests and scoring merged into one table, prompts, sources and disclaimers moved into collapsible blocks; prompts now wrap instead of scrolling sideways. The misleading "weakest models" list was removed from the summary.

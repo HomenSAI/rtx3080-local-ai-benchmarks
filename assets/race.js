@@ -1,19 +1,23 @@
 // HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/
-// «Гонка моделей»: горизонтальная гистограмма, которая проходит тесты по очереди.
-// После каждого теста столбец модели = средний результат по уже пройденным тестам (в % от максимума),
-// модели меняются местами, в конце остаётся итоговый рейтинг. Данные читаются из таблицы на странице
-// (data-race-source), поэтому числа не дублируются. Без inline-кода и внешних библиотек.
+// «Гонка моделей»: горизонтальная гистограмма, которая проходит тесты по очереди в их реальном порядке.
+// Каждый тест длится около 5 секунд: очки теста «набираются» плавно, столбец модели = накопленные очки
+// (каждый тест в % от максимума), модели плавно обгоняют друг друга; в финале столбец = средний результат.
+// Запуск — кнопкой «Старт» (повторное нажатие — пауза, в конце — «Ещё раз»); по чипу теста — переход к его итогу.
+// Данные читаются из таблицы на странице (data-race-source), без inline-кода и внешних библиотек.
 (function () {
   "use strict";
 
   var lang = document.documentElement.lang || "en";
   var TEXT = {
-    en: { h: "h", min: "min", gpu: "GPU time", total: "total", start: "Start", play: "Play", pause: "Pause", replay: "Replay", after: "After test", of: "of", final: "Final ranking" },
-    ru: { h: "ч", min: "мин", gpu: "время GPU", total: "всего", start: "Старт", play: "Запустить", pause: "Пауза", replay: "Ещё раз", after: "После теста", of: "из", final: "Итоговый рейтинг" },
-    de: { h: "Std.", min: "Min.", gpu: "GPU-Zeit", total: "gesamt", start: "Start", play: "Abspielen", pause: "Pause", replay: "Noch einmal", after: "Nach Test", of: "von", final: "Endstand" }
+    en: { h: "h", min: "min", gpu: "GPU time", total: "total", start: "Start", pause: "Pause", resume: "Continue", replay: "Again",
+          ready: "Final ranking. Press Start to replay the tests.", running: "Test", of: "of", final: "Final ranking" },
+    ru: { h: "ч", min: "мин", gpu: "время GPU", total: "всего", start: "Старт", pause: "Пауза", resume: "Дальше", replay: "Ещё раз",
+          ready: "Итоговый рейтинг. Нажмите «Старт», чтобы проиграть тесты по порядку.", running: "Тест", of: "из", final: "Итоговый рейтинг" },
+    de: { h: "Std.", min: "Min.", gpu: "GPU-Zeit", total: "gesamt", start: "Start", pause: "Pause", resume: "Weiter", replay: "Noch einmal",
+          ready: "Endstand. Start drücken, um die Tests der Reihe nach abzuspielen.", running: "Test", of: "von", final: "Endstand" }
   };
   var T = TEXT[lang] || TEXT.en;
-  var STEP_MS = 1700;
+  var TEST_MS = 5000;   // длительность одного теста
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function num(text) {
@@ -33,45 +37,46 @@
     var models = [];
     for (var r = 1; r < table.rows.length; r++) {
       var cells = table.rows[r].cells;
-      var name = cells[0].textContent.trim();
-      var vals = tests.map(function (t) { var v = num(cells[t.col].textContent); return v === null ? 0 : v / t.max * 100; });
-      models.push({ name: name, vals: vals });
+      models.push({
+        name: cells[0].textContent.trim(),
+        vals: tests.map(function (t) { var v = num(cells[t.col].textContent); return v === null ? 0 : v / t.max * 100; })
+      });
     }
     return { tests: tests, models: models };
   }
 
-  function scoreAt(model, step) {
-    if (step === 0) return 0;
-    var s = 0;
-    for (var i = 0; i < step; i++) s += model.vals[i];
-    return s / step;
+  // Накопленные очки в момент t (0…steps): пройденные тесты целиком + текущий тест частично,
+  // в % от максимума всех тестов. Столбцы растут от нуля, в финале длина = средний результат по всем тестам.
+  function scoreAt(model, t) {
+    if (t <= 0) return 0;
+    var k = Math.floor(t), f = t - k, sum = 0, n = model.vals.length;
+    for (var i = 0; i < Math.min(k, n); i++) sum += model.vals[i];
+    if (f > 0 && k < n) sum += f * model.vals[k];
+    return sum / n;
   }
+
+  function ease(x) { return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2; }
 
   function build(section) {
     var table = document.querySelector(section.getAttribute("data-race-source"));
     if (!table || table.rows.length < 3) return;
     var data = readTests(table);
     var steps = data.tests.length;
-    // Реальные даты тестов (в порядке столбцов), чтобы гонка шла по настоящей хронологии эксперимента.
     var dates = (section.getAttribute("data-race-dates") || "").split("|");
-    // Измеренное время GPU на тест (сумма поля minutes в сырых результатах), чтобы показать и накопленные часы.
     var minutes = (section.getAttribute("data-race-minutes") || "").split("|").map(parseFloat);
+
+    var status = section.querySelector(".race-status");
+    var chips = section.querySelector(".race-chips");
+    var list = section.querySelector(".race-bars");
+    var old = section.querySelector(".race-play");
+    if (old) old.remove();   // кнопка справа больше не нужна: запуск — кнопкой «Старт» слева
+
     function dur(m) {
       m = Math.round(m);
       var h = Math.floor(m / 60), r = m % 60;
       return h ? h + " " + T.h + (r ? " " + r + " " + T.min : "") : r + " " + T.min;
     }
-    function timeNote(step) {
-      if (!(minutes[step - 1] >= 0)) return "";
-      var total = 0;
-      for (var i = 0; i < step; i++) total += minutes[i] || 0;
-      return " · " + T.gpu + " " + dur(minutes[step - 1]) + " (" + T.total + " " + dur(total) + ")";
-    }
-
-    var status = section.querySelector(".race-status");
-    var button = section.querySelector(".race-play");
-    var chips = section.querySelector(".race-chips");
-    var list = section.querySelector(".race-bars");
+    function totalMin(k) { var s = 0; for (var i = 0; i < k; i++) s += minutes[i] || 0; return s; }
 
     var rows = data.models.map(function (m) {
       var li = document.createElement("li");
@@ -81,79 +86,101 @@
       li.querySelector(".race-name").textContent = m.name;
       li.title = m.name;
       list.appendChild(li);
-      return { model: m, el: li };
+      return { model: m, el: li, rank: -1 };
     });
+    list.style.setProperty("--race-rows", rows.length);
 
-    var chipEls = [];
-    for (var k = 0; k <= steps; k++) {
+    var play = document.createElement("button");
+    play.type = "button";
+    play.className = "chip race-start";
+    chips.appendChild(play);
+    var chipEls = data.tests.map(function (t, i) {
       var b = document.createElement("button");
       b.type = "button";
       b.className = "chip";
-      b.textContent = k === 0 ? T.start : data.tests[k - 1].label;
-      b.setAttribute("data-step", k);
-      b.addEventListener("click", function (e) { stop(); show(+e.currentTarget.getAttribute("data-step")); });
+      b.textContent = t.label;
+      b.addEventListener("click", function () { stop(); render(i + 1); });
       chips.appendChild(b);
-      chipEls.push(b);
-    }
+      return b;
+    });
 
-    var current = 0, timer = null;
+    var pos = steps, raf = null, last = 0;
 
-    function show(step) {
-      current = step;
+    function render(t) {
+      pos = t;
       var order = rows.slice().sort(function (a, b) {
-        var d = scoreAt(b.model, step) - scoreAt(a.model, step);
-        return d !== 0 ? d : a.model.name.localeCompare(b.model.name);
+        var d = scoreAt(b.model, t) - scoreAt(a.model, t);
+        return Math.abs(d) > 1e-9 ? d : a.model.name.localeCompare(b.model.name);
       });
       order.forEach(function (row, i) {
-        var v = scoreAt(row.model, step);
-        row.el.style.transform = "translateY(" + (i * 100) + "%)";
-        row.el.querySelector(".race-fill").style.width = v.toFixed(1) + "%";
-        row.el.querySelector(".race-val").textContent = step === 0 ? "—" : v.toFixed(0) + "%";
+        var v = scoreAt(row.model, t);
+        if (row.rank !== i) { row.el.style.transform = "translateY(" + (i * 100) + "%)"; row.rank = i; }
+        row.el.querySelector(".race-fill").style.width = v.toFixed(2) + "%";
+        row.el.querySelector(".race-val").textContent = t <= 0 ? "—" : v.toFixed(0) + "%";
         row.el.querySelector(".race-rank").textContent = i + 1;
-        row.el.classList.toggle("top1", step > 0 && i === 0);
-        row.el.classList.toggle("top3", step > 0 && i > 0 && i < 3);
+        row.el.classList.toggle("top1", t > 0 && i === 0);
+        row.el.classList.toggle("top3", t > 0 && i > 0 && i < 3);
       });
+      var cur = Math.min(steps, Math.ceil(t - 1e-9));   // номер идущего (или последнего) теста
       chipEls.forEach(function (c, i) {
-        c.classList.toggle("on", i === step);
-        c.setAttribute("aria-pressed", i === step ? "true" : "false");
+        c.classList.toggle("on", i + 1 === cur);
+        c.classList.toggle("done", i + 1 < cur || (t >= steps));
       });
-      status.textContent = step === 0 ? T.start
-        : step === steps ? T.final + " · " + steps + " " + T.of + " " + steps + timeNote(step).replace(/^ · [^(]*\(/, " · ").replace(/\)$/, "")
-        : T.after + " " + step + " " + T.of + " " + steps + ": " + data.tests[step - 1].label +
-          (dates[step - 1] ? " · " + dates[step - 1] : "") + timeNote(step);
-      if (!timer) button.textContent = step === steps ? T.replay : T.play;
+      if (raf) {
+        var k = Math.max(1, cur), pct = Math.round((t - (k - 1)) * 100);
+        status.textContent = T.running + " " + k + " " + T.of + " " + steps + ": " + data.tests[k - 1].label +
+          (dates[k - 1] ? " · " + dates[k - 1] : "") + " · " + Math.min(100, pct) + "%" +
+          (minutes[k - 1] >= 0 ? " · " + T.gpu + " " + T.total + " " + dur(totalMin(k - 1) + (minutes[k - 1] || 0) * Math.min(1, t - (k - 1))) : "");
+      } else if (t >= steps) {
+        status.textContent = T.final + (minutes[0] >= 0 ? " · " + T.gpu + " " + T.total + " " + dur(totalMin(steps)) : "");
+      } else {
+        status.textContent = data.tests[cur - 1].label + (dates[cur - 1] ? " · " + dates[cur - 1] : "") +
+          (minutes[cur - 1] >= 0 ? " · " + T.gpu + " " + dur(minutes[cur - 1]) + " (" + T.total + " " + dur(totalMin(cur)) + ")" : "");
+      }
+      label();
+    }
+
+    function label() {
+      play.textContent = raf ? "❚❚ " + T.pause : (pos <= 0 || pos >= steps) ? (pos >= steps && started ? "↻ " + T.replay : "▶ " + T.start) : "▶ " + T.resume;
+      play.classList.toggle("on", !!raf);
+      play.setAttribute("aria-pressed", raf ? "true" : "false");
+    }
+
+    var started = false;
+
+    function tick(now) {
+      var dt = now - last; last = now;
+      var t = Math.min(steps, pos + dt / TEST_MS);
+      // Внутри теста результат набирается с плавным ускорением и замедлением.
+      var k = Math.floor(t), shown = t >= steps ? steps : k + ease(t - k);
+      pos = t;
+      render(shown); pos = t;
+      if (t >= steps) { raf = null; render(steps); return; }
+      raf = requestAnimationFrame(tick);
+    }
+
+    function start() {
+      if (pos >= steps) pos = 0;
+      started = true;
+      list.classList.add("racing");
+      last = performance.now();
+      raf = requestAnimationFrame(tick);
+      label();
     }
 
     function stop() {
-      if (timer) clearInterval(timer);
-      timer = null;
-      button.textContent = current === steps ? T.replay : T.play;
+      if (raf) cancelAnimationFrame(raf);
+      raf = null;
+      list.classList.remove("racing");
+      label();
     }
 
-    function play() {
-      if (current === steps) show(0);
-      button.textContent = T.pause;
-      timer = setInterval(function () {
-        if (current >= steps) { stop(); return; }
-        show(current + 1);
-        if (current >= steps) stop();
-      }, STEP_MS);
-    }
+    play.addEventListener("click", function () { if (raf) stop(); else start(); });
 
-    button.addEventListener("click", function () { if (timer) stop(); else play(); });
-    list.style.setProperty("--race-rows", rows.length);
-
-    if (reduced) { show(steps); return; }
-    show(0);
-    // Запуск один раз, когда блок появляется на экране.
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(function (entries) {
-        if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); play(); }
-      }, { threshold: 0.35 });
-      io.observe(section);
-    } else {
-      show(steps);
-    }
+    status.textContent = T.ready;
+    render(steps);
+    status.textContent = T.ready;
+    if (reduced) return;
   }
 
   document.querySelectorAll("[data-race-source]").forEach(build);

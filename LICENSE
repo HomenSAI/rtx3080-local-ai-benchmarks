@@ -1,21 +1,21 @@
-Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+Creative Commons Attribution 4.0 International (CC BY 4.0)
 
 Copyright (c) 2026 Serhii Khomenko, the author of the experiment, https://homensai.com/
 
-All materials of this repository, namely the test results (results/*.jsonl), tables, reports,
-documentation and test descriptions, are licensed under the Creative Commons
-Attribution-NonCommercial 4.0 International license. Full legal text:
-https://creativecommons.org/licenses/by-nc/4.0/legalcode
+All materials of this repository — test results (tests/*/results/*.jsonl), tables, reports,
+HTML pages, documentation, recommendations and the code of this repository (assets/*.js,
+scripts/) — are licensed under the Creative Commons Attribution 4.0 International license.
+Full legal text: https://creativecommons.org/licenses/by/4.0/legalcode
 
-You are free to copy, share and adapt the material for NON-COMMERCIAL purposes only, under these terms:
+You are free to copy, share, adapt and use the material for ANY purpose, including commercial use,
+under this condition:
 
-- Attribution is mandatory: give credit to the author of the experiment with a link to
-  https://homensai.com/, provide a link to the license and indicate whether changes were made.
-- NonCommercial: the material may not be used for commercial purposes without a separate
-  permission from the author.
+- Attribution is mandatory: give credit to the author of the experiment, Serhii Khomenko, with a
+  link to https://homensai.com/, provide a link to the license and indicate whether changes were made.
 - Do not suggest that the author endorses you or your use.
 
 Not included and not covered by this license:
+- style/ (HomenS.AI Style) keeps its own license, see style/LICENSE.
 - Model weights. Every model keeps its own license and usage terms (links in README.en.md).
 - Third-party software (llama.cpp, llama-swap, Docker images and others) keeps its own licenses.
 - Trademarks and names of third parties.
