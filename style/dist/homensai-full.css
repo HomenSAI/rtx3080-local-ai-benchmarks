@@ -1,4 +1,4 @@
-/* HomenS.AI Style 1.7.0 — https://github.com/HomenSAI/homensai-style */
+/* HomenS.AI Style 1.8.1 — https://github.com/HomenSAI/homensai-style */
 /* ===== fonts.css ===== */
 /* HomenS.AI Style · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ */
 /* Шрифты IBM Plex (SIL OFL 1.1, без изменений): кириллица, латиница, немецкие знаки. Файлы — ../fonts/ibm-plex/, лицензия — OFL.txt рядом. */
@@ -261,6 +261,7 @@ th, td { text-align: left; padding: .4rem .5rem; border-bottom: 1px solid var(--
 .to-top:hover { border-color: var(--accent); }
 .to-top:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .bottomnav, .more-sheet { display: none; }
+.more-sheet[hidden] { display: none !important; }   /* лист «Меню» открывается кнопкой нижней панели */
 @media (max-width: 860px) {
   .topbar { padding: 0 1rem; min-height: 3.5rem; }
   .brand-word .sub { display: none; }

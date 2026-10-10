@@ -3,6 +3,11 @@
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
 
+## 1.14 — 2026-10-10
+- EN: Built with HomenS.AI Style 1.8.1: on phones (up to 860 px wide) the menu is now at the bottom of the screen — Home, the current page, a "Menu" button with all pages and Contact; before, the menu disappeared on phones.
+- RU: Собрано на HomenS.AI Style 1.8.1: на телефоне (ширина до 860 px) меню теперь внизу экрана — «Главная», текущая страница, кнопка «Меню» со всеми страницами и «Контакт»; раньше на телефоне меню пропадало.
+- DE: Mit HomenS.AI Style 1.8.1 gebaut: Auf dem Handy (bis 860 px Breite) steht das Menü jetzt unten am Bildschirm — Start, die aktuelle Seite, eine Schaltfläche „Menü“ mit allen Seiten und Kontakt; vorher verschwand das Menü auf dem Handy.
+
 ## 1.13 — 2026-10-10
 - EN: The site is now built with the site builder of HomenS.AI Style 1.7.0 (site.json + content/), so every page has the same frame as the style core: logo, menu, Contact capsule, language buttons EN | DE | RU (instead of a dropdown), theme switch, footer, "To top". The style copy no longer needs local patches: e-mail protection and no location are now in the core.
 - EN: Summary: new block "Time and resources" — 8 test days, about 12 kWh (about 1.5 kWh a day, author's estimate), about 16 h of GPU time, about 200 GB of downloads, with charts of energy per day and GPU time per test.

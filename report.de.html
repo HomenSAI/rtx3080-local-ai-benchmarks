@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="homensai-style" content="1.7.0">
+  <meta name="homensai-style" content="1.8.1">
   <title>Bericht — Benchmarks lokaler KI auf RTX 3080</title>
   <link rel="icon" href="style/brand/logo-mark.svg" type="image/svg+xml">
   <meta name="theme-color" content="#edf1f4" media="(prefers-color-scheme: light)">
@@ -14,9 +14,9 @@
   <link rel="alternate" hreflang="de" href="report.de.html">
   <link rel="preload" href="style/fonts/ibm-plex/IBMPlexSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="style/fonts/ibm-plex/IBMPlexSans-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
-  <script src="style/js/theme-init.js?v=1.7.0"></script>
-  <link rel="stylesheet" href="style/dist/homensai-full.css?v=1.7.0">
-  <link rel="stylesheet" href="assets/report.css?v=1.13">
+  <script src="style/js/theme-init.js?v=1.8.1"></script>
+  <link rel="stylesheet" href="style/dist/homensai-full.css?v=1.8.1">
+  <link rel="stylesheet" href="assets/report.css?v=1.14">
 </head>
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -29,7 +29,7 @@
   </header>
   <main id="main" tabindex="-1">
 <h1>Lokaler KI-Server auf RTX 3080: 23 Modelle getestet, 15 behalten</h1>
-<blockquote>Version 1.13 · Testdaten: 2026-09-29 – 2026-10-06 (Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Autor des Experiments: https://homensai.com/</blockquote>
+<blockquote>Version 1.14 · Testdaten: 2026-09-29 – 2026-10-06 (Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Autor des Experiments: https://homensai.com/</blockquote>
 <section class="card race" data-race-source="#all-models" data-race-minutes="31.7|19.8|144.5|51.0|14.3" data-race-dates="30.09.–01.10.|01.10.|02.10.|06.10.|06.10." aria-labelledby="race-title"><div class="race-head"><div><p class="eyebrow">Interaktiv</p><h2 id="race-title">Modellrennen durch die Tests</h2></div><button class="btn sm secondary race-play" type="button"></button></div><p class="note">Start drücken: die Tests laufen in ihrer echten Reihenfolge, je etwa 5 Sekunden. Die Balken sammeln Punkte (jeder Test in % des Maximums), Modelle überholen sich; am Ende entspricht ein Balken dem Durchschnittsergebnis. Ein Klick auf einen Test zeigt den Stand danach.</p><div class="chips race-chips"></div><p class="race-status" aria-live="polite"></p><ol class="race-bars"></ol></section>
 <h2>Was und warum</h2>
 <p>Welche lokalen Sprachmodelle sind auf einer RTX 3080 (10 GB) mit 32 GB RAM wirklich nutzbar? 23 Modelle liefen über ein Gateway (llama.cpp + llama-swap in Docker) und wurden gleich gemessen: größter stabiler Kontext, Qualität, Geschwindigkeit, Beschleuniger und Zuverlässigkeit. 15 bestanden und wurden zu Gateway-Profilen.</p>
@@ -81,14 +81,14 @@
   </main>
   <footer class="site-footer" id="footer"></footer>
   <noscript>Für Menü, Designwechsel und Fußzeile wird JavaScript benötigt.</noscript>
-  <script src="style/js/brand.js?v=1.7.0"></script>
-  <script src="style/js/ui.js?v=1.7.0"></script>
-  <script src="style/js/brand-ui.js?v=1.7.0"></script>
-  <script src="style/js/robot.js?v=1.7.0"></script>
-  <script src="style/js/motion.js?v=1.7.0"></script>
-  <script src="style/js/logo-word.js?v=1.7.0"></script>
-  <script src="style/js/site-init.js?v=1.7.0"></script>
-  <script src="assets/report.js?v=1.13"></script>
-  <script src="assets/race.js?v=1.13"></script>
+  <script src="style/js/brand.js?v=1.8.1"></script>
+  <script src="style/js/ui.js?v=1.8.1"></script>
+  <script src="style/js/brand-ui.js?v=1.8.1"></script>
+  <script src="style/js/robot.js?v=1.8.1"></script>
+  <script src="style/js/motion.js?v=1.8.1"></script>
+  <script src="style/js/logo-word.js?v=1.8.1"></script>
+  <script src="style/js/site-init.js?v=1.8.1"></script>
+  <script src="assets/report.js?v=1.14"></script>
+  <script src="assets/race.js?v=1.14"></script>
 </body>
 </html>
