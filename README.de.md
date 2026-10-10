@@ -1,7 +1,7 @@
 <!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # Lokaler KI-Server auf RTX 3080: 23 Modelle getestet, 15 behalten
 
-> Version 1.6 · Testdaten: 2026-09-29 – 2026-10-06 (Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Autor des Experiments: https://homensai.com/
+> Version 1.7 · Testdaten: 2026-09-29 – 2026-10-06 (Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Autor des Experiments: https://homensai.com/
 
 [English](README.en.md) | [Русский](README.ru.md) | [Deutsch](README.de.md)
 
@@ -138,7 +138,7 @@ Full tables: [RESULTS.de.md](RESULTS.de.md)
 
 **Erstellt mit.** Claude Code (Desktop-App) als Arbeitsagent — Modelle Claude Opus 5.5, Sonnet 5.5 und Haiku 4.5 je nach Phase; llama.cpp (Upstream und PrismML-Fork für ternäres Bonsai), llama-swap, Docker Desktop mit WSL2 unter Windows 10, Python 3, CadQuery-Sandbox-Image (nur für ein später entferntes Experiment).
 
-**Lizenz.** Frei teilbar und nutzbar **mit verpflichtender Nennung des Autors des Experiments: https://homensai.com/**. Ergebnisse, Tabellen und Dokumente: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (kopieren, weitergeben, bearbeiten, auch kommerziell — der Autor ist mit Link auf https://homensai.com/ zu nennen, Änderungen sind zu kennzeichnen). Testaufgaben: MIT-Lizenz, die Autorenzeile muss in jeder Kopie erhalten bleiben (siehe `LICENSE`, `LICENSE-DOCS.md`, `NOTICE`). Modellgewichte sind nicht Teil dieses Repositories und behalten ihre eigenen Lizenzen (siehe die oben verlinkten Modellseiten). Dies ist keine Rechtsberatung.
+**Lizenz.** Alle Materialien dieses Repositories (Ergebnisse, Tabellen, Berichte, Dokumentation, Testbeschreibungen) stehen unter [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): frei kopierbar, weitergebbar, bearbeitbar und für jeden Zweck nutzbar, auch kommerziell, bei verpflichtender Nennung des Autors des Experiments mit Link auf https://homensai.com/ und Kennzeichnung von Änderungen. Siehe [LICENSE](LICENSE). Modellgewichte sind nicht Teil dieses Repositories und behalten ihre eigenen Lizenzen (siehe die oben verlinkten Modellseiten). Dies ist keine Rechtsberatung.
 
 ### Quellen und Fremdkomponenten
 
@@ -163,7 +163,7 @@ Full tables: [RESULTS.de.md](RESULTS.de.md)
 - **KI-Unterstützung.** Das Experiment und diese Dokumente wurden unter Anleitung des Autors mit Hilfe eines KI-Agenten (Claude Code) erstellt.
 - **Weiterverwendung und Entfernung.** Die Weiterverwendung ist unter den obigen Lizenzen mit Nennung des Autors des Experiments erlaubt: https://homensai.com/. Rechteinhaber, die ein Problem finden, können den Autor über diese Seite kontaktieren; das Material wird korrigiert oder entfernt.
 
-**Verwendete Prompts.** Die genauen an die Modelle gesendeten Texte (vollständige Aufgabenlisten jedes Tests in `tests/`):
+**Verwendete Prompts.** Die genauen an die Modelle gesendeten Texte (vollständige Aufgabenlisten in dem Server-Repository):
 
 ```text
 [German passive] Du bist Deutschlehrer. Antworte NUR mit dem vollständigen deutschen Satz bzw. der verlangten Form, ohne Erklärung, in einer Zeile. Formuliere den Satz im Passiv, wenn nicht anders verlangt; lass den Täter (von/durch ...) weg, außer die Aufgabe verlangt ihn.

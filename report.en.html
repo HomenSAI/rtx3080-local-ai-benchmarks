@@ -26,7 +26,7 @@
   </header>
   <main id="main" tabindex="-1">
 <h1>Local AI server on RTX 3080: 23 models tested, 15 kept</h1>
-<blockquote>Version 1.6 · Test dates: 2026-09-29 – 2026-10-06 (hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Author of the experiment: https://homensai.com/</blockquote>
+<blockquote>Version 1.7 · Test dates: 2026-09-29 – 2026-10-06 (hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Author of the experiment: https://homensai.com/</blockquote>
 <h2>1. Project idea</h2>
 <p>Goal: find which local LLMs are really usable on one RTX 3080 (10 GB VRAM) with 32 GB RAM, run them all through one gateway (llama.cpp + llama-swap in Docker), and measure for every model the largest <em>stable</em> context, quality (Russian, logic, programming, German, school math/physics/chemistry), the speed-up from accelerators (MTP, DFlash, draft models) and long-run reliability.</p>
 <h2>2. Rules and settings</h2>
@@ -49,7 +49,7 @@
 <div class="table-scroll"><table class="history"><tr><th>Problems and fixes</th><th></th></tr><tr><td>Model loads took 6-14 min from the Windows drive (WSL 9p mount, 22-46 MB/s)</td><td>Models copied into a Docker volume on ext4 (llm-models-fast), SHA256 verified.</td></tr><tr><td>WSL VM out-of-memory / crashes during downloads and tests</td><td>.wslconfig memory limit, 4 GB swap, cache-dropper container dropping page cache every 10 s.</td></tr><tr><td>Windows froze or rebooted when VRAM spilled into RAM (sysmem fallback)</td><td>Never probe contexts beyond VRAM; RAM guard kills the server if free host RAM &lt; 2 GB; VRAM limit 9990 MiB; prefill time limit.</td></tr><tr><td>Probes falsely killed by the guard (VM page cache)</td><td>cache-dropper (privileged container) and WSL MemAvailable as the metric inside the runner.</td></tr><tr><td>Token estimate wrong for some tokenizers (MiniCPM)</td><td>Fill is computed with the server&#x27;s /tokenize.</td></tr><tr><td>Hybrid models returned empty answers (thinking ate the budget)</td><td>enable_thinking=false for plain runs, large budget when thinking is on; Gemma-4 and LFM2.5 still lose all 3 facts at 64K and were removed.</td></tr><tr><td>RAM-KV mode (--no-kv-offload) hung and ran on CPU (LFM2.5)</td><td>Mode removed from the context test; GPU-utilisation peak is recorded per probe.</td></tr><tr><td>262K contexts passed at 80% fill but spilled at 95% (MTP/DFlash heads need VRAM)</td><td>Soak at 95% lowered Qwen3.5-MTP to 192K and Ornith-MTP to 128K; Ornith-DFlash removed.</td></tr><tr><td>Test corpus read from the host Python folder, missing in the container (fake 149-token probes)</td><td>Corpus frozen in a fixed file; bogus probes deleted and rerun.</td></tr><tr><td>Draft-model accelerators slowed models down (x0.17-0.75)</td><td>Only MTP/DFlash profiles with measured speed-up are kept.</td></tr><tr><td>Windows reboot killed background jobs</td><td>Pipeline moved into the restartable runner container; every phase resumes from stored results.</td></tr></table></div>
 <h2>9. Server and test code</h2>
 <p><b>All tests in this report were obtained with this server: <a href="https://github.com/HomenSAI/homensai-local-ai-lab">HomenSAI/homensai-local-ai-lab</a>.</b> It was the engine of the whole experiment — llama.cpp with the llama-swap gateway in Docker, the scripts and the test runners. You can deploy the same server yourself: it works as described here, and with it you can run the same tests and get comparable results. This repository contains only the finished report and our raw results (results/*.jsonl in each tests/ folder) to compare with.</p><hr><h1>Results and comparisons</h1>
-<blockquote>Version 1.6 · Test dates: 2026-09-29 – 2026-10-06 (hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Author of the experiment: https://homensai.com/</blockquote>
+<blockquote>Version 1.7 · Test dates: 2026-09-29 – 2026-10-06 (hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Author of the experiment: https://homensai.com/</blockquote>
 <h2>Leaders</h2>
 <div class="table-scroll"><table class="history"><tr><th>Quality %</th><th>Bonsai-2-27B (85), Qwen3-VL-8B (81), Spark-X2.5-4B-Q8 (75)</th></tr><tr><td>German /30</td><td>Bonsai-2-27B (23), Qwen3.5-9B-MTP (22), Qwen3.5-9B (22)</td></tr><tr><td>Math+Phys /40</td><td>Qwen3.5-9B (40), Bonsai-2-27B (40), Ornith-1.5-9B (40)</td></tr><tr><td>Programming /20</td><td>Qwen3.5-9B (18), Bonsai-2-27B (18), Qwen3.5-9B-MTP (17)</td></tr><tr><td>tok/s</td><td>MiniCPM5-2B-Q4 (171.6), MiniCPM5-2B-Q8 (138.7), Qwen2.5-VL-7B (101.3)</td></tr><tr><td>Max context</td><td>Ornith-1.5-9B (262144), Qwen3.5-9B-MTP (262144), Qwen3.5-9B (262144)</td></tr></table></div>
 <h2>All kept models</h2>
@@ -64,318 +64,18 @@
 <div class="table-scroll"><table class="history"><tr><th>Embedding</th><th>dim</th><th>top-1</th><th>verdict</th></tr><tr><td>Qwen3-Embedding-0.6B</td><td>1024</td><td>6/6</td><td>works</td></tr><tr><td>Qwen3-Embedding-4B</td><td>2560</td><td>6/6</td><td>works</td></tr></table></div>
 <h2>Removed from the working list (no stable 64K GPU context)</h2>
 <div class="table-scroll"><table class="history"><tr><th>Model</th><th>best_ctx</th></tr><tr><td>Qwen3-8B</td><td>-</td></tr><tr><td>R1-Distill-Llama-8B</td><td>-</td></tr><tr><td>Mistral-Nemo-12B</td><td>-</td></tr><tr><td>Gemma-4-12B</td><td>-</td></tr><tr><td>Gemma-4-12B-QAT</td><td>-</td></tr><tr><td>Gemma-4-E4B</td><td>-</td></tr><tr><td>LFM2.5-2.6B</td><td>-</td></tr><tr><td>LFM2.5-8B-A1B</td><td>-</td></tr></table></div>
-<blockquote>Numbers are for one machine (RTX 3080, i7-4770, 32 GB). Chemistry is saturated: 10 of 15 models score 10/10, so it separates only the weak ones.</blockquote><hr><h1>Model configuration (llama-swap profiles)</h1>
-<blockquote>Version 1.6 · Test dates: 2026-09-29 – 2026-10-06 (hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Author of the experiment: https://homensai.com/</blockquote>
-<p>Settings of each model in the llama-swap gateway; the full server configuration is in the <a href="https://github.com/HomenSAI/homensai-local-ai-lab">server repository</a>. <code>/models/...</code> is the path inside the container (volume <code>llm-models-fast</code>). Flags: <code>--ctx-size</code> = context window, <code>-ctk/-ctv</code> = KV cache type (q4_0 = longest window, f16 = fastest), <code>--spec-type draft-mtp</code> = MTP accelerator, <code>--chat-template-kwargs</code> = thinking default (a request may override it with <code>chat_template_kwargs: {enable_thinking: true}</code>), <code>--n-gpu-layers all --fit off</code> = everything on the GPU, <code>--flash-attn on</code> is required for the quantised KV cache.</p>
-<p>Also required at the top level: <code>globalTTL: 900</code>, group <code>all-local-llm</code> with <code>exclusive: true, swap: true</code> (one model on the GPU at a time).</p>
-<h2>Qwen3.5-9B-MTP-Q4_K_XL</h2>
-<pre>Qwen3.5-9B-MTP-Q4_K_XL:
-  cmd: |
-    /app/llama-server \
-    --host 127.0.0.1 \
-    --port ${PORT} \
-    --model /models/Qwen3/Qwen3.5-9B-UD-Q4_K_XL.gguf \
-    --alias Qwen3.5-9B-MTP-Q4_K_XL \
-    --n-gpu-layers all \
-    --flash-attn on \
-    --parallel 1 \
-    --batch-size 512 \
-    --ubatch-size 128 \
-    --jinja \
-    --metrics \
-    --spec-type draft-mtp \
-    --spec-draft-n-max 2 \
-    --ctx-size 196608 \
-    --cache-ram 4096 \
-    -ctk q4_0 \
-    -ctv q4_0 \
-    --chat-template-kwargs &#x27;{&quot;enable_thinking&quot;:false}&#x27;
-  ttl: 900
-  checkEndpoint: /health</pre>
-<h2>Qwen3.5-9B-MTP-Q4_K_XL-Vision</h2>
-<pre>Qwen3.5-9B-MTP-Q4_K_XL-Vision:
-  cmd: |
-    /app/llama-server \
-    --host 127.0.0.1 \
-    --port ${PORT} \
-    --model /models/Qwen3/Qwen3.5-9B-UD-Q4_K_XL.gguf \
-    --mmproj /models/Qwen3/mmproj-F16.gguf \
-    --alias Qwen3.5-9B-MTP-Q4_K_XL-Vision \
-    --n-gpu-layers all \
-    --flash-attn on \
-    --parallel 1 \
-    --batch-size 2048 \
-    --ubatch-size 512 \
-    --jinja \
-    --metrics \
-    --ctx-size 131072 \
-    --cache-ram 4096 \
-    -ctk q4_0 \
-    -ctv q4_0 \
-    --chat-template-kwargs &#x27;{&quot;enable_thinking&quot;:false}&#x27;
-  ttl: 900
-  checkEndpoint: /health</pre>
-<h2>Qwen3.5-9B-Q5_K_S</h2>
-<pre>Qwen3.5-9B-Q5_K_S:
-  cmd: |
-    /app/llama-server \
-    --host 127.0.0.1 \
-    --port ${PORT} \
-    --model /models/Qwen3/Qwen3.5-9B-Q5_K_S-4.60bpw.gguf \
-    --alias Qwen3.5-9B-Q5_K_S \
-    --n-gpu-layers all \
-    --flash-attn on \
-    --parallel 1 \
-    --batch-size 2048 \
-    --ubatch-size 512 \
-    --jinja \
-    --metrics \
-    --ctx-size 262144 \
-    --cache-ram 4096 \
-    -ctk q4_0 \
-    -ctv q4_0 \
-    --chat-template-kwargs &#x27;{&quot;enable_thinking&quot;:false}&#x27;
-  ttl: 900
-  checkEndpoint: /health</pre>
-<h2>MiniCPM5-2B-Q8_0</h2>
-<pre>MiniCPM5-2B-Q8_0:
-  cmd: |
-    /app/llama-server \
-    --host 127.0.0.1 \
-    --port ${PORT} \
-    --model /models/MiniCPM5/MiniCPM5-2B-Q8_0.gguf \
-    --alias MiniCPM5-2B-Q8_0 \
-    --n-gpu-layers all \
-    --flash-attn on \
-    --parallel 1 \
-    --batch-size 512 \
-    --ubatch-size 128 \
-    --jinja \
-    --metrics \
-    --ctx-size 131072 \
-    --cache-ram 4096 \
-    -ctk f16 \
-    -ctv f16 \
-    --chat-template-kwargs &#x27;{&quot;enable_thinking&quot;:false}&#x27;
-  ttl: 900
-  checkEndpoint: /health</pre>
-<h2>Spark-X2.5-4B-Q8_0</h2>
-<pre>Spark-X2.5-4B-Q8_0:
-  cmd: |
-    /app/llama-server \
-    --host 127.0.0.1 \
-    --port ${PORT} \
-    --model /models/Spark/Spark-X2.5-4B-Q8_0.gguf \
-    --alias Spark-X2.5-4B-Q8_0 \
-    --n-gpu-layers all \
-    --flash-attn on \
-    --parallel 1 \
-    --batch-size 512 \
-    --ubatch-size 128 \
-    --jinja \
-    --metrics \
-    --ctx-size 262144 \
-    --cache-ram 4096 \
-    -ctk q4_0 \
-    -ctv q4_0 \
-    --chat-template-kwargs &#x27;{&quot;enable_thinking&quot;:false}&#x27;
-  ttl: 900
-  checkEndpoint: /health</pre>
-<h2>Ternary-Bonsai-2-27B-PTQ1_0</h2>
-<pre>Ternary-Bonsai-2-27B-PTQ1_0:
-  cmd: |
-    env LD_LIBRARY_PATH=/opt/prism:/usr/local/cuda/lib64 /opt/prism/llama-server \
-    --host 127.0.0.1 \
-    --port ${PORT} \
-    --model /models/Ternary-Bonsai-2-27B-PTQ1_0.gguf \
-    --alias Ternary-Bonsai-2-27B-PTQ1_0 \
-    --n-gpu-layers all \
-    --flash-attn on \
-    --parallel 1 \
-    --batch-size 2048 \
-    --ubatch-size 512 \
-    --jinja \
-    --metrics \
-    --ctx-size 131072 \
-    --cache-ram 4096 \
-    -ctk q4_0 \
-    -ctv q4_0 \
-    --chat-template-kwargs &#x27;{&quot;enable_thinking&quot;:false}&#x27;
-  ttl: 900
-  checkEndpoint: /health</pre>
-<h2>Qwen3-VL-8B-Instruct-Q4_K_M</h2>
-<pre>Qwen3-VL-8B-Instruct-Q4_K_M:
-  cmd: |
-    /app/llama-server \
-    --host 127.0.0.1 \
-    --port ${PORT} \
-    --model /models/Qwen-Image-2.1/text_encoder/Qwen3VL-8B-Instruct-Q4_K_M.gguf \
-    --mmproj /models/Qwen-Image-2.1/text_encoder/mmproj-Qwen3VL-8B-Instruct-F16.gguf \
-    --alias Qwen3-VL-8B-Instruct-Q4_K_M \
-    --n-gpu-layers all \
-    --flash-attn on \
-    --parallel 1 \
-    --batch-size 2048 \
-    --ubatch-size 512 \
-    --jinja \
-    --metrics \
-    --ctx-size 65536 \
-    --cache-ram 4096 \
-    -ctk q4_0 \
-    -ctv q4_0
-  ttl: 900
-  checkEndpoint: /health</pre>
-<h2>Ornith-1.5-9B-MTP</h2>
-<pre>Ornith-1.5-9B-MTP:
-  cmd: |
-    /app/llama-server \
-    --host 127.0.0.1 \
-    --port ${PORT} \
-    --model /models/top/Ornith-1.5-9B/Ornith-1.5-9B-Q4_K_M.gguf \
-    --alias Ornith-1.5-9B-MTP \
-    --flash-attn on \
-    --parallel 1 \
-    --n-gpu-layers all \
-    --fit off \
-    --spec-type draft-mtp \
-    --spec-draft-model /models/top/Ornith-1.5-9B/mtp-head/mtp-Ornith-1.5-9B-head-Q8_0.gguf \
-    --spec-draft-n-max 3 \
-    --jinja \
-    --metrics \
-    --ctx-size 131072 \
-    --cache-ram 4096 \
-    -ctk q4_0 \
-    -ctv q4_0 \
-    --chat-template-kwargs &#x27;{&quot;enable_thinking&quot;:false}&#x27;
-  ttl: 900
-  checkEndpoint: /health</pre>
-<h2>Qwen3-Embedding-0.6B</h2>
-<pre>Qwen3-Embedding-0.6B:
-  cmd: |
-    /app/llama-server \
-    --host 127.0.0.1 \
-    --port ${PORT} \
-    --model /models/top/Qwen3-Embedding-0.6B/Qwen3-Embedding-0.6B-Q8_0.gguf \
-    --alias Qwen3-Embedding-0.6B \
-    --embedding \
-    --pooling last \
-    --n-gpu-layers 99 \
-    --ctx-size 8192 \
-    --flash-attn on \
-    --fit off \
-    --metrics
-  ttl: 900
-  checkEndpoint: /health</pre>
-<h2>Qwen3-Embedding-4B</h2>
-<pre>Qwen3-Embedding-4B:
-  cmd: |
-    /app/llama-server \
-    --host 127.0.0.1 \
-    --port ${PORT} \
-    --model /models/top/Qwen3-Embedding-4B/Qwen3-Embedding-4B-Q4_K_M.gguf \
-    --alias Qwen3-Embedding-4B \
-    --embedding \
-    --pooling last \
-    --n-gpu-layers 99 \
-    --ctx-size 8192 \
-    --flash-attn on \
-    --fit off \
-    --metrics
-  ttl: 900
-  checkEndpoint: /health</pre>
-<h2>Qwen2.5-Coder-7B</h2>
-<pre>Qwen2.5-Coder-7B:
-  cmd: |
-    /app/llama-server \
-    --host 127.0.0.1 \
-    --port ${PORT} \
-    --model /models/cand/Qwen2.5-Coder-7B-Instruct/qwen2.5-coder-7b-instruct-q4_k_m.gguf \
-    --alias Qwen2.5-Coder-7B \
-    --flash-attn on \
-    --parallel 1 \
-    --n-gpu-layers all \
-    --fit off \
-    --jinja \
-    --metrics \
-    --ctx-size 65536 \
-    --cache-ram 4096 \
-    -ctk f16 \
-    -ctv f16
-  ttl: 900
-  checkEndpoint: /health</pre>
-<h2>Llama-3.1-8B</h2>
-<pre>Llama-3.1-8B:
-  cmd: |
-    /app/llama-server \
-    --host 127.0.0.1 \
-    --port ${PORT} \
-    --model /models/cand/Llama-3.1-8B-Instruct/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf \
-    --alias Llama-3.1-8B \
-    --flash-attn on \
-    --parallel 1 \
-    --n-gpu-layers all \
-    --fit off \
-    --jinja \
-    --metrics \
-    --ctx-size 65536 \
-    --cache-ram 4096 \
-    -ctk q8_0 \
-    -ctv q8_0
-  ttl: 900
-  checkEndpoint: /health</pre>
-<h2>Gemma-3-12B</h2>
-<pre>Gemma-3-12B:
-  cmd: |
-    /app/llama-server \
-    --host 127.0.0.1 \
-    --port ${PORT} \
-    --model /models/cand/Gemma-3-12B-it/gemma-3-12b-it-Q4_K_M.gguf \
-    --alias Gemma-3-12B \
-    --flash-attn on \
-    --parallel 1 \
-    --n-gpu-layers all \
-    --fit off \
-    --jinja \
-    --metrics \
-    --ctx-size 65536 \
-    --cache-ram 4096 \
-    -ctk q4_0 \
-    -ctv q4_0
-  ttl: 900
-  checkEndpoint: /health</pre>
-<h2>MiMo-V2.6-Distill-Qwen-9B</h2>
-<pre>MiMo-V2.6-Distill-Qwen-9B:
-  cmd: |
-    /app/llama-server \
-    --host 127.0.0.1 \
-    --port ${PORT} \
-    --model /models/top/MiMo-V2.6-Distill-Qwen-9B/MiMo-V2.6-Distill-Qwen-9B-Q4_K_M.gguf \
-    --alias MiMo-V2.6-Distill-Qwen-9B \
-    --flash-attn on \
-    --parallel 1 \
-    --n-gpu-layers all \
-    --fit off \
-    --jinja \
-    --metrics \
-    --ctx-size 262144 \
-    --cache-ram 4096 \
-    -ctk q4_0 \
-    -ctv q4_0 \
-    --chat-template-kwargs &#x27;{&quot;enable_thinking&quot;:false}&#x27;
-  ttl: 900
-  checkEndpoint: /health</pre><hr>
-<h2>About this project: idea, implementation, time, tokens, tools and prompts</h2>
+<blockquote>Numbers are for one machine (RTX 3080, i7-4770, 32 GB). Chemistry is saturated: 10 of 15 models score 10/10, so it separates only the weak ones.</blockquote><hr><h2>About this project: idea, implementation, time, tokens, tools and prompts</h2>
 <p><b>Idea.</b> A private owner of one gaming GPU (RTX 3080, 10 GB) wanted to know which local language models are really useful, at what context length they stay stable, and how to run them all reliably behind one OpenAI-compatible endpoint. Instead of trusting vendor claims, every model was measured on the same machine with the same tests, and the findings were turned into a working server configuration. Author of the experiment: <a href="https://homensai.com/">https://homensai.com/</a></p>
 <p><b>Implementation.</b> llama.cpp servers run inside Docker behind the llama-swap gateway (one model on the GPU at a time, automatic swapping and unloading). A Python test runner starts each model in a temporary container, sends the tasks, grades the answers automatically (numeric answers, hidden unit tests, fact matching) and stores every result in JSON lines. A restartable runner container resumes after a crash or reboot. Rules found during the work (64K minimum on the GPU, no RAM spill, hang detection) are enforced in code.</p>
 <p><b>Time spent.</b> Calendar: 2026-09-29 – 2026-10-06 (8 days, 1 session of hardware changes: RAM upgrade 16 → 32 GB on 2026-10-01). Measured machine time of the final runs: general test 32 min, German 20 min, context search 8.5 h (146 probes), school math/physics 2.4 h, chemistry 51 min, coding 14 min, reliability run 2 h, accelerators and embeddings about 1 h — roughly 15 hours of GPU time in total; the rest of the calendar time was setup, downloads (about 200 GB), conversions, fixes and waiting for restarts.</p>
 <p><b>Tokens.</b> Models under test generated about 1.03 million output tokens in the school-subject and coding runs alone (math/physics 731k, chemistry 235k, coding 64k) plus the long-context probes of up to 260k input tokens each. The agent (Claude Code on a Pro plan) worked in several sessions; at the time of writing the main session context held about 390k tokens and the weekly plan usage was 29%. An exact total across all sessions was not recorded.</p>
 <p><b>Made with.</b> Claude Code (desktop app) as the working agent — models Claude Opus 5.5, Sonnet 5.5 and Haiku 4.5 depending on the stage; llama.cpp (upstream and the PrismML fork for ternary Bonsai), llama-swap, Docker Desktop with WSL2 on Windows 10, Python 3, CadQuery sandbox image (used only for an experiment that was later removed).</p>
-<p><b>License.</b> Free to share and reuse <b>with mandatory attribution to the author of the experiment: https://homensai.com/</b>. Results, tables and documents: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> (copy, redistribute, adapt, also commercially — you must credit the author with a link to https://homensai.com/ and mark changes). Test tasks: MIT License with the same attribution line kept in every copy (see <code>LICENSE</code>, <code>LICENSE-DOCS.md</code>, <code>NOTICE</code>). Model weights are not part of this repository and keep their own licenses (see the model pages linked above). This is not legal advice.</p>
+<p><b>License.</b> All materials of this repository (results, tables, reports, documentation, test descriptions) are licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>: free to copy, share, adapt and use for any purpose, including commercial, with mandatory attribution — credit the author of the experiment with a link to https://homensai.com/ and mark changes. See <a href="LICENSE">LICENSE</a>. Model weights are not part of this repository and keep their own licenses (see the model pages linked above). This is not legal advice.</p>
 <h3>Sources and third-party components</h3>
 <ul><li><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> (upstream commit <code>81bc6b8</code>), <a href="https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.html">server README</a>, <a href="https://github.com/ggml-org/llama.cpp/blob/master/docs/speculative.html">speculative decoding / MTP</a></li><li><a href="https://github.com/PrismML-Eng/llama.cpp">PrismML llama.cpp fork</a> (commit <code>adfffbe</code>) and <a href="https://github.com/PrismML-Eng/Bonsai-demo/blob/main/KV-CACHE.html">Bonsai demo / KV-cache notes</a> — runtime for the ternary Bonsai-27B</li><li><a href="https://github.com/mostlygeek/llama-swap">llama-swap</a> — the model gateway</li><li><a href="https://github.com/XHToken/Spark-X2.5">Spark-X2.5</a> — Spark model runtime support</li><li><a href="https://github.com/ggml-org/whisper.cpp">whisper.cpp</a> (commit <code>d09f61a</code>) and <a href="https://github.com/leejet/stable-diffusion.cpp">stable-diffusion.cpp</a> (commit <code>3f8527a</code>, <a href="https://github.com/leejet/stable-diffusion.cpp/blob/3f8527a46c54ecf4cb4ed6003da8e8982283c73c/docs/qwen_image_2.1.html">Qwen-Image 2.1 guide</a>) — speech and image runtimes</li><li><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a>, <a href="https://hub.docker.com/r/nvidia/cuda">NVIDIA CUDA images</a> (12.8.1)</li><li>Accelerator / draft models: <a href="https://huggingface.co/protoLabsAI/Ornith-1.5-9B-MTP-GGUF">Ornith-1.5-9B MTP head</a>, <a href="https://huggingface.co/ornith-ai/Ornith-1.5-9B-DFlash">Ornith DFlash</a>, <a href="https://huggingface.co/VitreousCut/MiMo-V2.6-Distill-Qwen-9B-MTP-GGUF">MiMo MTP</a>, <a href="https://huggingface.co/openbmb/MiniCPM5-2B-DSpark-GGUF">MiniCPM5 DSpark</a>, <a href="https://huggingface.co/Qwen/Qwen3-0.6B-GGUF">Qwen3-0.6B</a>, <a href="https://huggingface.co/Qwen/Qwen2.5-Coder-0.5B-Instruct-GGUF">Qwen2.5-Coder-0.5B</a>, <a href="https://huggingface.co/bartowski/Llama-3.2-1B-Instruct-GGUF">Llama-3.2-1B</a>, <a href="https://huggingface.co/unsloth/gemma-3-1b-it-GGUF">Gemma-3-1B</a>, <a href="https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF">Qwen3.5-0.8B</a></li><li>All tested models: see the download links in the models table above.</li></ul>
 <h3>Rights, third-party licences and disclaimers</h3>
-<ul><li><b>No model weights are distributed here.</b> Only links to the original pages are given. Every model keeps its own licence and usage terms (for example Llama 3.1 uses the Llama Community License with its attribution and naming duties, Gemma uses Google&#x27;s Gemma Terms of Use, Qwen, MiniCPM, Spark, MiMo, Ornith, LFM, Bonsai and others have their own terms). Check the linked model page before you download or use a model; we did not re-verify every licence.</li><li><b>Model outputs.</b> The raw result files contain short answers produced by the tested models. Their use is subject to the respective model terms (some models restrict using outputs to train other models).</li><li><b>Names and trademarks</b> (Qwen, Llama, Gemma, Mistral, NVIDIA, RTX, Docker, Claude, Hugging Face and others) belong to their owners. This project is independent and is not affiliated with, sponsored or endorsed by them.</li><li><b>Software.</b> llama.cpp, llama-swap, whisper.cpp and stable-diffusion.cpp are open-source projects (to our knowledge MIT-licensed; the PrismML fork follows llama.cpp). They are not copied here — only their configuration and Dockerfiles that download pinned commits. NVIDIA CUDA base images and Docker Desktop are used under their own licence terms and are not redistributed.</li><li><b>Test data.</b> The tasks were written or generated by the author. The long-context filler text is assembled from the Python standard library source files (PSF licence); the file itself is not included — the server project rebuilds it from your own Python installation (results can differ slightly between Python versions).</li><li><b>Privacy and security.</b> No personal data, passwords, tokens or keys are included; local usernames, paths and LAN addresses were replaced by placeholders. Replace <code>&lt;YOUR_LAN_IP&gt;</code> and secrets in your own setup and never publish them.</li><li><b>Accuracy and warranty.</b> Results are measurements on one machine on the dates shown, provided &quot;as is&quot; without warranty. Model answers may be wrong; school-subject tests are a benchmark, not teaching or professional advice. Do not rely on them for medical, legal, financial or safety-critical decisions.</li><li><b>AI assistance.</b> The experiment and these documents were prepared with the help of an AI agent (Claude Code) under the author&#x27;s direction.</li><li><b>Reuse and takedown.</b> Reuse is allowed under the licences above with attribution to the author of the experiment: https://homensai.com/. Rights holders who find a problem can contact the author through that site and the material will be corrected or removed.</li></ul>
-<p><b>Prompts used.</b> The exact prompts sent to the models (each test&#x27;s full task list is in <code>tests/</code>):</p>
+<ul><li><b>No model weights are distributed here.</b> Only links to the original pages are given. Every model keeps its own licence and usage terms (for example Llama 3.1 uses the Llama Community License with its attribution and naming duties, Gemma uses Google&#x27;s Gemma Terms of Use, Qwen, MiniCPM, Spark, MiMo, Ornith, LFM, Bonsai and others have their own terms). Check the linked model page before you download or use a model; we did not re-verify every licence.</li><li><b>Model outputs.</b> The raw result files contain short answers produced by the tested models. Their use is subject to the respective model terms (some models restrict using outputs to train other models).</li><li><b>Names and trademarks</b> (Qwen, Llama, Gemma, Mistral, NVIDIA, RTX, Docker, Claude, Hugging Face and others) belong to their owners. This project is independent and is not affiliated with, sponsored or endorsed by them.</li><li><b>Software.</b> llama.cpp, llama-swap, whisper.cpp and stable-diffusion.cpp are open-source projects (to our knowledge MIT-licensed; the PrismML fork follows llama.cpp). They are not copied here — only their configuration and Dockerfiles that download pinned commits. NVIDIA CUDA base images and Docker Desktop are used under their own licence terms and are not redistributed.</li><li><b>Test data.</b> The tasks were written or generated by the author. The long-context filler text is assembled from the Python standard library source files (PSF licence); the file itself is not included — the server project rebuilds it from your own Python installation (results can differ slightly between Python versions).</li><li><b>Privacy and security.</b> No personal data, passwords, tokens or keys are included; local usernames, paths and LAN addresses were replaced by placeholders. Replace <code>&lt;YOUR_LAN_IP&gt;</code> and secrets in your own setup and never publish them.</li><li><b>Accuracy and warranty.</b> Results are measurements on one machine on the dates shown, provided &quot;as is&quot; without warranty. Model answers may be wrong; school-subject tests are a benchmark, not teaching or professional advice. Do not rely on them for medical, legal, financial or safety-critical decisions.</li><li><b>AI assistance.</b> The experiment and these documents were prepared with the help of an AI agent (Claude Code) under the author&#x27;s direction.</li><li><b>Reuse and takedown.</b> Reuse is allowed under CC BY 4.0 (see LICENSE) with attribution to the author of the experiment: https://homensai.com/. Rights holders who find a problem can contact the author through that site and the material will be corrected or removed.</li></ul>
+<p><b>Prompts used.</b> The exact prompts sent to the models (each test&#x27;s full task list is in <code>the server repository):</p>
 <pre>[German passive] Du bist Deutschlehrer. Antworte NUR mit dem vollständigen deutschen Satz bzw. der verlangten Form, ohne Erklärung, in einer Zeile. Formuliere den Satz im Passiv, wenn nicht anders verlangt; lass den Täter (von/durch ...) weg, außer die Aufgabe verlangt ihn.
   task example: Setze ins Passiv Präsens: Der Mechaniker repariert das Auto.
 

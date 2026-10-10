@@ -3,6 +3,11 @@
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
 
+## 1.7 — 2026-10-10
+- EN: One licence for the whole repository: CC BY 4.0 (free use for any purpose, including commercial, with mandatory attribution and a link to https://homensai.com/). The MIT licence text, NOTICE and LICENSE-DOCS.md are removed. Model configuration (llama-swap commands) and the CONFIG files are removed from the report; they belong to the server project. Unused files removed (.gitignore, unused style files).
+- RU: Единая лицензия для всего репозитория: CC BY 4.0 (свободное использование в любых целях, в том числе коммерческих, при обязательном указании автора и ссылке на https://homensai.com/). Текст MIT, NOTICE и LICENSE-DOCS.md удалены. Настройки моделей (команды llama-swap) и файлы CONFIG удалены из отчёта: они относятся к проекту сервера. Удалены неиспользуемые файлы (.gitignore и лишние файлы стиля).
+- DE: Eine Lizenz für das gesamte Repository: CC BY 4.0 (freie Nutzung für jeden Zweck, auch kommerziell, bei verpflichtender Nennung des Autors mit Link auf https://homensai.com/). Der MIT-Text, NOTICE und LICENSE-DOCS.md wurden entfernt. Modelleinstellungen (llama-swap-Befehle) und die CONFIG-Dateien sind aus dem Bericht entfernt; sie gehören zum Server-Projekt. Nicht benötigte Dateien entfernt (.gitignore und überflüssige Stil-Dateien).
+
 ## 1.6 — 2026-10-10
 - EN: The report is restyled to the HomenS.AI style 1.3.0 (copied into `style/`, pinned in every page by `<meta name="homensai-style">`): common header with logo, language switch, footer from the brand data, light and dark themes, phone-width layout. Inline styles and scripts moved to `assets/`. Headline of the English and German reports corrected to 15 kept models; a stray markdown fragment in the summary removed. Landing page `index.html` added.
 - RU: Отчёт переведён на стиль HomenS.AI 1.3.0 (скопирован в `style/`, закреплён в каждой странице метой `<meta name="homensai-style">`): общая шапка с логотипом, переключатель языков, подвал из данных бренда, светлая и тёмная темы, вёрстка для телефона. Встроенные стили и скрипты вынесены в `assets/`. Исправлен заголовок немецкого и английского отчётов (15 моделей), убран остаток markdown в итоговом отчёте. Добавлена стартовая страница `index.html`.

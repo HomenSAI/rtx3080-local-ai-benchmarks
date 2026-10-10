@@ -3,7 +3,7 @@
 
 **23 open models tested, 15 kept.** Which local language models are really usable on a single gaming GPU, how long a context they hold stably, and how to run them all behind one OpenAI-compatible endpoint.
 
-> Version 1.6 · Test dates: 2026-09-29 – 2026-10-06 · Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM
+> Version 1.7 · Test dates: 2026-09-29 – 2026-10-06 · Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM
 > Author: **Serhii Khomenko** — [homensai.com](https://homensai.com/)
 
 [English](README.en.md) | [Русский](README.ru.md) | [Deutsch](README.de.md) · **Web version:** [index.html / reports](index.html) (EN/RU/DE, sortable tables)
@@ -49,7 +49,6 @@ Full tables (all 15 kept models, recommended context and KV cache per model, acc
 |---|---|
 | [README.en.md](README.en.md) | full report: rules, models, test methods, scoring, problems and fixes |
 | [RESULTS.en.md](RESULTS.en.md) | all result tables |
-| [CONFIG.en.md](CONFIG.en.md) | gateway configuration of each model |
 | `tests/` | short description of each test and our raw results (`results/*.jsonl`) |
 | [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab) | separate repository: **the server that produced all these tests** (Docker / llama-swap, scripts, test runners) — deploy it to repeat them |
 | `index.html`, `report.*.html` | web version of the report |
@@ -62,10 +61,6 @@ Full tables (all 15 kept models, recommended context and KV cache per model, acc
 
 ## License
 
-Free to share and reuse **with mandatory attribution to the author: https://homensai.com/**.
+All materials of this repository (results, tables, reports, documentation, test descriptions) are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): free to copy, share, adapt and use for any purpose, including commercial, **with mandatory attribution — link to https://homensai.com/**. See [LICENSE](LICENSE).
 
-- Results, tables and documents: [CC BY 4.0](LICENSE-DOCS.md).
-- Test tasks: [MIT](LICENSE) with the attribution line kept in every copy (see also [NOTICE](NOTICE)).
 - Model weights are **not** distributed here; every model keeps its own license (links in [README.en.md](README.en.md)).
-
-Results are measurements on one machine on the dates shown, provided "as is" without warranty.

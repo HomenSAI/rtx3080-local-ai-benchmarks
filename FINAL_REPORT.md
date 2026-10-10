@@ -1,7 +1,7 @@
 <!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # Итоговый отчёт по локальным ИИ (RTX 3080 10 ГБ, 32 ГБ ОЗУ)
 
-Версия 1.6 · Даты тестов: 2026-09-29 – 2026-10-06. Автор эксперимента: https://homensai.com/
+Версия 1.7 · Даты тестов: 2026-09-29 – 2026-10-06. Автор эксперимента: https://homensai.com/
 
 ## Лидеры
 - **Общее качество (русский, логика, программирование, рассуждение), %:** Bonsai-2-27B (85), Qwen3-VL-8B (81), Spark-X2.5-4B-Q8 (75)
