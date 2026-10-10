@@ -3,6 +3,11 @@
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
 
+## 1.9 — 2026-10-10
+- EN: Whole site brought to HomenS.AI Style 1.3.0 (full bundle with the author card and robot). New author pages in EN / RU / DE: author card with the robot, contacts (e-mail, status, location, reply time) and the author links from the brand data, legal links (Impressum, privacy policy, licence). The author page is linked in the menu of every page.
+- RU: Весь сайт приведён к стилю HomenS.AI 1.3.0 (полный пакет с карточкой автора и роботом). Новые страницы «Об авторе» на трёх языках: карточка автора с роботом, контакты (e-mail, статус, место, срок ответа) и ссылки автора из данных бренда, правовые ссылки (Impressum, политика конфиденциальности, лицензия). Ссылка на страницу автора есть в меню каждой страницы.
+- DE: Die gesamte Website ist auf den HomenS.AI-Stil 1.3.0 gebracht (volles Paket mit Autorenkarte und Roboter). Neue Seiten „Über den Autor“ in EN / RU / DE: Autorenkarte mit Roboter, Kontakt (E-Mail, Status, Ort, Antwortzeit) und Autorenlinks aus den Markendaten, rechtliche Links (Impressum, Datenschutz, Lizenz). Die Seite ist im Menü jeder Seite verlinkt.
+
 ## 1.8 — 2026-10-10
 - EN: Licence changed to CC BY-NC 4.0: non-commercial use only, attribution to the author with a link to https://homensai.com/ is mandatory. LICENSE, the licence paragraphs in README and reports, and the links are updated.
 - RU: Лицензия изменена на CC BY-NC 4.0: только некоммерческое использование, обязательно указание автора со ссылкой на https://homensai.com/. Обновлены LICENSE, абзацы о лицензии в README и отчётах и ссылки.

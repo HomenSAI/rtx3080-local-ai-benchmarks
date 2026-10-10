@@ -1,7 +1,7 @@
 <!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # Локальный ИИ-сервер на RTX 3080: протестировано 23 модели, оставлено 15
 
-> Версия 1.8 · Даты тестов: 2026-09-29 – 2026-10-06 (железо: RTX 3080 10 ГБ, i7-4770, 32 ГБ ОЗУ). Автор эксперимента: https://homensai.com/
+> Версия 1.9 · Даты тестов: 2026-09-29 – 2026-10-06 (железо: RTX 3080 10 ГБ, i7-4770, 32 ГБ ОЗУ). Автор эксперимента: https://homensai.com/
 
 [English](README.en.md) | [Русский](README.ru.md) | [Deutsch](README.de.md)
 
