@@ -1,6 +1,6 @@
 # Lokaler KI-Server auf RTX 3080: 23 Modelle getestet, 14 behalten
 
-> Version 1.4 · Testdaten: 2026-09-29 – 2026-10-06 (Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Autor des Experiments: https://homensai.com/
+> Version 1.5 · Testdaten: 2026-09-29 – 2026-10-06 (Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Autor des Experiments: https://homensai.com/
 
 [English](README.en.md) | [Русский](README.ru.md) | [Deutsch](README.de.md)
 
@@ -124,7 +124,7 @@ Full tables: [RESULTS.de.md](RESULTS.de.md)
 
 ## 10. Tests reproduzieren
 
-Jeder Ordner in tests/ enthält die Aufgabendatei, den Runner, eine README und unsere Rohergebnisse (results/*.jsonl). Den Runner gegen den eigenen llama.cpp-Server (Port 8090, siehe start() in bench_top.py) laufen lassen und das eigene jsonl mit unserem vergleichen.
+Jeder Ordner in tests/ enthält die Aufgabendatei, den Runner, eine README und unsere Rohergebnisse (results/*.jsonl). Den Runner gegen den eigenen llama.cpp-Server (Port 8090, siehe start() in bench_top.py) laufen lassen und das eigene jsonl mit unserem vergleichen. Die Runner sind für einen erneuten Testlauf nötig; der Server selbst liegt in [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab).
 <!--FOOT-->
 
 ---

@@ -2,7 +2,7 @@
 
 **23 open models tested, 14 kept.** Which local language models are really usable on a single gaming GPU, how long a context they hold stably, and how to run them all behind one OpenAI-compatible endpoint.
 
-> Version 1.4 · Test dates: 2026-09-29 – 2026-10-06 · Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM
+> Version 1.5 · Test dates: 2026-09-29 – 2026-10-06 · Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM
 > Author: **Serhii Khomenko** — [homensai.com](https://homensai.com/)
 
 [English](README.en.md) | [Русский](README.ru.md) | [Deutsch](README.de.md) · **Web version:** [index.html / reports](index.html) (EN/RU/DE, sortable tables)
@@ -49,11 +49,11 @@ Full tables (all 15 kept models, recommended context and KV cache per model, acc
 | [README.en.md](README.en.md) | full report: rules, models, test methods, scoring, problems and fixes |
 | [RESULTS.en.md](RESULTS.en.md) | all result tables |
 | [INSTALL.en.md](INSTALL.en.md), [CONFIG.en.md](CONFIG.en.md) | install guide and gateway configuration |
-| `tests/` | task files, runners and our raw results (`results/*.jsonl`) |
-| `server/` | Docker / llama-swap server setup (`server/.env.example` only, no secrets) |
+| `tests/` | task files, runners (needed to re-run a test) and our raw results (`results/*.jsonl`) |
+| [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab) | the server (gateway, console, Docker files) — a separate repository |
 | `index.html`, `report.*.html` | web version of the report |
 
-To reproduce: run a runner from `tests/` against your own llama.cpp server on port 8090 and compare your `jsonl` with ours.
+To reproduce: run a runner from `tests/` against your own llama.cpp server on port 8090 and compare your `jsonl` with ours. The runners are needed to re-run a test; the server itself is in [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab).
 
 ## Author
 

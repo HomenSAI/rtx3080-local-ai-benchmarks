@@ -2,7 +2,10 @@
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
 
-## Unreleased
+## 1.5 — 2026-10-10
+- EN: Server code moved to the separate repository [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab) (`server/` removed from here); this repository keeps the test runners, raw results and HTML reports. GitHub release workflow added.
+- RU: Серверная часть вынесена в отдельный репозиторий [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab) (папка `server/` удалена отсюда); здесь остаются раннеры тестов, сырые результаты и HTML-отчёты. Добавлен workflow GitHub-релизов.
+- DE: Serverteil in das eigene Repository [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab) ausgelagert (Ordner `server/` hier entfernt); hier bleiben Test-Runner, Rohergebnisse und HTML-Berichte. GitHub-Release-Workflow ergänzt.
 - EN: Licences changed to noncommercial use with mandatory attribution (code: PolyForm Noncommercial 1.0.0; results and documents: CC BY-NC 4.0); author block with ORCID added to README; index page restyled with the homensai-website design tokens (colours, dark theme, radius).
 - RU: Лицензии переведены на некоммерческое использование с обязательным указанием автора (код: PolyForm Noncommercial 1.0.0; результаты и документы: CC BY-NC 4.0); в README добавлен блок об авторе с ORCID; страница index оформлена по дизайн-токенам homensai-website (цвета, тёмная тема, скругления).
 - DE: Lizenzen auf nichtkommerzielle Nutzung mit Pflicht zur Urheberangabe umgestellt (Code: PolyForm Noncommercial 1.0.0; Ergebnisse und Dokumente: CC BY-NC 4.0); Autorenblock mit ORCID in README ergänzt; index-Seite nach den Design-Tokens von homensai-website gestaltet (Farben, dunkles Thema, Radius).

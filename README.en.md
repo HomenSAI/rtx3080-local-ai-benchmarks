@@ -1,6 +1,6 @@
 # Local AI server on RTX 3080: 23 models tested, 14 kept
 
-> Version 1.4 · Test dates: 2026-09-29 – 2026-10-06 (hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Author of the experiment: https://homensai.com/
+> Version 1.5 · Test dates: 2026-09-29 – 2026-10-06 (hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Author of the experiment: https://homensai.com/
 
 [English](README.en.md) | [Русский](README.ru.md) | [Deutsch](README.de.md)
 
@@ -124,7 +124,7 @@ Full tables: [RESULTS.en.md](RESULTS.en.md)
 
 ## 10. Reproducing the tests
 
-Each folder in tests/ contains the task file, the runner, a README and our raw results (results/*.jsonl). Run the runner against your own llama.cpp server on port 8090 (see bench_top.py start()) and compare your jsonl with ours.
+Each folder in tests/ contains the task file, the runner, a README and our raw results (results/*.jsonl). Run the runner against your own llama.cpp server on port 8090 (see bench_top.py start()) and compare your jsonl with ours. The runners are needed to re-run a test; the server itself is in [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab).
 <!--FOOT-->
 
 ---
