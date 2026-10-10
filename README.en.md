@@ -141,7 +141,7 @@ Each folder in tests/ contains the task file, the runner, a README and our raw r
 
 **Made with.** Claude Code (desktop app) as the working agent — models Claude Opus 5.5, Sonnet 5.5 and Haiku 4.5 depending on the stage; llama.cpp (upstream and the PrismML fork for ternary Bonsai), llama-swap, Docker Desktop with WSL2 on Windows 10, Python 3, CadQuery sandbox image (used only for an experiment that was later removed).
 
-**License.** Free to share and reuse **with mandatory attribution to the author of the experiment: https://homensai.com/**. Results, tables and documents: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (copy, redistribute, adapt, also commercially — you must credit the author with a link to https://homensai.com/ and mark changes). Program code and test tasks: MIT License with the same attribution line kept in every copy (see `LICENSE`, `LICENSE-DOCS.md`, `NOTICE`). Model weights are not part of this repository and keep their own licenses (see the model pages linked above). This is not legal advice.
+**License.** Free to share and reuse for **noncommercial purposes only**, **with mandatory attribution to the author of the experiment: https://homensai.com/**. Results, tables and documents: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) (copy, redistribute, adapt, for noncommercial purposes only — you must credit the author with a link to https://homensai.com/ and mark changes). Program code and test tasks: PolyForm Noncommercial 1.0.0 with the same attribution line kept in every copy (see `LICENSE`, `LICENSE-DOCS.md`, `NOTICE`). Model weights are not part of this repository and keep their own licenses (see the model pages linked above). This is not legal advice.
 
 ### Sources and third-party components
 
