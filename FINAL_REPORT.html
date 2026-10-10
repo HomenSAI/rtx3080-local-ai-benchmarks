@@ -26,7 +26,7 @@
   </header>
   <main id="main" tabindex="-1">
 <h1>Итоговый отчёт по локальным ИИ (RTX 3080 10 ГБ, 32 ГБ ОЗУ)</h1>
-<p class="note">Версия 1.9 · Даты тестов: 2026-09-29 – 2026-10-06. Автор эксперимента: https://homensai.com/</p>
+<p class="note">Версия 1.10 · Даты тестов: 2026-09-29 – 2026-10-06. Автор эксперимента: https://homensai.com/</p>
 <h2>Лидеры</h2>
 <ul><li><b>Общее качество (русский, логика, программирование, рассуждение), %:</b> Bonsai-2-27B (85), Qwen3-VL-8B (81), Spark-X2.5-4B-Q8 (75)</li><li><b>Немецкий, пассив (из 30):</b> Bonsai-2-27B (23), Qwen3.5-9B-MTP (22), Ornith-1.5-9B (22)</li><li><b>Математика и физика 11 класс (из 40):</b> Bonsai-2-27B (40), Ornith-1.5-9B (40), Qwen3.5-9B (40)</li><li><b>Скорость генерации (ток/с):</b> MiniCPM5-2B-Q4 (171.6), MiniCPM5-2B-Q8 (138.7), Qwen2.5-VL-7B (101.3)</li><li><b>Максимальный контекст (токенов):</b> Spark-X2.5-4B-Q8 (262144), Spark-X2.5-4B-Q4 (262144), Qwen3.5-9B-MTP (262144)</li><li><b>Программирование (написание кода), 20 задач (из 20):</b> Bonsai-2-27B (18), Qwen3.5-9B (18), Qwen3-VL-8B (17)</li><li><b>Химия 11 класс (из 10):</b> Bonsai-2-27B (10), Qwen3-VL-8B (10), Spark-X2.5-4B-Q8 (10), Spark-X2.5-4B-Q4 (10)</li></ul>
 <h2>Оставлены (контекст не ниже 64K на GPU)</h2>
@@ -43,7 +43,7 @@
 <h2>Сервер и код</h2>
 <p>Все результаты получены на сервере <a href="https://github.com/HomenSAI/homensai-local-ai-lab">homensai-local-ai-lab</a> (llama.cpp + llama-swap в Docker, раннеры тестов). Разверните его, чтобы повторить тесты; здесь хранятся отчёт и сырые результаты (<code>tests/*/results/*.jsonl</code>).</p>
 <h2>Как это сделано</h2>
-<ul><li><b>Время:</b> 8 календарных дней (29.09–06.10.2026), около 15 часов работы GPU; остальное — настройка, ~200 ГБ загрузок, конвертации и исправления.</li><li><b>Токены:</b> около 1,03 млн выходных токенов только в школьных тестах и программировании, плюс проверки длинного контекста до 260K входных токенов.</li><li><b>Инструменты:</b> Claude Code как рабочий агент под руководством автора; llama.cpp (и форк PrismML для Bonsai), llama-swap, Docker Desktop с WSL2.</li><li><b>Лицензия:</b> <a href="https://creativecommons.org/licenses/by/4.0/deed.ru">CC BY 4.0</a> — любое использование, включая коммерческое, с обязательной ссылкой на <a href="https://homensai.com/">homensai.com</a>. У весов моделей свои лицензии.</li></ul>
+<ul><li><b>Время:</b> 8 календарных дней (29.09–06.10.2026), около 15 часов работы GPU; остальное — настройка, ~200 ГБ загрузок, конвертации и исправления.</li><li><b>Токены:</b> около 1,03 млн выходных токенов только в школьных тестах и программировании, плюс проверки длинного контекста до 260K входных токенов.</li><li><b>Инструменты:</b> OpenAI Codex (ChatGPT) как рабочий агент под руководством автора — настройка сервера, прогоны тестов и анализ; llama.cpp (и форк PrismML для Bonsai), llama-swap, Docker Desktop с WSL2.</li><li><b>Лицензия:</b> <a href="https://creativecommons.org/licenses/by/4.0/deed.ru">CC BY 4.0</a> — любое использование, включая коммерческое, с обязательной ссылкой на <a href="https://homensai.com/">homensai.com</a>. У весов моделей свои лицензии.</li></ul>
 <details class="more"><summary>Промпты, отправленные моделям</summary><pre>[German passive] Du bist Deutschlehrer. Antworte NUR mit dem vollständigen deutschen Satz bzw. der verlangten Form, ohne Erklärung, in einer Zeile. Formuliere den Satz im Passiv, wenn nicht anders verlangt; lass den Täter (von/durch ...) weg, außer die Aufgabe verlangt ihn.
   task example: Setze ins Passiv Präsens: Der Mechaniker repariert das Auto.
 

@@ -1,7 +1,7 @@
 <!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # Lokaler KI-Server auf RTX 3080: 23 Modelle getestet, 15 behalten
 
-> Version 1.9 · Testdaten: 2026-09-29 – 2026-10-06 (Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Autor des Experiments: https://homensai.com/
+> Version 1.10 · Testdaten: 2026-09-29 – 2026-10-06 (Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Autor des Experiments: https://homensai.com/
 
 [English](README.en.md) | [Русский](README.ru.md) | [Deutsch](README.de.md)
 
@@ -134,9 +134,9 @@ Full tables: [RESULTS.de.md](RESULTS.de.md)
 
 **Zeitaufwand.** Kalendarisch: 2026-09-29 – 2026-10-06 (8 Tage, inkl. Hardwaretausch: RAM 16 → 32 GB am 2026-10-01). Gemessene Maschinenzeit der finalen Läufe: Allgemeintest 32 Min., Deutsch 20 Min., Kontextsuche 8,5 Std. (146 Proben), Schul-Mathe/Physik 2,4 Std., Chemie 51 Min., Code 14 Min., Zuverlässigkeitslauf 2 Std., Beschleuniger und Embeddings etwa 1 Std. — insgesamt rund 15 Stunden GPU-Zeit; die übrige Kalenderzeit entfiel auf Einrichtung, Downloads (etwa 200 GB), Konvertierungen, Fehlerbehebung und Warten auf Neustarts.
 
-**Tokens.** Allein in den Schulfächern und im Code erzeugten die getesteten Modelle etwa 1,03 Mio. Ausgabe-Tokens (Mathe/Physik 731k, Chemie 235k, Code 64k), dazu Langkontext-Proben mit bis zu 260k Eingabe-Tokens je Probe. Der Agent (Claude Code, Pro-Tarif) arbeitete in mehreren Sitzungen; beim Schreiben enthielt der Kontext der Hauptsitzung etwa 390k Tokens, die Wochennutzung des Tarifs lag bei 29 %. Eine genaue Gesamtsumme über alle Sitzungen wurde nicht erfasst.
+**Tokens.** Allein in den Schulfächern und im Code erzeugten die getesteten Modelle etwa 1,03 Mio. Ausgabe-Tokens (Mathe/Physik 731k, Chemie 235k, Code 64k), dazu Langkontext-Proben mit bis zu 260k Eingabe-Tokens je Probe.
 
-**Erstellt mit.** Claude Code (Desktop-App) als Arbeitsagent — Modelle Claude Opus 5.5, Sonnet 5.5 und Haiku 4.5 je nach Phase; llama.cpp (Upstream und PrismML-Fork für ternäres Bonsai), llama-swap, Docker Desktop mit WSL2 unter Windows 10, Python 3, CadQuery-Sandbox-Image (nur für ein später entferntes Experiment).
+**Erstellt mit.** OpenAI Codex (ChatGPT) als Arbeitsagent — hat den Server eingerichtet, alle Tests ausgeführt und die Ergebnisse ausgewertet; llama.cpp (Upstream und PrismML-Fork für ternäres Bonsai), llama-swap, Docker Desktop mit WSL2 unter Windows 10, Python 3, CadQuery-Sandbox-Image (nur für ein später entferntes Experiment).
 
 **Lizenz.** Alle Materialien dieses Repositories (Ergebnisse, Tabellen, Berichte, Dokumentation, Testbeschreibungen) stehen unter [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.de): frei kopierbar, weitergebbar, bearbeitbar und für jeden Zweck nutzbar, auch kommerziell, bei verpflichtender Nennung des Autors des Experiments mit Link auf https://homensai.com/ und Kennzeichnung von Änderungen. Siehe [LICENSE](LICENSE). Modellgewichte sind nicht Teil dieses Repositories und behalten ihre eigenen Lizenzen (siehe die oben verlinkten Modellseiten). Dies ist keine Rechtsberatung.
 
@@ -155,12 +155,12 @@ Full tables: [RESULTS.de.md](RESULTS.de.md)
 
 - **Modellgewichte werden hier nicht verbreitet.** Es gibt nur Links zu den Originalseiten. Jedes Modell hat seine eigene Lizenz und Nutzungsbedingungen (z. B. Llama 3.1 mit der Llama Community License samt Namens- und Hinweispflichten, Gemma mit den Google Gemma Nutzungsbedingungen; Qwen, MiniCPM, Spark, MiMo, Ornith, LFM, Bonsai u. a. haben eigene Bedingungen). Prüfen Sie vor Download und Nutzung die verlinkte Modellseite; wir haben nicht jede Lizenz erneut geprüft.
 - **Modellausgaben.** Die Rohdateien enthalten kurze Antworten der getesteten Modelle. Ihre Nutzung unterliegt den Bedingungen des jeweiligen Modells (manche untersagen die Verwendung der Ausgaben zum Training anderer Modelle).
-- **Namen und Marken** (Qwen, Llama, Gemma, Mistral, NVIDIA, RTX, Docker, Claude, Hugging Face u. a.) gehören ihren Inhabern. Das Projekt ist unabhängig und weder mit ihnen verbunden noch von ihnen gesponsert oder gebilligt.
+- **Namen und Marken** (Qwen, Llama, Gemma, Mistral, NVIDIA, RTX, Docker, OpenAI, ChatGPT, Codex, Hugging Face u. a.) gehören ihren Inhabern. Das Projekt ist unabhängig und weder mit ihnen verbunden noch von ihnen gesponsert oder gebilligt.
 - **Software.** llama.cpp, llama-swap, whisper.cpp und stable-diffusion.cpp sind Open-Source-Projekte (nach unserem Wissen MIT-lizenziert; der PrismML-Fork folgt llama.cpp). Ihr Code wird hier nicht kopiert, nur Links; unsere Konfiguration und Dockerfiles liegen im separaten Server-Repository. NVIDIA-CUDA-Basis-Images und Docker Desktop werden unter ihren eigenen Lizenzbedingungen genutzt und nicht weiterverbreitet.
 - **Testdaten.** Die Aufgaben wurden vom Autor geschrieben oder generiert. Der Füll-Text für den Langkontext wird aus den Quelldateien der Python-Standardbibliothek (PSF-Lizenz) zusammengesetzt; die Datei selbst liegt nicht bei — das Server-Projekt baut sie aus Ihrer eigenen Python-Installation (Ergebnisse können je nach Python-Version leicht abweichen).
 - **Datenschutz und Sicherheit.** Keine personenbezogenen Daten, Passwörter, Tokens oder Schlüssel; lokale Benutzernamen, Pfade und LAN-Adressen wurden durch Platzhalter ersetzt. Setzen Sie `<YOUR_LAN_IP>` und Geheimnisse in Ihrer eigenen Installation ein und veröffentlichen Sie sie nie.
 - **Genauigkeit und Gewährleistung.** Die Ergebnisse sind Messungen auf einem Rechner an den genannten Terminen und werden „wie besehen“ ohne Gewähr bereitgestellt. Modellantworten können falsch sein; die Schultests sind ein Benchmark, keine Lehre und keine Fachberatung. Nicht für medizinische, rechtliche, finanzielle oder sicherheitskritische Entscheidungen verwenden.
-- **KI-Unterstützung.** Das Experiment und diese Dokumente wurden unter Anleitung des Autors mit Hilfe eines KI-Agenten (Claude Code) erstellt.
+- **KI-Unterstützung.** Servereinrichtung, alle Testläufe und die Auswertung hat ein KI-Agent, OpenAI Codex (ChatGPT), unter Anleitung des Autors durchgeführt.
 - **Weiterverwendung und Entfernung.** Die Weiterverwendung ist unter den obigen Lizenzen mit Nennung des Autors des Experiments erlaubt: https://homensai.com/. Rechteinhaber, die ein Problem finden, können den Autor über diese Seite kontaktieren; das Material wird korrigiert oder entfernt.
 
 **Verwendete Prompts.** Die genauen an die Modelle gesendeten Texte (vollständige Aufgabenlisten in dem Server-Repository):

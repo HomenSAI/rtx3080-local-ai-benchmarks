@@ -3,6 +3,11 @@
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
 
+## 1.10 — 2026-10-10
+- EN: Attribution corrected: the server setup, all test runs, the analysis and the recommendations were done by OpenAI Codex (ChatGPT) under the author's direction, not by Claude Code as stated in 1.9 and earlier. The agent-usage figures (plan, session tokens) that referred to Claude were removed.
+- RU: Исправлено авторство: настройку сервера, все прогоны тестов, анализ и рекомендации выполнил OpenAI Codex (ChatGPT) под руководством автора, а не Claude Code, как было указано в 1.9 и раньше. Цифры об использовании агента (тариф, токены сессии), относившиеся к Claude, удалены.
+- DE: Urheberschaft korrigiert: Servereinrichtung, alle Testläufe, Auswertung und Empfehlungen hat OpenAI Codex (ChatGPT) unter Anleitung des Autors durchgeführt, nicht Claude Code wie in 1.9 und früher angegeben. Die Angaben zur Agentennutzung (Tarif, Sitzungs-Tokens), die sich auf Claude bezogen, wurden entfernt.
+
 ## 1.9 — 2026-10-10
 - EN: New page "Recommended settings" (EN/RU/DE): which model for which task; an interactive picker — click a model to see its optimal and maximum mode (context, KV cache, accelerator, speed) and copy a ready llama-server command taken from the real gateway configuration; system settings for the local machine. The recommendations were derived autonomously by Claude Code, which set up the server, ran all tests and analysed the results.
 - EN: Licence changed to CC BY 4.0 for the whole repository (texts, results and code): any use, including commercial, with mandatory attribution to the author (https://homensai.com/). `style/` keeps its own licence.
