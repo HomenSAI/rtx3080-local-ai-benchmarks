@@ -1,6 +1,7 @@
+<!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # Результаты и сравнения
 
-> Версия 1.4 · Даты тестов: 2026-09-29 – 2026-10-06 (железо: RTX 3080 10 ГБ, i7-4770, 32 ГБ ОЗУ). Автор эксперимента: https://homensai.com/
+> Версия 1.6 · Даты тестов: 2026-09-29 – 2026-10-06 (железо: RTX 3080 10 ГБ, i7-4770, 32 ГБ ОЗУ). Автор эксперимента: https://homensai.com/
 
 ## Лидеры
 

@@ -1,0 +1,53 @@
+/* HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ */
+/* Дополнения отчёта поверх dist/homensai.css: цитата версии, сортировка таблиц и лидеры столбцов. Цвета — только токены ядра. */
+
+blockquote {
+  margin: .75rem 0;
+  padding: .25rem 0 .25rem .9rem;
+  border-left: 3px solid var(--line);
+  color: var(--muted);
+}
+
+.sorthint {
+  margin: .25rem 0;
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+table.history th.sortable {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  padding-right: 1.7rem;
+}
+
+th.sortable::after {
+  content: "\21C5";
+  position: absolute;
+  right: .5rem;
+  opacity: .35;
+}
+
+th.sortable.asc::after { content: "\25B2"; opacity: 1; }
+th.sortable.desc::after { content: "\25BC"; opacity: 1; }
+
+th.sortable:hover { color: var(--text); }
+
+th.sortable:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Три лучших значения выбранного столбца: лидер — заметнее, третий — едва заметен. */
+table.history td.lead1 { background: color-mix(in srgb, var(--ok) 24%, transparent); font-weight: 700; }
+table.history td.lead2 { background: color-mix(in srgb, var(--ok) 14%, transparent); }
+table.history td.lead3 { background: color-mix(in srgb, var(--ok) 7%, transparent); }
+
+/* Длинные строки конфигурации прокручиваются внутри блока, а не расширяют страницу. */
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Плитки ключевых цифр не должны ломать ширину страницы на телефоне. */
+.tiles4 .tile b { overflow-wrap: anywhere; }

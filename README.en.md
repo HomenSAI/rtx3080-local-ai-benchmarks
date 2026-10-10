@@ -1,6 +1,7 @@
-# Local AI server on RTX 3080: 23 models tested, 14 kept
+<!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
+# Local AI server on RTX 3080: 23 models tested, 15 kept
 
-> Version 1.5 · Test dates: 2026-09-29 – 2026-10-06 (hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Author of the experiment: https://homensai.com/
+> Version 1.6 · Test dates: 2026-09-29 – 2026-10-06 (hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM). Author of the experiment: https://homensai.com/
 
 [English](README.en.md) | [Русский](README.ru.md) | [Deutsch](README.de.md)
 
@@ -56,14 +57,14 @@ Candidates (23 weights, Q4/Q5 quantisation) were chosen from the 2026 open model
 
 ## 5. How the tests work
 
-1. General quality: Russian summary/translation, logic, instructions, vision, code (qtasks.py) — date: 2026-09-30 – 2026-10-01
-2. German passive voice, 30 items, all forms (qa_tasks.py) — date: 2026-10-01
-3. Maximum stable context: 3 needles at 10/50/90% depth, 80% fill, KV f16/q8/q4 (bench_ctx.py, mneedle.py) — date: 2026-10-01 – 2026-10-02
-4. Soak: 95% fill x2, long generation, image check, VRAM/RAM watch via the gateway (soak.py) — date: 2026-10-03 – 2026-10-06
-5. Grade-11 math and physics, 40 generated problems, computed answers (stem_tasks.py) — date: 2026-10-02
-6. Grade-11 chemistry, 10 generated problems (chem_tasks.py) — date: 2026-10-06
-7. Programming (writing code): 20 Python tasks — the model writes a function, hidden unit tests check it in a no-network sandbox (coding_tasks.py) — date: 2026-10-06
-8. Accelerators and embeddings: tokens/s with and without MTP/DFlash/draft, retrieval top-1 (bench_accel.py) — date: 2026-10-02
+1. General quality: Russian summary/translation, logic, instructions, vision, code — date: 2026-09-30 – 2026-10-01
+2. German passive voice, 30 items, all forms — date: 2026-10-01
+3. Maximum stable context: 3 needles at 10/50/90% depth, 80% fill, KV f16/q8/q4 — date: 2026-10-01 – 2026-10-02
+4. Soak: 95% fill x2, long generation, image check, VRAM/RAM watch via the gateway — date: 2026-10-03 – 2026-10-06
+5. Grade-11 math and physics, 40 generated problems, computed answers — date: 2026-10-02
+6. Grade-11 chemistry, 10 generated problems — date: 2026-10-06
+7. Programming (writing code): 20 Python tasks — the model writes a function, hidden unit tests check it in a no-network sandbox — date: 2026-10-06
+8. Accelerators and embeddings: tokens/s with and without MTP/DFlash/draft, retrieval top-1 — date: 2026-10-02
 
 ## 6. How scores are calculated
 
@@ -114,17 +115,13 @@ Full tables: [RESULTS.en.md](RESULTS.en.md)
 | Hybrid models returned empty answers (thinking ate the budget) | enable_thinking=false for plain runs, large budget when thinking is on; Gemma-4 and LFM2.5 still lose all 3 facts at 64K and were removed. |
 | RAM-KV mode (--no-kv-offload) hung and ran on CPU (LFM2.5) | Mode removed from the context test; GPU-utilisation peak is recorded per probe. |
 | 262K contexts passed at 80% fill but spilled at 95% (MTP/DFlash heads need VRAM) | Soak at 95% lowered Qwen3.5-MTP to 192K and Ornith-MTP to 128K; Ornith-DFlash removed. |
-| Test corpus read from the host Python folder, missing in the container (fake 149-token probes) | Corpus frozen in corpus_cache.txt; bogus probes deleted and rerun. |
+| Test corpus read from the host Python folder, missing in the container (fake 149-token probes) | Corpus frozen in a fixed file; bogus probes deleted and rerun. |
 | Draft-model accelerators slowed models down (x0.17-0.75) | Only MTP/DFlash profiles with measured speed-up are kept. |
-| Windows reboot killed background jobs | Pipeline moved into the restartable bench-runner container; every phase resumes from stored results. |
+| Windows reboot killed background jobs | Pipeline moved into the restartable runner container; every phase resumes from stored results. |
 
-## 9. Install guide
+## 9. Server and test code
 
-[INSTALL.en.md](INSTALL.en.md)
-
-## 10. Reproducing the tests
-
-Each folder in tests/ contains the task file, the runner, a README and our raw results (results/*.jsonl). Run the runner against your own llama.cpp server on port 8090 (see bench_top.py start()) and compare your jsonl with ours. The runners are needed to re-run a test; the server itself is in [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab).
+**All tests in this report were obtained with this server: [HomenSAI/homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab).** It was the engine of the whole experiment — llama.cpp with the llama-swap gateway in Docker, the scripts and the test runners. You can deploy the same server yourself: it works as described here, and with it you can run the same tests and get comparable results. This repository contains only the finished report and our raw results (results/*.jsonl in each tests/ folder) to compare with.
 <!--FOOT-->
 
 ---
@@ -141,7 +138,7 @@ Each folder in tests/ contains the task file, the runner, a README and our raw r
 
 **Made with.** Claude Code (desktop app) as the working agent — models Claude Opus 5.5, Sonnet 5.5 and Haiku 4.5 depending on the stage; llama.cpp (upstream and the PrismML fork for ternary Bonsai), llama-swap, Docker Desktop with WSL2 on Windows 10, Python 3, CadQuery sandbox image (used only for an experiment that was later removed).
 
-**License.** Free to share and reuse for **noncommercial purposes only**, **with mandatory attribution to the author of the experiment: https://homensai.com/**. Results, tables and documents: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) (copy, redistribute, adapt, for noncommercial purposes only — you must credit the author with a link to https://homensai.com/ and mark changes). Program code and test tasks: PolyForm Noncommercial 1.0.0 with the same attribution line kept in every copy (see `LICENSE`, `LICENSE-DOCS.md`, `NOTICE`). Model weights are not part of this repository and keep their own licenses (see the model pages linked above). This is not legal advice.
+**License.** All materials of this repository (results, tables, reports, documentation, test descriptions) are licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/): free to copy, share, adapt and use for non-commercial purposes only, with mandatory attribution — credit the author of the experiment with a link to https://homensai.com/ and mark changes. See [LICENSE](LICENSE). Model weights are not part of this repository and keep their own licenses (see the model pages linked above). This is not legal advice.
 
 ### Sources and third-party components
 
@@ -160,13 +157,13 @@ Each folder in tests/ contains the task file, the runner, a README and our raw r
 - **Model outputs.** The raw result files contain short answers produced by the tested models. Their use is subject to the respective model terms (some models restrict using outputs to train other models).
 - **Names and trademarks** (Qwen, Llama, Gemma, Mistral, NVIDIA, RTX, Docker, Claude, Hugging Face and others) belong to their owners. This project is independent and is not affiliated with, sponsored or endorsed by them.
 - **Software.** llama.cpp, llama-swap, whisper.cpp and stable-diffusion.cpp are open-source projects (to our knowledge MIT-licensed; the PrismML fork follows llama.cpp). They are not copied here — only their configuration and Dockerfiles that download pinned commits. NVIDIA CUDA base images and Docker Desktop are used under their own licence terms and are not redistributed.
-- **Test data.** The tasks were written or generated by the author. The long-context filler text is assembled from the Python standard library source files (PSF licence); the file itself is not included — the script rebuilds it from your own Python installation (results can differ slightly between Python versions).
+- **Test data.** The tasks were written or generated by the author. The long-context filler text is assembled from the Python standard library source files (PSF licence); the file itself is not included — the server project rebuilds it from your own Python installation (results can differ slightly between Python versions).
 - **Privacy and security.** No personal data, passwords, tokens or keys are included; local usernames, paths and LAN addresses were replaced by placeholders. Replace `<YOUR_LAN_IP>` and secrets in your own setup and never publish them.
 - **Accuracy and warranty.** Results are measurements on one machine on the dates shown, provided "as is" without warranty. Model answers may be wrong; school-subject tests are a benchmark, not teaching or professional advice. Do not rely on them for medical, legal, financial or safety-critical decisions.
 - **AI assistance.** The experiment and these documents were prepared with the help of an AI agent (Claude Code) under the author's direction.
-- **Reuse and takedown.** Reuse is allowed under the licences above with attribution to the author of the experiment: https://homensai.com/. Rights holders who find a problem can contact the author through that site and the material will be corrected or removed.
+- **Reuse and takedown.** Non-commercial reuse is allowed under CC BY-NC 4.0 (see LICENSE) with attribution to the author of the experiment: https://homensai.com/. Rights holders who find a problem can contact the author through that site and the material will be corrected or removed.
 
-**Prompts used.** The exact prompts sent to the models (each test's full task list is in `tests/`):
+**Prompts used.** The exact prompts sent to the models (the full task lists are in the server repository):
 
 ```text
 [German passive] Du bist Deutschlehrer. Antworte NUR mit dem vollständigen deutschen Satz bzw. der verlangten Form, ohne Erklärung, in einer Zeile. Formuliere den Satz im Passiv, wenn nicht anders verlangt; lass den Täter (von/durch ...) weg, außer die Aufgabe verlangt ihn.

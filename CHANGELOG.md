@@ -1,6 +1,18 @@
+<!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # Changelog / История изменений / Änderungsprotokoll
 
 Versioning rule / Правило версий / Versionsregel: first release 1.0, every published update +0.1 (1.1, 1.2, ...).
+
+## 1.6 — 2026-10-10
+- EN: The repository is now a pure report: only test results (`tests/*/results/*.jsonl`), tables and HTML pages. All executable code was removed: test runners and task files (moved to the server project [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab), `benchmarks/`), the install guide and the model configuration (`CONFIG.*`). Left: the page scripts (table sorting, theme, author page) and the author's time-tracking tool (`scripts/time_tracking.py`).
+- EN: Whole site restyled to HomenS.AI Style 1.3.0 (copied into `style/`, pinned by `<meta name="homensai-style">`): header with logo, language switch, light and dark themes, footer from the brand data, phone layout; inline styles and scripts moved to `assets/`. Author pages in EN/RU/DE. Headline corrected to 15 kept models.
+- EN: One licence for the whole repository: CC BY-NC 4.0 (non-commercial use only, attribution with a link to https://homensai.com/ is mandatory); `style/` keeps its own licence.
+- RU: Репозиторий стал чистым отчётом: только результаты тестов (`tests/*/results/*.jsonl`), таблицы и HTML-страницы. Удалён весь исполняемый код: раннеры и файлы заданий тестов (перенесены в проект сервера [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab), папка `benchmarks/`), инструкция по установке и настройки моделей (`CONFIG.*`). Остались скрипты страниц (сортировка таблиц, тема, страница автора) и учёт времени автора (`scripts/time_tracking.py`).
+- RU: Весь сайт оформлен по стилю HomenS.AI 1.3.0 (скопирован в `style/`, закреплён метой `<meta name="homensai-style">`): шапка с логотипом, переключатель языков, светлая и тёмная темы, подвал из данных бренда, вёрстка для телефона; встроенные стили и скрипты вынесены в `assets/`. Страницы об авторе на трёх языках. Заголовок исправлен: оставлено 15 моделей.
+- RU: Одна лицензия на весь репозиторий: CC BY-NC 4.0 (только некоммерческое использование, обязательна ссылка на автора https://homensai.com/); у `style/` своя лицензия.
+- DE: Das Repository ist jetzt ein reiner Bericht: nur Testergebnisse (`tests/*/results/*.jsonl`), Tabellen und HTML-Seiten. Der gesamte ausführbare Code wurde entfernt: Test-Runner und Aufgabendateien (in das Server-Projekt [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab), Ordner `benchmarks/`, verschoben), Installationsanleitung und Modellkonfiguration (`CONFIG.*`). Übrig sind die Seitenskripte (Tabellensortierung, Design, Autorenseite) und die Zeiterfassung des Autors (`scripts/time_tracking.py`).
+- DE: Die gesamte Website ist auf den HomenS.AI-Stil 1.3.0 umgestellt (nach `style/` kopiert, über `<meta name="homensai-style">` festgelegt): Kopfzeile mit Logo, Sprachumschalter, helles und dunkles Design, Fußzeile aus den Markendaten, Layout für Telefone; eingebettete Stile und Skripte nach `assets/` verlegt. Autorenseiten in EN/RU/DE. Überschrift auf 15 behaltene Modelle korrigiert.
+- DE: Eine Lizenz für das gesamte Repository: CC BY-NC 4.0 (nur nichtkommerzielle Nutzung, Nennung des Autors mit Link auf https://homensai.com/ ist Pflicht); `style/` behält seine eigene Lizenz.
 
 ## 1.5 — 2026-10-10
 - EN: Server code moved to the separate repository [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab) (`server/` removed from here); this repository keeps the test runners, raw results and HTML reports. GitHub release workflow added.

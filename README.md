@@ -1,8 +1,9 @@
+<!-- HomenS.AI Benchmarks · © 2026 Serhii Khomenko · https://homensai.com/ · https://github.com/HomenSAI · https://www.linkedin.com/in/serhii-khomenko-homensai/ -->
 # Local LLM benchmarks on one RTX 3080 (10 GB)
 
-**23 open models tested, 14 kept.** Which local language models are really usable on a single gaming GPU, how long a context they hold stably, and how to run them all behind one OpenAI-compatible endpoint.
+**23 open models tested, 15 kept.** Which local language models are really usable on a single gaming GPU, how long a context they hold stably, and how to run them all behind one OpenAI-compatible endpoint.
 
-> Version 1.5 · Test dates: 2026-09-29 – 2026-10-06 · Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM
+> Version 1.6 · Test dates: 2026-09-29 – 2026-10-06 · Hardware: RTX 3080 10 GB, i7-4770, 32 GB RAM
 > Author: **Serhii Khomenko** — [homensai.com](https://homensai.com/)
 
 [English](README.en.md) | [Русский](README.ru.md) | [Deutsch](README.de.md) · **Web version:** [index.html / reports](index.html) (EN/RU/DE, sortable tables)
@@ -48,12 +49,13 @@ Full tables (all 15 kept models, recommended context and KV cache per model, acc
 |---|---|
 | [README.en.md](README.en.md) | full report: rules, models, test methods, scoring, problems and fixes |
 | [RESULTS.en.md](RESULTS.en.md) | all result tables |
-| [INSTALL.en.md](INSTALL.en.md), [CONFIG.en.md](CONFIG.en.md) | install guide and gateway configuration |
-| `tests/` | task files, runners (needed to re-run a test) and our raw results (`results/*.jsonl`) |
-| [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab) | the server (gateway, console, Docker files) — a separate repository |
+| `tests/` | short description of each test and our raw results (`results/*.jsonl`) |
+| [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab) | separate repository: **the server that produced all these tests** (Docker / llama-swap, scripts, test runners) — deploy it to repeat them |
 | `index.html`, `report.*.html` | web version of the report |
+| `about.*.html`, `assets/`, `style/` | author pages, page scripts (table sorting) and the HomenS.AI style package |
+| [TIME_TRACKING.md](TIME_TRACKING.md) | the author's time log tool for this project |
 
-To reproduce: run a runner from `tests/` against your own llama.cpp server on port 8090 and compare your `jsonl` with ours. The runners are needed to re-run a test; the server itself is in [homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab).
+**All tests were obtained with this server: [HomenSAI/homensai-local-ai-lab](https://github.com/HomenSAI/homensai-local-ai-lab)** — the engine of the experiment (llama.cpp + llama-swap in Docker, scripts, test runners). You can deploy it yourself and run the same tests to get comparable results; compare them with our raw results in `tests/*/results/`.
 
 ## Author
 
@@ -61,10 +63,6 @@ To reproduce: run a runner from `tests/` against your own llama.cpp server on po
 
 ## License
 
-Free to share and reuse for **noncommercial purposes only**, with mandatory attribution to the author: https://homensai.com/. Commercial use requires a written agreement with the author.
+All materials of this repository (results, tables, reports, documentation, test descriptions) are licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/): free to copy, share and adapt for non-commercial purposes only, **with mandatory attribution — link to https://homensai.com/**. See [LICENSE](LICENSE).
 
-- Results, tables and documents: [CC BY-NC 4.0](LICENSE-DOCS.md).
-- Program code and test tasks: [PolyForm Noncommercial 1.0.0](LICENSE) with the attribution line kept in every copy (see also [NOTICE](NOTICE)).
 - Model weights are **not** distributed here; every model keeps its own license (links in [README.en.md](README.en.md)).
-
-Results are measurements on one machine on the dates shown, provided "as is" without warranty.
