@@ -1,0 +1,3 @@
+# Claude Code instructions
+
+Read AGENTS.md **in full** before substantive work. Mandatory: project-wide preflight; full task-relevant source and dependency analysis; stable/dynamic context map; maximum justified prompt reuse and targeted reads. On direct Claude Messages API use supported `cache_control` (default 5m, stable prefix), check actual cache read/write tokens, costs, latency and quality. Do not conflate API caching with Claude Code subscription limits. Respect local safety/branch rules. Canonical policy: https://github.com/HomenSAI/homensai-core/blob/main/docs/AI_CONTEXT_EFFICIENCY_POLICY.md
